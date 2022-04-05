@@ -1,0 +1,332 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    color: #fff;
+    height: 100%;
+    font: 12px/18px "Raleway-Regular", sans-serif;
+    scrollbar-color: #cbafff #1c132c;
+    scrollbar-width: thin;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #1c132c;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+::-webkit-scrollbar-button {
+    width: 5px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbafff;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #cbafff;
+}
+::-webkit-scrollbar-thumb:active {
+    background: #cbafff;
+}
+::-webkit-scrollbar-track {
+    background: #1c132c;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+    background: #1c132c;
+}
+::-webkit-scrollbar-track:active {
+    background: #1c132c;
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+:focus {
+    outline:none;
+}
+::-moz-focus-inner {
+    border:0;
+}
+
+.bg-image {
+    z-index: -1;
+    position: fixed;
+    display: block;
+    background: url(../images/back.jpg) no-repeat #1c132c;
+    background-position: center;
+    background-attachment: scroll;
+    background-size: cover;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    min-height: 1280px;
+    width: 100%;
+}
+
+.cent-ly {
+    text-align: center;
+    text-align: -moz-center;
+    text-align: -webkit-center;
+    margin: auto;
+    width: 70%;
+    height: 100%;
+}
+
+@media only screen and (orientation: landscape) {
+    .cent-ly {
+        width: 70%;
+    }
+}
+
+@media only screen and (orientation: portrait) {
+    .cent-ly {
+        width: 98%;
+    }
+}
+
+.cent-ly {
+    padding-top: 10px;
+    line-height: 1.5;
+    max-width: 500px;
+}
+
+*::selection {
+    color: #fff;
+    background: #21152b;
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.text-main {
+    font-family: 'Raleway-Bold', sans-serif;
+    font-size: 70px;
+    background: linear-gradient(to left, #b58dff, #cbafff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-sub {
+    font-family: 'Raleway-Light', sans-serif;
+    font-size: 20px;
+    background: linear-gradient(to left, #b58dff, #d6bfff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text {
+    font-family: 'Raleway-Regular', sans-serif;
+    font-size: 15px;
+    color: #cbafff;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-family: 'Raleway-Bold', sans-serif;
+    color: #fff;
+    font-size: 25px;
+}
+
+.sub-title {
+    font-family: 'Raleway-Bold', sans-serif;
+    color: #fff;
+    font-size: 20px;
+}
+
+.line {
+    height: 0.4px;
+    width: 30%;
+    background: linear-gradient(to left, #b58dff, #cbafff);
+}
+
+.button {
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Raleway-Bold', sans-serif;
+    color: #fff;
+    text-decoration: none;
+    margin: 7px;
+    padding: 7px;
+    font-size: 15px;
+    border: 0.6px solid #cbafff;
+    border-radius: 50px;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+}
+
+.button:hover {
+    color: #21152b;
+    background-color: #cbafff;
+    text-decoration: none;
+}
+
+.button:active {
+    color: #21152b;
+    background-color: #cbafff;
+    text-decoration: none;
+    padding: 2%;
+}
+
+.mail:hover {
+    color: #21152b;
+    background-color: #cbafff;
+}
+
+*:focus {
+    outline: none;
+}
+
+.link {
+    text-decoration: none;
+    font-family: 'Raleway-Bold', sans-serif;
+    background: linear-gradient(to left, #b58dff, #cbafff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 10px;
+}
+
+.projects-head {
+    text-align: left;
+    display: block;
+    margin: 20px;
+    padding: 10px;
+    color: #fff;
+    background-color: rgba(33, 21, 43, 0.9);
+    font-size: 20px;
+    font-family: 'Raleway-Bold', sans-serif;
+    border-radius: 10px;
+}
+
+.projects-content {
+    display: block;
+    margin: 2%;
+    padding: 1%;
+    background-color:rgba(33, 21, 43, 0.3);
+    font-size: 11px;
+    border-radius: 10px;
+}
+
+.projects-bot {
+    position: relative;
+    padding-bottom: 50px;
+    display: inline-block;
+    vertical-align: top;
+    width: 330px;
+    height: 260px;
+    max-width: 95%;
+    margin: 10px;
+    padding: 10px;
+    background-color:rgba(33, 21, 43, 0.8);
+    color: #cbafff;
+    font-size: 11px;
+    border-radius: 10px;
+}
+
+.spoiler {
+    display: block;
+    width: 80%;
+    padding: 1%;
+    background-color:rgba(33, 21, 43, 0.8);
+    color: #cbafff;
+    font-size: 11px;
+    border-radius: 10px;
+}
+
+.bot-img {
+    border-radius: 100%;
+    width: 75px;
+}
+
+.btn-bot {
+    margin: auto;
+    position: absolute;
+    bottom: 10px;
+    right: 25%;
+    width: 50%;
+}
+
+.btn-donate {
+    padding: 1%;
+    font-size: 10px;
+    background-color:rgba(33, 21, 43, 0.8);
+}
+
+.input-donate {
+    padding: 1%;
+    font-size: 15px;
+    border: 0px;
+    color: #fff;
+    background-color:rgba(33, 21, 43, 0.8);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.btn-alt {
+    font-family: 'Raleway-SemiBold', sans-serif;
+    border: 0px;
+    font-size: 15px;
+}
+
+.btn-big {
+    width: 30%;
+    font-size: 20px;
+}
+
+input {
+    margin: 10px;
+    padding: 5px;
+    border-radius: 20px;
+    outline: none;
+    cursor: default;
+    border-color: rgba(33, 21, 43, 0.2);  
+    transition: all 0.3s ease-in-out;
+    color: #fff;
+    background-color:rgba(33, 21, 43, 0.2);
+    text-align: center;
+}
+
+input:focus {
+    border: 0.6px solid #cbafff;
+}
+
+.popup {
+    display: block;
+    text-align: center;
+    text-align: -moz-center;
+    text-align: -webkit-center;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 90%;
+    width: 90%;
+    overflow: auto;
+    margin: 2%;
+    padding: 1%;
+    background-color:rgba(33, 21, 43, 0.5);
+    font-size: 11px;
+    border-radius: 10px;
+}
