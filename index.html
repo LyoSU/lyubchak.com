@@ -48,7 +48,14 @@
                         TON: <input type="text" id="copyText" value="EQDjlt7XOzerCWJL0fi_CopluGiJjkQghYS2oVpYPgFE3noM" readonly>
                     </div>
 
-                    <iframe src="https://widgets.freekassa.ru?type=payment-window&lang=en&theme=dark&default_amount=499&api_key=1c0d9c8f3a6d4d69cb26b7cea65b60da&shopID=640" width="300" height="450" frameborder="0"></iframe>
+                    <!-- show div only if domain is lyo.su -->
+                    <script>
+                        if (window.location.hostname == "lyo.su") {
+                            document.write('<iframe src="https://widgets.freekassa.ru?type=payment-window&lang=en&theme=dark&default_amount=499&api_key=1c0d9c8f3a6d4d69cb26b7cea65b60da&shopID=640" width="300" height="450" frameborder="0"></iframe>');
+                        }
+                    </script>
+
+                    
                 </div>
                 <img class="bot-img" src="images/love.png"><br>
                 <p>All the money will be spent wisely by me to support the work of bots or myself. You can indicate in the description how you would like me to spend your contribution, and I will do my best to fulfill your request.</p>
