@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Ly</title>
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="#1c132c" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Yuri Ly"/>
+    <meta property="og:image" content="https://avatars1.githubusercontent.com/u/37080625?s=460&v=4" />
+    <meta property="og:url" content="https://lyo.su/"/>
+    <meta property="og:description" content="My name is smth, I am N years old, and I live in a country. I am interested in web development." />
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="Web site created using create-react-app"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -24,7 +32,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Portfolio App</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -39,5 +47,57 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+        function openSpoiler(name) {
+            if (name === '#projects') {
+                popup();
+            } else {
+                $( ".spoiler" ).not( name ).slideUp( 500 );
+                $( name ).slideToggle( 500 );
+
+                $([document.documentElement, document.body]).animate({
+                    scrollTop: $(name).offset().top
+                }, 500);
+            }
+        }
+
+        if (location.hash) {
+            openSpoiler(location.hash)
+        }
+
+        $(window).on('hashchange',function(){ 
+            if (location.hash === '#projects') {
+                popup();
+            } else {
+                openSpoiler(location.hash)
+            }
+        })
+
+        function spoiler (name) {
+            event.preventDefault();
+            if($( `#${name}` ).is(':visible') === true) {
+                window.location.hash = ''
+            } else window.location.hash = name
+        }
+
+        function popup() {
+            $('#projects').slideToggle( 500, function(){
+                if($('.cent-ly').css('filter') !== 'none') {
+                    location.hash = '';
+                    $( ".cent-ly" ).css({'filter':''});
+                } else {
+                    $( ".cent-ly" ).css({'filter':'blur(5px)'});
+                }
+            });
+        }
+
+        $(document).keyup(function(e) {
+            if (e.keyCode === 27) popup();
+        });
+
+        $('.popup').click(function() {
+            popup();
+        });
+    </script>
   </body>
 </html>
