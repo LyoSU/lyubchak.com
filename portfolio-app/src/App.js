@@ -1,10 +1,9 @@
-import './App.css';
-import { default as Body, default as Header } from './components/Header';
+import { default as Body } from './components/Body';
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      <div className="bg-image"></div>
       <Body />
     </div>
   );
