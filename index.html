@@ -3,16 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuri Ly — Web Developer</title>
+    <title>Yuri Ly — AI Researcher & Developer</title>
     <meta name="theme-color" content="#1c132c">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website"/>
-    <meta property="og:title" content="Yuri Ly — Web Developer"/>
-    <meta property="og:image" content="https://avatars1.githubusercontent.com/u/37080625?s=460&v=4"/>
+    <meta property="og:title" content="Yuri Ly — AI Researcher & Developer"/>
+    <meta property="og:image" content="https://lyubchak.com/images/avatar.jpg"/>
     <meta property="og:url" content="https://lyubchak.com/"/>
-    <meta property="og:description" content="Web developer from Ukraine. Building Telegram bots and web applications."/>
+    <meta property="og:description" content="AI enthusiast and LLM expert from Ukraine. Leveraging modern AI to master any technology rapidly and build innovative products."/>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Yuri Ly",
+        "birthDate": "1999-02-27",
+        "nationality": "Ukraine",
+        "jobTitle": "AI Researcher & Developer",
+        "url": "https://lyubchak.com",
+        "image": "https://lyubchak.com/images/avatar.jpg",
+        "description": "AI enthusiast and LLM expert from Ukraine. Leveraging modern AI to master any technology rapidly and build innovative products.",
+        "knowsAbout": ["Artificial Intelligence", "Large Language Models", "AI Research", "Rapid Technology Adoption", "Product Development"],
+        "sameAs": [
+            "https://github.com/LyoSU",
+            "https://t.me/LyoSU"
+        ],
+        "email": "yuri@lyubchak.com"
+    }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,25 +46,25 @@
     <!-- Background Grid -->
     <div class="grid-bg"></div>
 
+    <!-- Section Backdrop -->
+    <div class="section-backdrop" id="section-backdrop"></div>
+
     <!-- Main Container -->
     <main class="container">
         <!-- Hero Section -->
         <section class="hero">
-            <div class="terminal-header">
-                <span class="prompt">guest@lyubchak.com:~$</span>
-                <span class="cursor-blink">_</span>
-            </div>
-
             <div class="hero-content">
                 <div class="avatar-wrapper">
-                    <img src="images/sam.png" alt="Yuri Ly" class="avatar">
+                    <img src="images/avatar.jpg" alt="Yuri Ly" class="avatar">
                     <div class="avatar-glow"></div>
                 </div>
 
-                <h1 class="name">YURI LY</h1>
+                <h1 class="name">
+                    <span class="name-visible">YURI LY</span><span class="name-rest">UBCHAK</span><span class="typing-cursor">_</span>
+                </h1>
                 <p class="tagline">
                     <span class="bracket">[</span>
-                    <span class="role">WEB DEVELOPER</span>
+                    <span class="role">AI RESEARCHER & DEVELOPER</span>
                     <span class="bracket">]</span>
                 </p>
 
@@ -52,19 +73,19 @@
                 <div class="bio">
                     <p class="bio-line">
                         <span class="line-number">01</span>
-                        <span class="text">24 years old, based in Ukraine</span>
+                        <span class="text"><span id="age">25</span> years old • Based in Ukraine</span>
                     </p>
                     <p class="bio-line">
                         <span class="line-number">02</span>
-                        <span class="text">Building Telegram bots with PHP & Node.js</span>
+                        <span class="text">AI enthusiast & LLM expert</span>
                     </p>
                     <p class="bio-line">
                         <span class="line-number">03</span>
-                        <span class="text">MySQL & MongoDB databases</span>
+                        <span class="text">Leveraging modern AI to master any technology rapidly</span>
                     </p>
                     <p class="bio-line">
                         <span class="line-number">04</span>
-                        <span class="text">Gaming enthusiast • Nintendo Switch player</span>
+                        <span class="text">Proud vibe coder • Powered by Claude Code</span>
                     </p>
                 </div>
             </div>
@@ -92,81 +113,97 @@
         <!-- Expandable Sections -->
         <section id="story" class="collapsible-section">
             <div class="section-header">
-                <h2 class="section-title">
-                    <span class="section-number">[01]</span>
-                    MY JOURNEY
-                </h2>
+                <h2 class="section-title">ABOUT</h2>
                 <button class="close-btn" data-close="story">×</button>
             </div>
             <div class="section-content">
-                <div class="timeline">
+                <div class="timeline-compact">
                     <div class="timeline-item">
                         <span class="year">2011</span>
-                        <p>Started web development journey on uCoz platform</p>
+                        <div class="divider-dot"></div>
+                        <p class="desc">Started coding with traditional methods</p>
                     </div>
+
                     <div class="timeline-item">
-                        <span class="year">2014</span>
-                        <p>Learned PHP, began creating simple mobile websites</p>
+                        <span class="year">2014—17</span>
+                        <div class="divider-dot"></div>
+                        <p class="desc">Explored multiple tech stacks</p>
                     </div>
-                    <div class="timeline-item">
-                        <span class="year">2016</span>
-                        <p>Started building bots for VK social network</p>
+
+                    <div class="timeline-item highlight">
+                        <span class="year">2022</span>
+                        <div class="divider-dot"></div>
+                        <p class="desc">AI awakening with GPT-3.5</p>
                     </div>
-                    <div class="timeline-item">
-                        <span class="year">2017</span>
-                        <p>Switched to Telegram bot development</p>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="year">NOW</span>
-                        <p>Building innovative Telegram bots and web applications</p>
+
+                    <div class="timeline-item active">
+                        <span class="year">Now</span>
+                        <div class="divider-dot"></div>
+                        <p class="desc">AI researcher, LLM expert, vibe coder</p>
                     </div>
                 </div>
-                <p class="story-text">I've been following the gaming industry since childhood, though opportunities to play were limited back then. That's why my first console was the PS4, and now I enjoy gaming on Nintendo Switch.</p>
+
+                <div class="philosophy-compact">
+                    <p>In the age of AI, rapid learning beats technology mastery. I use LLMs to build innovative products across any domain.</p>
+                </div>
             </div>
         </section>
 
         <section id="donate" class="collapsible-section">
             <div class="section-header">
-                <h2 class="section-title">
-                    <span class="section-number">[02]</span>
-                    SUPPORT MY WORK
-                </h2>
+                <h2 class="section-title">SUPPORT MY WORK</h2>
                 <button class="close-btn" data-close="donate">×</button>
             </div>
             <div class="section-content">
-                <p class="donate-intro">I spend considerable time and resources on my projects. If you'd like to support my work, you can contribute using one of the methods below. Every contribution is greatly appreciated!</p>
+                <div class="donate-intro-block">
+                    <p class="donate-intro">Building AI-powered tools and bots takes time, coffee, and occasional debugging at 3 AM.</p>
+                    <div class="coffee-counter" id="coffee-counter">
+                        <span class="coffee-icon" title="Click for surprise">☕</span>
+                        <span class="coffee-text">Coffees consumed: <span class="coffee-num">∞</span></span>
+                    </div>
+                </div>
 
-                <div class="donate-methods">
-                    <a href="https://send.monobank.ua/jar/2fpLioJzU8" target="_blank" class="donate-btn">
-                        <span class="donate-label">MONOBANK</span>
+                <div class="donate-options">
+                    <a href="https://send.monobank.ua/jar/2fpLioJzU8" target="_blank" class="donate-card primary">
+                        <div class="donate-card-icon">💳</div>
+                        <div class="donate-card-info">
+                            <h4>Monobank</h4>
+                            <p>Quick UAH donation</p>
+                        </div>
+                        <span class="donate-arrow">→</span>
                     </a>
 
-                    <div class="crypto-group">
-                        <div class="crypto-item">
-                            <label class="crypto-label">BTC</label>
-                            <input type="text" value="17QaN4wPZFaH4qtsgDdTaYwiW9s9PUcHj7" readonly class="crypto-input">
-                        </div>
-                        <div class="crypto-item">
-                            <label class="crypto-label">ETH/BUSD</label>
-                            <input type="text" value="0x34007b75775F8DAe005A407141617aA2fBa2740c" readonly class="crypto-input">
-                        </div>
-                        <div class="crypto-item">
-                            <label class="crypto-label">TON</label>
-                            <input type="text" value="EQAwN6PpFOo1LFVIh5hkVjearXvrqOvPD-nyqLjVz-fPbn_s" readonly class="crypto-input">
+                    <div class="crypto-section">
+                        <h4 class="crypto-title">Crypto Wallets</h4>
+                        <div class="crypto-list">
+                            <div class="crypto-item" data-crypto="btc">
+                                <span class="crypto-badge">BTC</span>
+                                <code class="crypto-address">17QaN4wPZFaH4qtsgDdTaYwiW9s9PUcHj7</code>
+                                <button class="copy-btn" data-copy="17QaN4wPZFaH4qtsgDdTaYwiW9s9PUcHj7">Copy</button>
+                            </div>
+                            <div class="crypto-item" data-crypto="eth">
+                                <span class="crypto-badge">ETH</span>
+                                <code class="crypto-address">0x34007b75775F8DAe005A407141617aA2fBa2740c</code>
+                                <button class="copy-btn" data-copy="0x34007b75775F8DAe005A407141617aA2fBa2740c">Copy</button>
+                            </div>
+                            <div class="crypto-item" data-crypto="ton">
+                                <span class="crypto-badge">TON</span>
+                                <code class="crypto-address">EQAwN6PpFOo1LFVIh5hkVjearXvrqOvPD-nyqLjVz-fPbn_s</code>
+                                <button class="copy-btn" data-copy="EQAwN6PpFOo1LFVIh5hkVjearXvrqOvPD-nyqLjVz-fPbn_s">Copy</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <p class="donate-note">All contributions will be used wisely to support bot operations and development. You can specify in your message how you'd like me to use your contribution, and I'll do my best to honor your request.</p>
+                <div class="donate-footer-note">
+                    <p>Contributions help keep the servers running and the code flowing. Thanks for your support!</p>
+                </div>
             </div>
         </section>
 
         <section id="comments" class="collapsible-section">
             <div class="section-header">
-                <h2 class="section-title">
-                    <span class="section-number">[03]</span>
-                    LEAVE FEEDBACK
-                </h2>
+                <h2 class="section-title">LEAVE FEEDBACK</h2>
                 <button class="close-btn" data-close="comments">×</button>
             </div>
             <div class="section-content">
@@ -179,10 +216,7 @@
 
         <!-- Contacts Section -->
         <section class="contacts">
-            <h2 class="section-title">
-                <span class="section-number">[04]</span>
-                GET IN TOUCH
-            </h2>
+            <h2 class="section-title">GET IN TOUCH</h2>
 
             <div class="contact-grid">
                 <a href="https://github.com/LyoSU" target="_blank" class="contact-card">
@@ -199,24 +233,15 @@
                     <span class="contact-label">Email</span>
                     <span class="contact-value">yuri@lyubchak.com</span>
                 </a>
+            </div>
 
-                <div class="contact-card">
-                    <span class="contact-label">Nintendo Switch</span>
-                    <input type="text" value="SW-2573-5817-3401" readonly class="switch-code">
-                </div>
+            <!-- Easter Egg: Click avatar 3 times to reveal -->
+            <div class="easter-egg" id="switch-easter-egg">
+                <span class="egg-label">Nintendo Switch</span>
+                <input type="text" value="SW-2573-5817-3401" readonly class="egg-code">
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-line"></div>
-            <p class="footer-text">
-                <span class="prompt">~$</span>
-                Made in Ukraine
-                <span class="separator">|</span>
-                © 2024 Yuri Ly
-            </p>
-        </footer>
     </main>
 
     <!-- Projects Modal -->
@@ -232,78 +257,78 @@
                 </button>
             </div>
 
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="images/fStikBot.jpg" alt="fStikBot" class="project-img">
-                    <div class="project-info">
-                        <h3 class="project-name">@fStikBot</h3>
-                        <p class="project-desc">Collect your favorite stickers from other sets. Just send a sticker and it will be added to your pack. Support for multiple sets and switching between them.</p>
-                        <a href="tg://resolve?domain=fStikBot" class="project-link">
-                            <span>OPEN BOT</span>
-                            <span class="arrow">→</span>
-                        </a>
+            <div class="projects-list">
+                <article class="project-item">
+                    <img src="images/fStikBot.jpg" alt="fStikBot" class="project-avatar">
+                    <div class="project-details">
+                        <div class="project-header">
+                            <h3 class="project-title">@fStikBot</h3>
+                            <span class="project-type">Telegram Bot</span>
+                        </div>
+                        <p class="project-description">Sticker collection manager with multi-pack support and custom set creation</p>
+                        <a href="tg://resolve?domain=fStikBot" class="project-link-inline">View →</a>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card">
-                    <img src="images/fStikCatalog.jpg" alt="fStik Catalog" class="project-img">
-                    <div class="project-info">
-                        <h3 class="project-name">fStik Catalog</h3>
-                        <p class="project-desc">Mobile app for browsing and managing your sticker collections. Available on Google Play Store.</p>
-                        <a href="https://play.google.com/store/apps/details?id=app.fstik" class="project-link">
-                            <span>OPEN APP</span>
-                            <span class="arrow">→</span>
-                        </a>
+                <article class="project-item">
+                    <img src="images/fStikCatalog.jpg" alt="fStik Catalog" class="project-avatar">
+                    <div class="project-details">
+                        <div class="project-header">
+                            <h3 class="project-title">fStik Catalog</h3>
+                            <span class="project-type">Android App</span>
+                        </div>
+                        <p class="project-description">Mobile sticker collection browser and management app on Google Play</p>
+                        <a href="https://play.google.com/store/apps/details?id=app.fstik" class="project-link-inline">View →</a>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card">
-                    <img src="images/LyBot.jpg" alt="LyBot" class="project-img">
-                    <div class="project-info">
-                        <h3 class="project-name">@LyBot</h3>
-                        <p class="project-desc">Search for audio in YouTube Music and send it in original quality. Works via inline mode.</p>
-                        <a href="tg://resolve?domain=LyBot" class="project-link">
-                            <span>OPEN BOT</span>
-                            <span class="arrow">→</span>
-                        </a>
+                <article class="project-item">
+                    <img src="images/LyBot.jpg" alt="LyBot" class="project-avatar">
+                    <div class="project-details">
+                        <div class="project-header">
+                            <h3 class="project-title">@LyBot</h3>
+                            <span class="project-type">Telegram Bot</span>
+                        </div>
+                        <p class="project-description">YouTube Music audio search with inline mode and original quality delivery</p>
+                        <a href="tg://resolve?domain=LyBot" class="project-link-inline">View →</a>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card">
-                    <img src="images/QuotLyBot.jpg" alt="QuotLyBot" class="project-img">
-                    <div class="project-info">
-                        <h3 class="project-name">@QuotLyBot</h3>
-                        <p class="project-desc">Create beautiful quotes from messages. Simple and elegant message quotation.</p>
-                        <a href="tg://resolve?domain=QuotLyBot" class="project-link">
-                            <span>OPEN BOT</span>
-                            <span class="arrow">→</span>
-                        </a>
+                <article class="project-item">
+                    <img src="images/QuotLyBot.jpg" alt="QuotLyBot" class="project-avatar">
+                    <div class="project-details">
+                        <div class="project-header">
+                            <h3 class="project-title">@QuotLyBot</h3>
+                            <span class="project-type">Telegram Bot</span>
+                        </div>
+                        <p class="project-description">Message quotation tool with elegant formatting and styling options</p>
+                        <a href="tg://resolve?domain=QuotLyBot" class="project-link-inline">View →</a>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card">
-                    <img src="images/LyAdminBot.jpg" alt="LyAdminBot" class="project-img">
-                    <div class="project-info">
-                        <h3 class="project-name">@LyAdminBot</h3>
-                        <p class="project-desc">Powerful group administration tools for Telegram communities.</p>
-                        <a href="tg://resolve?domain=LyAdminBot" class="project-link">
-                            <span>OPEN BOT</span>
-                            <span class="arrow">→</span>
-                        </a>
+                <article class="project-item">
+                    <img src="images/LyAdminBot.jpg" alt="LyAdminBot" class="project-avatar">
+                    <div class="project-details">
+                        <div class="project-header">
+                            <h3 class="project-title">@LyAdminBot</h3>
+                            <span class="project-type">Telegram Bot</span>
+                        </div>
+                        <p class="project-description">Group administration toolkit for Telegram community management</p>
+                        <a href="tg://resolve?domain=LyAdminBot" class="project-link-inline">View →</a>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card">
-                    <img src="images/LyOSBot.jpg" alt="LyOSBot" class="project-img">
-                    <div class="project-info">
-                        <h3 class="project-name">@LyOSBot</h3>
-                        <p class="project-desc">Realistic hacker simulator. Play against other players, attack and defend, download software, upgrade your system and more.</p>
-                        <a href="tg://resolve?domain=LyOSBot" class="project-link">
-                            <span>OPEN BOT</span>
-                            <span class="arrow">→</span>
-                        </a>
+                <article class="project-item">
+                    <img src="images/LyOSBot.jpg" alt="LyOSBot" class="project-avatar">
+                    <div class="project-details">
+                        <div class="project-header">
+                            <h3 class="project-title">@LyOSBot</h3>
+                            <span class="project-type">Telegram Bot</span>
+                        </div>
+                        <p class="project-description">Multiplayer hacking simulator with attack/defense mechanics and upgrades</p>
+                        <a href="tg://resolve?domain=LyOSBot" class="project-link-inline">View →</a>
                     </div>
-                </div>
+                </article>
             </div>
 
             <div class="projects-footer">
