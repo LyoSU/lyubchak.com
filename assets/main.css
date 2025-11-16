@@ -18,6 +18,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(203, 175, 255, 0.2);
 }
 
 html {
@@ -84,6 +85,7 @@ body {
         radial-gradient(circle at 80% 20%, rgba(203, 175, 255, 0.03) 0%, transparent 40%);
     z-index: -1;
     animation: bgPulse 15s ease-in-out infinite;
+    will-change: opacity;
 }
 
 @keyframes bgPulse {
@@ -145,6 +147,7 @@ body {
     border-radius: 50%;
     z-index: -1;
     animation: pulse 2s ease-in-out infinite;
+    will-change: transform, opacity;
 }
 
 @keyframes pulse {
@@ -217,7 +220,7 @@ body {
 }
 
 .tagline {
-    font-size: 14px;
+    font-size: clamp(12px, 2.5vw, 14px);
     color: var(--primary);
     font-weight: 500;
     margin-bottom: 15px;
@@ -260,7 +263,8 @@ body {
     align-items: flex-start;
     gap: 10px;
     margin-bottom: 6px;
-    font-size: 12px;
+    font-size: clamp(11px, 2.2vw, 12px);
+    line-height: 1.6;
     opacity: 0;
     animation: fadeInLeft 0.5s ease-out forwards;
     justify-content: center;
@@ -1199,14 +1203,20 @@ body {
     }
 
     .btn {
-        padding: 10px 16px;
-        font-size: 11px;
-        min-width: 100px;
+        padding: 14px 20px;
+        font-size: 12px;
+        min-width: 120px;
+        min-height: 44px;
     }
 
     .contact-grid {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 12px;
+    }
+
+    .contact-card {
+        padding: 16px;
+        min-height: 60px;
     }
 
     .collapsible-section {
@@ -1226,6 +1236,7 @@ body {
         margin: 0;
         border: none;
         border-radius: 0;
+        -webkit-overflow-scrolling: touch;
     }
 
     .collapsible-section.active {
@@ -1236,15 +1247,33 @@ body {
         margin: 0;
         border: none;
         border-radius: 0;
+        -webkit-overflow-scrolling: touch;
     }
 
     .section-header {
         margin-bottom: 20px;
     }
 
+    .close-btn,
+    .modal-close {
+        min-width: 44px;
+        min-height: 44px;
+        font-size: 26px;
+    }
+
     .timeline-item {
         grid-template-columns: 60px auto 1fr;
         gap: 10px;
+    }
+
+    .project-item {
+        padding: 20px 0;
+    }
+
+    .copy-btn {
+        min-width: 60px;
+        min-height: 36px;
+        padding: 8px 14px;
     }
 
     .contacts {
@@ -1253,6 +1282,10 @@ body {
 }
 
 @media (max-width: 480px) {
+    body {
+        line-height: 1.6;
+    }
+
     .name {
         font-size: 36px;
     }
@@ -1268,6 +1301,11 @@ body {
 
     .bio-line {
         font-size: 11px;
+        line-height: 1.7;
+    }
+
+    .section-content {
+        line-height: 1.6;
     }
 
     .terminal-header {
