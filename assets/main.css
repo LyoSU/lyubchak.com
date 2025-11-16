@@ -1219,9 +1219,23 @@ body {
     }
 
     .modal-content {
-        padding: 20px;
-        width: 95%;
-        max-height: 90vh;
+        width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        padding: 15px;
+        border-radius: 0;
+    }
+
+    .collapsible-section.active {
+        width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        padding: 15px;
+        border-radius: 0;
+    }
+
+    .section-header {
+        margin-bottom: 20px;
     }
 
     .timeline-item {
