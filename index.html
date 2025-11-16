@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuri Ly — Web Developer</title>
+    <meta name="theme-color" content="#1c132c">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Yuri Ly — Web Developer"/>
+    <meta property="og:image" content="https://avatars1.githubusercontent.com/u/37080625?s=460&v=4"/>
+    <meta property="og:url" content="https://lyubchak.com/"/>
+    <meta property="og:description" content="Web developer from Ukraine. Building Telegram bots and web applications."/>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+
+    <link href="assets/main.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Grid -->
+    <div class="grid-bg"></div>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="terminal-header">
+                <span class="prompt">guest@lyubchak.com:~$</span>
+                <span class="cursor-blink">_</span>
+            </div>
+
+            <div class="hero-content">
+                <div class="avatar-wrapper">
+                    <img src="images/sam.png" alt="Yuri Ly" class="avatar">
+                    <div class="avatar-glow"></div>
+                </div>
+
+                <h1 class="name">YURI LY</h1>
+                <p class="tagline">
+                    <span class="bracket">[</span>
+                    <span class="role">WEB DEVELOPER</span>
+                    <span class="bracket">]</span>
+                </p>
+
+                <div class="divider"></div>
+
+                <div class="bio">
+                    <p class="bio-line">
+                        <span class="line-number">01</span>
+                        <span class="text">24 years old, based in Ukraine</span>
+                    </p>
+                    <p class="bio-line">
+                        <span class="line-number">02</span>
+                        <span class="text">Building Telegram bots with PHP & Node.js</span>
+                    </p>
+                    <p class="bio-line">
+                        <span class="line-number">03</span>
+                        <span class="text">MySQL & MongoDB databases</span>
+                    </p>
+                    <p class="bio-line">
+                        <span class="line-number">04</span>
+                        <span class="text">Gaming enthusiast • Nintendo Switch player</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <a href="tg://resolve?domain=LyBlog" class="btn btn-primary">
+                    <span class="btn-text">BLOG</span>
+                </a>
+                <button class="btn btn-primary" data-section="projects">
+                    <span class="btn-text">PROJECTS</span>
+                </button>
+                <button class="btn btn-secondary" data-section="donate">
+                    <span class="btn-text">DONATE</span>
+                </button>
+                <button class="btn btn-secondary" data-section="story">
+                    <span class="btn-text">STORY</span>
+                </button>
+                <button class="btn btn-secondary" data-section="comments">
+                    <span class="btn-text">FEEDBACK</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Expandable Sections -->
+        <section id="story" class="collapsible-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="section-number">[01]</span>
+                    MY JOURNEY
+                </h2>
+                <button class="close-btn" data-close="story">×</button>
+            </div>
+            <div class="section-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="year">2011</span>
+                        <p>Started web development journey on uCoz platform</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="year">2014</span>
+                        <p>Learned PHP, began creating simple mobile websites</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="year">2016</span>
+                        <p>Started building bots for VK social network</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="year">2017</span>
+                        <p>Switched to Telegram bot development</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="year">NOW</span>
+                        <p>Building innovative Telegram bots and web applications</p>
+                    </div>
+                </div>
+                <p class="story-text">I've been following the gaming industry since childhood, though opportunities to play were limited back then. That's why my first console was the PS4, and now I enjoy gaming on Nintendo Switch.</p>
+            </div>
+        </section>
+
+        <section id="donate" class="collapsible-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="section-number">[02]</span>
+                    SUPPORT MY WORK
+                </h2>
+                <button class="close-btn" data-close="donate">×</button>
+            </div>
+            <div class="section-content">
+                <p class="donate-intro">I spend considerable time and resources on my projects. If you'd like to support my work, you can contribute using one of the methods below. Every contribution is greatly appreciated!</p>
+
+                <div class="donate-methods">
+                    <a href="https://send.monobank.ua/jar/2fpLioJzU8" target="_blank" class="donate-btn">
+                        <span class="donate-label">MONOBANK</span>
+                    </a>
+
+                    <div class="crypto-group">
+                        <div class="crypto-item">
+                            <label class="crypto-label">BTC</label>
+                            <input type="text" value="17QaN4wPZFaH4qtsgDdTaYwiW9s9PUcHj7" readonly class="crypto-input">
+                        </div>
+                        <div class="crypto-item">
+                            <label class="crypto-label">ETH/BUSD</label>
+                            <input type="text" value="0x34007b75775F8DAe005A407141617aA2fBa2740c" readonly class="crypto-input">
+                        </div>
+                        <div class="crypto-item">
+                            <label class="crypto-label">TON</label>
+                            <input type="text" value="EQAwN6PpFOo1LFVIh5hkVjearXvrqOvPD-nyqLjVz-fPbn_s" readonly class="crypto-input">
+                        </div>
+                    </div>
+                </div>
+
+                <p class="donate-note">All contributions will be used wisely to support bot operations and development. You can specify in your message how you'd like me to use your contribution, and I'll do my best to honor your request.</p>
+            </div>
+        </section>
+
+        <section id="comments" class="collapsible-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="section-number">[03]</span>
+                    LEAVE FEEDBACK
+                </h2>
+                <button class="close-btn" data-close="comments">×</button>
+            </div>
+            <div class="section-content">
+                <div class="comments-wrapper">
+                    <script async src="https://comments.app/js/widget.js?2" data-comments-app-website="IO0Tcehc" data-limit="5" data-color="cbafff" data-dislikes="1" data-outlined="1" data-dark="1"></script>
+                    <script async src="https://comments.app/js/widget.js?2" data-comments-app-website="n2r8h4W4" data-limit="5" data-color="cbafff" data-dislikes="1" data-outlined="1" data-dark="1"></script>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacts Section -->
+        <section class="contacts">
+            <h2 class="section-title">
+                <span class="section-number">[04]</span>
+                GET IN TOUCH
+            </h2>
+
+            <div class="contact-grid">
+                <a href="https://github.com/LyoSU" target="_blank" class="contact-card">
+                    <span class="contact-label">GitHub</span>
+                    <span class="contact-value">@LyoSU</span>
+                </a>
+
+                <a href="tg://resolve?domain=LyoSU" class="contact-card">
+                    <span class="contact-label">Telegram</span>
+                    <span class="contact-value">@LyoSU</span>
+                </a>
+
+                <a href="mailto:yuri@lyubchak.com" class="contact-card">
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value">yuri@lyubchak.com</span>
+                </a>
+
+                <div class="contact-card">
+                    <span class="contact-label">Nintendo Switch</span>
+                    <input type="text" value="SW-2573-5817-3401" readonly class="switch-code">
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-line"></div>
+            <p class="footer-text">
+                <span class="prompt">~$</span>
+                Made in Ukraine
+                <span class="separator">|</span>
+                © 2024 Yuri Ly
+            </p>
+        </footer>
+    </main>
+
+    <!-- Projects Modal -->
+    <div id="projects-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    PROJECTS
+                </h2>
+                <button class="modal-close">
+                    <span class="close-icon">×</span>
+                </button>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="images/fStikBot.jpg" alt="fStikBot" class="project-img">
+                    <div class="project-info">
+                        <h3 class="project-name">@fStikBot</h3>
+                        <p class="project-desc">Collect your favorite stickers from other sets. Just send a sticker and it will be added to your pack. Support for multiple sets and switching between them.</p>
+                        <a href="tg://resolve?domain=fStikBot" class="project-link">
+                            <span>OPEN BOT</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="images/fStikCatalog.jpg" alt="fStik Catalog" class="project-img">
+                    <div class="project-info">
+                        <h3 class="project-name">fStik Catalog</h3>
+                        <p class="project-desc">Mobile app for browsing and managing your sticker collections. Available on Google Play Store.</p>
+                        <a href="https://play.google.com/store/apps/details?id=app.fstik" class="project-link">
+                            <span>OPEN APP</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="images/LyBot.jpg" alt="LyBot" class="project-img">
+                    <div class="project-info">
+                        <h3 class="project-name">@LyBot</h3>
+                        <p class="project-desc">Search for audio in YouTube Music and send it in original quality. Works via inline mode.</p>
+                        <a href="tg://resolve?domain=LyBot" class="project-link">
+                            <span>OPEN BOT</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="images/QuotLyBot.jpg" alt="QuotLyBot" class="project-img">
+                    <div class="project-info">
+                        <h3 class="project-name">@QuotLyBot</h3>
+                        <p class="project-desc">Create beautiful quotes from messages. Simple and elegant message quotation.</p>
+                        <a href="tg://resolve?domain=QuotLyBot" class="project-link">
+                            <span>OPEN BOT</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="images/LyAdminBot.jpg" alt="LyAdminBot" class="project-img">
+                    <div class="project-info">
+                        <h3 class="project-name">@LyAdminBot</h3>
+                        <p class="project-desc">Powerful group administration tools for Telegram communities.</p>
+                        <a href="tg://resolve?domain=LyAdminBot" class="project-link">
+                            <span>OPEN BOT</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="images/LyOSBot.jpg" alt="LyOSBot" class="project-img">
+                    <div class="project-info">
+                        <h3 class="project-name">@LyOSBot</h3>
+                        <p class="project-desc">Realistic hacker simulator. Play against other players, attack and defend, download software, upgrade your system and more.</p>
+                        <a href="tg://resolve?domain=LyOSBot" class="project-link">
+                            <span>OPEN BOT</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projects-footer">
+                <p>All bot content is distributed from open sources for informational purposes only and is not intended for commercial use. Regarding authorship, write to <a href="mailto:dmca@telegram.org" class="link">dmca@telegram.org</a> or use my contacts listed on the main page.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/main.js"></script>
+</body>
+</html>
