@@ -1230,6 +1230,11 @@ body {
         font-size: 36px;
     }
 
+    /* Disable name expansion on mobile */
+    .name-rest {
+        display: none !important;
+    }
+
     .tagline {
         font-size: 12px;
     }
