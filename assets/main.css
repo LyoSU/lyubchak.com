@@ -1223,6 +1223,8 @@ body {
         height: 100vh;
         max-height: 100vh;
         padding: 15px;
+        margin: 0;
+        border: none;
         border-radius: 0;
     }
 
@@ -1231,6 +1233,8 @@ body {
         height: 100vh;
         max-height: 100vh;
         padding: 15px;
+        margin: 0;
+        border: none;
         border-radius: 0;
     }
 
