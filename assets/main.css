@@ -191,7 +191,7 @@ body {
 }
 
 .name:hover .name-rest {
-    max-width: 300px;
+    max-width: 400px;
 }
 
 .typing-cursor {
