@@ -23,6 +23,8 @@
 
 html {
     height: 100%;
+    background: #1c132c;
+    overscroll-behavior-y: contain;
 }
 
 body {
@@ -35,6 +37,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    overscroll-behavior-y: contain;
 }
 
 /* ============================================
@@ -1227,8 +1230,10 @@ body {
         margin: 0;
         border: none;
         border-radius: 0;
+        background: var(--bg);
         -webkit-overflow-scrolling: touch;
         overflow-y: auto;
+        overscroll-behavior-y: contain;
     }
 
     .collapsible-section.active {
@@ -1240,8 +1245,10 @@ body {
         margin: 0;
         border: none;
         border-radius: 0;
+        background: var(--bg);
         -webkit-overflow-scrolling: touch;
         overflow-y: auto;
+        overscroll-behavior-y: contain;
     }
 
     .section-header {
