@@ -23,9 +23,6 @@
 
 html {
     height: 100%;
-    overflow: hidden;
-    overscroll-behavior: none;
-    touch-action: none;
 }
 
 body {
@@ -34,17 +31,10 @@ body {
     background-attachment: fixed;
     color: var(--text);
     line-height: 1.5;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    overscroll-behavior: none;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    touch-action: pan-y;
 }
 
 /* ============================================
@@ -1187,9 +1177,6 @@ body {
         display: block;
         overflow-y: auto;
         padding: 20px 0;
-        position: static;
-        touch-action: auto;
-        overscroll-behavior: auto;
     }
 
     .container {
@@ -1234,27 +1221,27 @@ body {
     .modal-content {
         width: 100%;
         height: auto;
-        min-height: 100vh;
-        max-height: none;
-        padding: 20px 15px;
+        max-height: 100dvh;
+        max-height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+        padding: calc(15px + env(safe-area-inset-top)) 15px calc(15px + env(safe-area-inset-bottom));
         margin: 0;
         border: none;
         border-radius: 0;
-        overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
     }
 
     .collapsible-section.active {
         width: 100%;
         height: auto;
-        min-height: 100vh;
-        max-height: none;
-        padding: 20px 15px;
+        max-height: 100dvh;
+        max-height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+        padding: calc(15px + env(safe-area-inset-top)) 15px calc(15px + env(safe-area-inset-bottom));
         margin: 0;
         border: none;
         border-radius: 0;
-        overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
     }
 
     .section-header {

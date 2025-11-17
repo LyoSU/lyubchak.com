@@ -22,16 +22,13 @@ const utils = {
         return age;
     },
 
-    // Body scroll lock/unlock
+    // Body scroll lock/unlock - disabled as requested
     lockScroll() {
-        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-        document.body.style.overflow = 'hidden';
-        document.body.style.paddingRight = `${scrollbarWidth}px`;
+        // Scroll lock disabled - user can scroll freely
     },
 
     unlockScroll() {
-        document.body.style.overflow = '';
-        document.body.style.paddingRight = '';
+        // Scroll unlock disabled - user can scroll freely
     },
 
     // Smooth scroll to element
