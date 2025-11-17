@@ -1187,6 +1187,9 @@ body {
         display: block;
         overflow-y: auto;
         padding: 20px 0;
+        position: static;
+        touch-action: auto;
+        overscroll-behavior: auto;
     }
 
     .container {
@@ -1230,23 +1233,27 @@ body {
 
     .modal-content {
         width: 100%;
-        height: 100vh;
-        max-height: 100vh;
-        padding: 15px;
+        height: auto;
+        min-height: 100vh;
+        max-height: none;
+        padding: 20px 15px;
         margin: 0;
         border: none;
         border-radius: 0;
+        overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
 
     .collapsible-section.active {
         width: 100%;
-        height: 100vh;
-        max-height: 100vh;
-        padding: 15px;
+        height: auto;
+        min-height: 100vh;
+        max-height: none;
+        padding: 20px 15px;
         margin: 0;
         border: none;
         border-radius: 0;
+        overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
 
