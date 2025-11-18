@@ -13,8 +13,8 @@
     <link rel="canonical" href="https://lyubchak.com/">
 
     <!-- Theme & Icons -->
-    <meta name="theme-color" content="#1c132c">
-    <meta name="msapplication-TileColor" content="#1c132c">
+    <meta name="theme-color" content="#0d0812">
+    <meta name="msapplication-TileColor" content="#0d0812">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
     <!-- Open Graph / Facebook -->
@@ -23,9 +23,6 @@
     <meta property="og:title" content="Yuri Ly — AI Researcher & Developer">
     <meta property="og:description" content="AI enthusiast and LLM expert from Ukraine. Leveraging modern AI to master any technology rapidly and build innovative products.">
     <meta property="og:image" content="https://lyubchak.com/images/avatar.jpg">
-    <meta property="og:image:width" content="512">
-    <meta property="og:image:height" content="512">
-    <meta property="og:image:alt" content="Yuri Lyubchak Avatar">
     <meta property="og:url" content="https://lyubchak.com/">
     <meta property="og:locale" content="en_US">
 
@@ -35,40 +32,18 @@
     <meta name="twitter:description" content="AI enthusiast and LLM expert from Ukraine. Leveraging modern AI to master any technology rapidly and build innovative products.">
     <meta name="twitter:image" content="https://lyubchak.com/images/avatar.jpg">
     <meta name="twitter:creator" content="@LyoSU">
-    <meta name="twitter:site" content="@LyoSU">
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Yuri Ly",
-        "birthDate": "1999-02-27",
-        "nationality": "Ukraine",
-        "jobTitle": "AI Researcher & Developer",
-        "url": "https://lyubchak.com",
-        "image": "https://lyubchak.com/images/avatar.jpg",
-        "description": "AI enthusiast and LLM expert from Ukraine. Leveraging modern AI to master any technology rapidly and build innovative products.",
-        "knowsAbout": ["Artificial Intelligence", "Large Language Models", "AI Research", "Rapid Technology Adoption", "Product Development"],
-        "sameAs": [
-            "https://github.com/LyoSU",
-            "https://t.me/LyoSU"
-        ],
-        "email": "yuri@lyubchak.com"
-    }
-    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Archivo+Black&display=swap" rel="stylesheet">
 
     <link href="assets/main.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Background Grid -->
+    <!-- Background Effects -->
     <div class="grid-bg"></div>
+    <div class="glow-spot"></div>
 
     <!-- Section Backdrop -->
     <div class="section-backdrop" id="section-backdrop"></div>
@@ -77,164 +52,52 @@
     <main class="container">
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-content">
-                <div class="avatar-wrapper">
-                    <img src="images/avatar.jpg" alt="Yuri Ly" class="avatar">
-                    <div class="avatar-glow"></div>
+            <div class="avatar-wrapper">
+                <img src="images/avatar.jpg" alt="Yuri Ly" class="avatar">
+                <div class="avatar-glow"></div>
+            </div>
+
+            <h1 class="name">
+                <span class="name-part">YURI</span>
+                <span class="name-group">
+                    <span class="name-part highlight">LY</span>
+                    <span class="name-hidden">UBCHAK</span>
+                </span>
+            </h1>
+            <p class="tagline">
+                <span class="bracket">[</span>
+                AI RESEARCHER & DEVELOPER
+                <span class="bracket">]</span>
+            </p>
+
+            <div class="divider"></div>
+
+            <div class="bio">
+                <div class="bio-line">
+                    <span class="line-number">01</span>
+                    <span class="text"><span id="age">25</span> years old • Based in Ukraine</span>
                 </div>
-
-                <h1 class="name">
-                    <span class="name-visible">YURI LY</span><span class="name-rest">UBCHAK</span><span class="typing-cursor">_</span>
-                </h1>
-                <p class="tagline">
-                    <span class="bracket">[</span>
-                    <span class="role">AI RESEARCHER & DEVELOPER</span>
-                    <span class="bracket">]</span>
-                </p>
-
-                <div class="divider"></div>
-
-                <div class="bio">
-                    <p class="bio-line">
-                        <span class="line-number">01</span>
-                        <span class="text"><span id="age">25</span> years old • Based in Ukraine</span>
-                    </p>
-                    <p class="bio-line">
-                        <span class="line-number">02</span>
-                        <span class="text">AI enthusiast & LLM expert</span>
-                    </p>
-                    <p class="bio-line">
-                        <span class="line-number">03</span>
-                        <span class="text">Leveraging modern AI to master any technology rapidly</span>
-                    </p>
-                    <p class="bio-line">
-                        <span class="line-number">04</span>
-                        <span class="text">Proud vibe coder • Powered by Claude Code</span>
-                    </p>
+                <div class="bio-line">
+                    <span class="line-number">02</span>
+                    <span class="text">AI enthusiast & LLM expert</span>
+                </div>
+                <div class="bio-line">
+                    <span class="line-number">03</span>
+                    <span class="text">Leveraging modern AI to master any technology rapidly</span>
+                </div>
+                <div class="bio-line">
+                    <span class="line-number">04</span>
+                    <span class="text">Proud vibe coder • Powered by Claude Code</span>
                 </div>
             </div>
 
             <!-- Quick Actions -->
             <div class="quick-actions">
-                <a href="tg://resolve?domain=LyBlog" class="btn btn-primary">
-                    <span class="btn-text">BLOG</span>
-                </a>
-                <button class="btn btn-primary" data-section="projects">
-                    <span class="btn-text">PROJECTS</span>
-                </button>
-                <button class="btn btn-secondary" data-section="donate">
-                    <span class="btn-text">DONATE</span>
-                </button>
-                <button class="btn btn-secondary" data-section="story">
-                    <span class="btn-text">STORY</span>
-                </button>
-                <button class="btn btn-secondary" data-section="comments">
-                    <span class="btn-text">FEEDBACK</span>
-                </button>
-            </div>
-        </section>
-
-        <!-- Expandable Sections -->
-        <section id="story" class="collapsible-section">
-            <div class="section-header">
-                <h2 class="section-title">ABOUT</h2>
-                <button class="close-btn" data-close="story">×</button>
-            </div>
-            <div class="section-content">
-                <div class="timeline-compact">
-                    <div class="timeline-item">
-                        <span class="year">2011</span>
-                        <div class="divider-dot"></div>
-                        <p class="desc">Started coding with traditional methods</p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <span class="year">2014—17</span>
-                        <div class="divider-dot"></div>
-                        <p class="desc">Explored multiple tech stacks</p>
-                    </div>
-
-                    <div class="timeline-item highlight">
-                        <span class="year">2022</span>
-                        <div class="divider-dot"></div>
-                        <p class="desc">AI awakening with GPT-3.5</p>
-                    </div>
-
-                    <div class="timeline-item active">
-                        <span class="year">Now</span>
-                        <div class="divider-dot"></div>
-                        <p class="desc">AI researcher, LLM expert, vibe coder</p>
-                    </div>
-                </div>
-
-                <div class="philosophy-compact">
-                    <p>In the age of AI, rapid learning beats technology mastery. I use LLMs to build innovative products across any domain.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="donate" class="collapsible-section">
-            <div class="section-header">
-                <h2 class="section-title">SUPPORT MY WORK</h2>
-                <button class="close-btn" data-close="donate">×</button>
-            </div>
-            <div class="section-content">
-                <div class="donate-intro-block">
-                    <p class="donate-intro">Building AI-powered tools and bots takes time, coffee, and occasional debugging at 3 AM.</p>
-                    <div class="coffee-counter" id="coffee-counter">
-                        <span class="coffee-icon" title="Click for surprise">☕</span>
-                        <span class="coffee-text">Coffees consumed: <span class="coffee-num">∞</span></span>
-                    </div>
-                </div>
-
-                <div class="donate-options">
-                    <a href="https://send.monobank.ua/jar/2fpLioJzU8" target="_blank" class="donate-card primary">
-                        <div class="donate-card-icon">💳</div>
-                        <div class="donate-card-info">
-                            <h4>Monobank</h4>
-                            <p>Quick UAH donation</p>
-                        </div>
-                        <span class="donate-arrow">→</span>
-                    </a>
-
-                    <div class="crypto-section">
-                        <h4 class="crypto-title">Crypto Wallets</h4>
-                        <div class="crypto-list">
-                            <div class="crypto-item" data-crypto="btc">
-                                <span class="crypto-badge">BTC</span>
-                                <code class="crypto-address">17QaN4wPZFaH4qtsgDdTaYwiW9s9PUcHj7</code>
-                                <button class="copy-btn" data-copy="17QaN4wPZFaH4qtsgDdTaYwiW9s9PUcHj7">Copy</button>
-                            </div>
-                            <div class="crypto-item" data-crypto="eth">
-                                <span class="crypto-badge">ETH</span>
-                                <code class="crypto-address">0x34007b75775F8DAe005A407141617aA2fBa2740c</code>
-                                <button class="copy-btn" data-copy="0x34007b75775F8DAe005A407141617aA2fBa2740c">Copy</button>
-                            </div>
-                            <div class="crypto-item" data-crypto="ton">
-                                <span class="crypto-badge">TON</span>
-                                <code class="crypto-address">EQAwN6PpFOo1LFVIh5hkVjearXvrqOvPD-nyqLjVz-fPbn_s</code>
-                                <button class="copy-btn" data-copy="EQAwN6PpFOo1LFVIh5hkVjearXvrqOvPD-nyqLjVz-fPbn_s">Copy</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="donate-footer-note">
-                    <p>Contributions help keep the servers running and the code flowing. Thanks for your support!</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="comments" class="collapsible-section">
-            <div class="section-header">
-                <h2 class="section-title">LEAVE FEEDBACK</h2>
-                <button class="close-btn" data-close="comments">×</button>
-            </div>
-            <div class="section-content">
-                <div class="comments-wrapper">
-                    <script async src="https://comments.app/js/widget.js?2" data-comments-app-website="IO0Tcehc" data-limit="5" data-color="cbafff" data-dislikes="1" data-outlined="1" data-dark="1"></script>
-                    <script async src="https://comments.app/js/widget.js?2" data-comments-app-website="n2r8h4W4" data-limit="5" data-color="cbafff" data-dislikes="1" data-outlined="1" data-dark="1"></script>
-                </div>
+                <a href="tg://resolve?domain=LyBlog" class="btn">BLOG</a>
+                <button class="btn" data-section="projects">PROJECTS</button>
+                <button class="btn btn-secondary" data-section="donate">DONATE</button>
+                <button class="btn btn-secondary" data-section="story">STORY</button>
+                <button class="btn btn-secondary" data-section="comments">FEEDBACK</button>
             </div>
         </section>
 
@@ -258,37 +121,103 @@
                     <span class="contact-value">yuri@lyubchak.com</span>
                 </a>
             </div>
-
-            <!-- Easter Egg: Click avatar 3 times to reveal -->
-            <div class="easter-egg" id="switch-easter-egg">
-                <span class="egg-label">Nintendo Switch</span>
-                <input type="text" value="SW-2573-5817-3401" readonly class="egg-code">
-            </div>
         </section>
-
     </main>
+
+    <!-- Expandable Sections -->
+    <section id="story" class="collapsible-section">
+        <div class="section-header">
+            <h2 class="section-title">ABOUT</h2>
+            <button class="close-btn" data-close="story">×</button>
+        </div>
+        <div class="section-content">
+            <div class="timeline-compact">
+                <div class="timeline-item">
+                    <span class="year">2011</span>
+                    <p class="desc">Started coding with traditional methods</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="year">2014</span>
+                    <p class="desc">Explored multiple tech stacks</p>
+                </div>
+
+                <div class="timeline-item highlight">
+                    <span class="year">2022</span>
+                    <p class="desc">AI awakening with GPT-3.5</p>
+                </div>
+
+                <div class="timeline-item active">
+                    <span class="year">Now</span>
+                    <p class="desc">AI researcher, LLM expert, vibe coder</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="donate" class="collapsible-section">
+        <div class="section-header">
+            <h2 class="section-title">SUPPORT</h2>
+            <button class="close-btn" data-close="donate">×</button>
+        </div>
+        <div class="section-content">
+            <p style="margin-bottom: 20px; color: var(--text-muted);">Building AI-powered tools takes time and coffee.</p>
+            
+            <div class="donate-options">
+                <a href="https://send.monobank.ua/jar/2fpLioJzU8" target="_blank" class="contact-card" style="margin-bottom: 15px;">
+                    <span class="contact-label">Monobank</span>
+                    <span class="contact-value">Quick Donation →</span>
+                </a>
+
+                <div style="margin-top: 20px;">
+                    <h4 style="margin-bottom: 10px; color: var(--text-main);">Crypto Wallets</h4>
+                    
+                    <div class="contact-card" style="margin-bottom: 10px; cursor: pointer;" onclick="navigator.clipboard.writeText('17QaN4wPZFaH4qtsgDdTaYwiW9s9PUcHj7')">
+                        <span class="contact-label">BTC</span>
+                        <span class="contact-value" style="font-size: 0.8rem; word-break: break-all;">17QaN4wPZFaH4qtsgDdTaYwiW9s9PUcHj7</span>
+                    </div>
+                    
+                    <div class="contact-card" style="margin-bottom: 10px; cursor: pointer;" onclick="navigator.clipboard.writeText('0x34007b75775F8DAe005A407141617aA2fBa2740c')">
+                        <span class="contact-label">ETH</span>
+                        <span class="contact-value" style="font-size: 0.8rem; word-break: break-all;">0x34007b75775F8DAe005A407141617aA2fBa2740c</span>
+                    </div>
+                    
+                    <div class="contact-card" style="margin-bottom: 10px; cursor: pointer;" onclick="navigator.clipboard.writeText('EQAwN6PpFOo1LFVIh5hkVjearXvrqOvPD-nyqLjVz-fPbn_s')">
+                        <span class="contact-label">TON</span>
+                        <span class="contact-value" style="font-size: 0.8rem; word-break: break-all;">EQAwN6PpFOo1LFVIh5hkVjearXvrqOvPD-nyqLjVz-fPbn_s</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="comments" class="collapsible-section">
+        <div class="section-header">
+            <h2 class="section-title">FEEDBACK</h2>
+            <button class="close-btn" data-close="comments">×</button>
+        </div>
+        <div class="section-content">
+            <div class="comments-wrapper">
+                <script async src="https://comments.app/js/widget.js?2" data-comments-app-website="IO0Tcehc" data-limit="5" data-color="cbafff" data-dislikes="1" data-outlined="1" data-dark="1"></script>
+            </div>
+        </div>
+    </section>
 
     <!-- Projects Modal -->
     <div id="projects-modal" class="modal">
         <div class="modal-overlay"></div>
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">
-                    PROJECTS
-                </h2>
-                <button class="modal-close">
-                    <span class="close-icon">×</span>
-                </button>
+                <h2 class="modal-title">PROJECTS</h2>
+                <button class="modal-close">×</button>
             </div>
 
             <div class="projects-list">
                 <article class="project-item">
                     <img src="images/fStikBot.jpg" alt="fStikBot" class="project-avatar">
                     <div class="project-details">
-                        <div class="project-header">
-                            <h3 class="project-title">@fStikBot</h3>
-                            <span class="project-type">Telegram Bot</span>
-                        </div>
+                        <h3 class="project-title">@fStikBot</h3>
+                        <span class="project-type">Telegram Bot</span>
                         <p class="project-description">Sticker collection manager with multi-pack support and custom set creation</p>
                         <a href="tg://resolve?domain=fStikBot" class="project-link-inline">View →</a>
                     </div>
@@ -297,10 +226,8 @@
                 <article class="project-item">
                     <img src="images/fStikCatalog.jpg" alt="fStik Catalog" class="project-avatar">
                     <div class="project-details">
-                        <div class="project-header">
-                            <h3 class="project-title">fStik Catalog</h3>
-                            <span class="project-type">Android App</span>
-                        </div>
+                        <h3 class="project-title">fStik Catalog</h3>
+                        <span class="project-type">Android App</span>
                         <p class="project-description">Mobile sticker collection browser and management app on Google Play</p>
                         <a href="https://play.google.com/store/apps/details?id=app.fstik" class="project-link-inline">View →</a>
                     </div>
@@ -309,10 +236,8 @@
                 <article class="project-item">
                     <img src="images/LyBot.jpg" alt="LyBot" class="project-avatar">
                     <div class="project-details">
-                        <div class="project-header">
-                            <h3 class="project-title">@LyBot</h3>
-                            <span class="project-type">Telegram Bot</span>
-                        </div>
+                        <h3 class="project-title">@LyBot</h3>
+                        <span class="project-type">Telegram Bot</span>
                         <p class="project-description">YouTube Music audio search with inline mode and original quality delivery</p>
                         <a href="tg://resolve?domain=LyBot" class="project-link-inline">View →</a>
                     </div>
@@ -321,10 +246,8 @@
                 <article class="project-item">
                     <img src="images/QuotLyBot.jpg" alt="QuotLyBot" class="project-avatar">
                     <div class="project-details">
-                        <div class="project-header">
-                            <h3 class="project-title">@QuotLyBot</h3>
-                            <span class="project-type">Telegram Bot</span>
-                        </div>
+                        <h3 class="project-title">@QuotLyBot</h3>
+                        <span class="project-type">Telegram Bot</span>
                         <p class="project-description">Message quotation tool with elegant formatting and styling options</p>
                         <a href="tg://resolve?domain=QuotLyBot" class="project-link-inline">View →</a>
                     </div>
@@ -333,10 +256,8 @@
                 <article class="project-item">
                     <img src="images/LyAdminBot.jpg" alt="LyAdminBot" class="project-avatar">
                     <div class="project-details">
-                        <div class="project-header">
-                            <h3 class="project-title">@LyAdminBot</h3>
-                            <span class="project-type">Telegram Bot</span>
-                        </div>
+                        <h3 class="project-title">@LyAdminBot</h3>
+                        <span class="project-type">Telegram Bot</span>
                         <p class="project-description">Group administration toolkit for Telegram community management</p>
                         <a href="tg://resolve?domain=LyAdminBot" class="project-link-inline">View →</a>
                     </div>
@@ -345,18 +266,12 @@
                 <article class="project-item">
                     <img src="images/LyOSBot.jpg" alt="LyOSBot" class="project-avatar">
                     <div class="project-details">
-                        <div class="project-header">
-                            <h3 class="project-title">@LyOSBot</h3>
-                            <span class="project-type">Telegram Bot</span>
-                        </div>
+                        <h3 class="project-title">@LyOSBot</h3>
+                        <span class="project-type">Telegram Bot</span>
                         <p class="project-description">Multiplayer hacking simulator with attack/defense mechanics and upgrades</p>
                         <a href="tg://resolve?domain=LyOSBot" class="project-link-inline">View →</a>
                     </div>
                 </article>
-            </div>
-
-            <div class="projects-footer">
-                <p>All bot content is distributed from open sources for informational purposes only and is not intended for commercial use. Regarding authorship, write to <a href="mailto:dmca@telegram.org" class="link">dmca@telegram.org</a> or use my contacts listed on the main page.</p>
             </div>
         </div>
     </div>

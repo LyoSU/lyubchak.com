@@ -1,5 +1,5 @@
 // ============================================
-// MODERN PURPLE AESTHETIC - REFACTORED JS
+// MODERN AESTHETIC - JS
 // ============================================
 
 'use strict';
@@ -22,15 +22,6 @@ const utils = {
         return age;
     },
 
-    // Body scroll lock/unlock - disabled as requested
-    lockScroll() {
-        // Scroll lock disabled - user can scroll freely
-    },
-
-    unlockScroll() {
-        // Scroll unlock disabled - user can scroll freely
-    },
-
     // Smooth scroll to element
     scrollToElement(element, offset = 0) {
         if (!element) return;
@@ -42,31 +33,6 @@ const utils = {
             top: offsetPosition,
             behavior: 'smooth'
         });
-    },
-
-    // Copy to clipboard (modern API)
-    async copyToClipboard(text) {
-        try {
-            await navigator.clipboard.writeText(text);
-            return true;
-        } catch (err) {
-            // Fallback for older browsers
-            const textArea = document.createElement('textarea');
-            textArea.value = text;
-            textArea.style.position = 'fixed';
-            textArea.style.opacity = '0';
-            document.body.appendChild(textArea);
-            textArea.select();
-
-            try {
-                document.execCommand('copy');
-                return true;
-            } catch (e) {
-                return false;
-            } finally {
-                document.body.removeChild(textArea);
-            }
-        }
     }
 };
 
@@ -128,7 +94,7 @@ class ModalManager {
         this.activeModal = modal;
 
         modal.classList.add('active');
-        utils.lockScroll();
+        document.body.style.overflow = 'hidden';
 
         // Add backdrop click handler
         const overlay = modal.querySelector('.modal-overlay');
@@ -149,9 +115,9 @@ class ModalManager {
 
         modal.classList.remove('active');
         this.activeModal = null;
-        utils.unlockScroll();
+        document.body.style.overflow = '';
 
-        // Clear hash if it matches (handle both modal ID and section ID)
+        // Clear hash if it matches
         const currentHash = window.location.hash.substring(1);
         if (currentHash === modalId || (modalId === 'projects-modal' && currentHash === 'projects')) {
             history.replaceState(null, null, ' ');
@@ -177,7 +143,7 @@ class ModalManager {
             this.backdrop.classList.add('active');
         }
 
-        utils.lockScroll();
+        document.body.style.overflow = 'hidden';
     }
 
     closeSection(sectionId, clearBackdrop = true) {
@@ -190,7 +156,7 @@ class ModalManager {
         // Hide backdrop if no sections are open
         if (clearBackdrop && this.activeSections.size === 0 && this.backdrop) {
             this.backdrop.classList.remove('active');
-            utils.unlockScroll();
+            document.body.style.overflow = '';
         }
 
         // Clear hash if it matches
@@ -214,7 +180,7 @@ class ModalManager {
             this.backdrop.classList.remove('active');
         }
 
-        utils.unlockScroll();
+        document.body.style.overflow = '';
     }
 
     handleHashChange() {
@@ -268,41 +234,6 @@ class NavigationHandler {
                 this.modalManager.closeSection(sectionId);
             });
         });
-    }
-}
-
-// ============================================
-// CLIPBOARD HANDLER
-// ============================================
-
-class ClipboardHandler {
-    constructor() {
-        this.init();
-    }
-
-    init() {
-        document.querySelectorAll('input[readonly]').forEach(input => {
-            input.addEventListener('click', async () => {
-                const success = await utils.copyToClipboard(input.value);
-
-                if (success) {
-                    this.showFeedback(input);
-                }
-            });
-        });
-    }
-
-    showFeedback(element) {
-        const originalBorder = element.style.borderColor;
-        const originalShadow = element.style.boxShadow;
-
-        element.style.borderColor = '#cbafff';
-        element.style.boxShadow = '0 0 15px rgba(203, 175, 255, 0.5)';
-
-        setTimeout(() => {
-            element.style.borderColor = originalBorder;
-            element.style.boxShadow = originalShadow;
-        }, 400);
     }
 }
 
@@ -386,107 +317,6 @@ class AnimationObserver {
 }
 
 // ============================================
-// EASTER EGG HANDLER
-// ============================================
-
-class EasterEggHandler {
-    constructor() {
-        this.clickCount = 0;
-        this.resetTimeout = null;
-        this.init();
-    }
-
-    init() {
-        const avatar = document.querySelector('.avatar');
-        const easterEgg = document.getElementById('switch-easter-egg');
-
-        if (!avatar || !easterEgg) return;
-
-        avatar.style.cursor = 'pointer';
-
-        avatar.addEventListener('click', () => {
-            this.clickCount++;
-
-            // Reset counter after 2 seconds of inactivity
-            clearTimeout(this.resetTimeout);
-            this.resetTimeout = setTimeout(() => {
-                this.clickCount = 0;
-            }, 2000);
-
-            // Reveal easter egg after 3 clicks
-            if (this.clickCount === 3) {
-                easterEgg.classList.add('revealed');
-                this.clickCount = 0;
-            }
-        });
-    }
-}
-
-// ============================================
-// DONATE PAGE INTERACTIONS
-// ============================================
-
-class DonateInteractions {
-    constructor() {
-        this.coffeeCount = 0;
-        this.init();
-    }
-
-    init() {
-        this.initCoffeeCounter();
-        this.initCopyButtons();
-    }
-
-    initCoffeeCounter() {
-        const coffeeIcon = document.querySelector('.coffee-icon');
-        const coffeeNum = document.querySelector('.coffee-num');
-
-        if (!coffeeIcon || !coffeeNum) return;
-
-        coffeeIcon.addEventListener('click', () => {
-            this.coffeeCount++;
-
-            if (this.coffeeCount < 10) {
-                coffeeNum.textContent = this.coffeeCount;
-            } else if (this.coffeeCount === 10) {
-                coffeeNum.textContent = '∞';
-                coffeeNum.style.animation = 'pulse 0.5s ease-in-out';
-                setTimeout(() => {
-                    coffeeNum.style.animation = '';
-                }, 500);
-            } else if (this.coffeeCount === 20) {
-                coffeeNum.textContent = '∞ + ∞';
-            } else if (this.coffeeCount === 42) {
-                coffeeNum.textContent = '42 (the answer)';
-            } else if (this.coffeeCount > 50) {
-                coffeeNum.textContent = 'please stop';
-                this.coffeeCount = 0;
-            }
-        });
-    }
-
-    initCopyButtons() {
-        document.querySelectorAll('.copy-btn').forEach(btn => {
-            btn.addEventListener('click', async () => {
-                const textToCopy = btn.getAttribute('data-copy');
-                const success = await utils.copyToClipboard(textToCopy);
-
-                if (success) {
-                    const originalText = btn.textContent;
-                    btn.textContent = 'Copied!';
-                    btn.classList.add('copied');
-
-                    setTimeout(() => {
-                        btn.textContent = originalText;
-                        btn.classList.remove('copied');
-                    }, 2000);
-                }
-            });
-        });
-    }
-}
-
-// ============================================
 // CONSOLE BRANDING
 // ============================================
 
@@ -499,10 +329,6 @@ class ConsoleBranding {
         console.log(
             '%c Made in Ukraine ',
             'color: #cbafff; font-family: monospace; font-size: 12px;'
-        );
-        console.log(
-            '%c Powered by Claude Code 🤖 ',
-            'color: #a89ec4; font-family: monospace; font-size: 11px; font-style: italic;'
         );
     }
 }
@@ -522,20 +348,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize navigation
     new NavigationHandler(modalManager);
 
-    // Initialize clipboard
-    new ClipboardHandler();
-
     // Parallax effect
     new ParallaxEffect('.grid-bg', 0.3);
 
     // Animate elements on scroll
     new AnimationObserver('.contact-card, .project-item');
-
-    // Easter egg handler
-    new EasterEggHandler();
-
-    // Donate page interactions
-    new DonateInteractions();
 
     // Console branding
     ConsoleBranding.init();
