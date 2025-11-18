@@ -251,26 +251,7 @@ body::before {
     padding-right: 5px; /* Extra space to prevent clipping */
 }
 
-.typing-cursor {
-    display: inline-block;
-    margin-left: 4px;
-    font-weight: 300;
-    vertical-align: baseline;
-}
-    width: 3px;
-    height: 0.8em;
-    background-color: var(--primary);
-    margin-left: 8px;
-    animation: blink 1s step-end infinite;
-    vertical-align: baseline;
-    position: relative;
-    top: 0.1em;
-}
 
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-}
 
 .name:hover .name-part.highlight {
     color: var(--accent);
@@ -467,6 +448,8 @@ body::before {
     font-size: 0.9rem;
     color: var(--text-main);
     font-weight: 500;
+    word-break: normal;
+    overflow-wrap: anywhere; /* Better wrapping for emails/URLs */
 }
 
 /* ============================================
@@ -474,10 +457,10 @@ body::before {
    ============================================ */
 
 .easter-egg {
-    margin-top: var(--space-lg);
-    padding: var(--space-md);
+    margin-top: 0;
+    padding: 0;
     background: var(--bg-card);
-    border: 1px solid var(--border);
+    border: 0 solid var(--border);
     border-radius: 8px;
     text-align: center;
     max-width: 300px;
@@ -494,7 +477,10 @@ body::before {
     opacity: 1;
     transform: translateY(0);
     max-height: 150px;
+    margin-top: var(--space-lg);
     margin-bottom: var(--space-lg);
+    padding: var(--space-md);
+    border-width: 1px;
 }
 
 .egg-label {
