@@ -211,7 +211,7 @@ body::before {
 .name-group {
     display: inline-flex;
     position: relative;
-    overflow: hidden;
+    /* Removed overflow: hidden to prevent clipping */
 }
 
 .name-part {
@@ -237,15 +237,39 @@ body::before {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: blur(4px);
+    overflow: hidden; /* Keep overflow here for the reveal effect */
+    vertical-align: bottom; /* Align with baseline */
 }
 
 /* Hover Effect */
 .name:hover .name-hidden {
-    max-width: 400px; /* Arbitrary large number to allow expansion */
+    max-width: 500px; /* Increased to ensure no clipping */
     opacity: 1;
     transform: translateX(0);
     padding-left: 2px;
     filter: blur(0);
+    padding-right: 5px; /* Extra space to prevent clipping */
+}
+
+.typing-cursor {
+    display: inline-block;
+    margin-left: 4px;
+    font-weight: 300;
+    vertical-align: baseline;
+}
+    width: 3px;
+    height: 0.8em;
+    background-color: var(--primary);
+    margin-left: 8px;
+    animation: blink 1s step-end infinite;
+    vertical-align: baseline;
+    position: relative;
+    top: 0.1em;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
 }
 
 .name:hover .name-part.highlight {
@@ -446,8 +470,118 @@ body::before {
 }
 
 /* ============================================
-   MODALS & COLLAPSIBLES
+   EASTER EGG & EXTRAS
    ============================================ */
+
+.easter-egg {
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-align: center;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s var(--ease-out);
+}
+
+.easter-egg.revealed {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 150px;
+    margin-bottom: var(--space-lg);
+}
+
+.egg-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--primary);
+    margin-bottom: var(--space-sm);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.egg-code {
+    width: 100%;
+    padding: 8px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 4px;
+}
+
+.egg-code:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 15px var(--glow);
+}
+
+.donate-intro-block {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+.donate-intro {
+    color: var(--text-muted);
+    margin-bottom: var(--space-md);
+}
+
+.coffee-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 8px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    transition: all 0.2s;
+}
+
+.coffee-counter:hover {
+    border-color: var(--primary);
+    background: var(--bg-card-hover);
+}
+
+.coffee-icon {
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    user-select: none;
+}
+
+.coffee-icon:hover {
+    transform: rotate(-15deg) scale(1.1);
+}
+
+.coffee-icon:active {
+    transform: rotate(15deg) scale(0.95);
+}
+
+.coffee-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.coffee-num {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* Copied State */
+.copied {
+    background: var(--primary) !important;
+    color: var(--bg-dark) !important;
+    border-color: var(--primary) !important;
+}
 
 .section-backdrop {
     position: fixed;

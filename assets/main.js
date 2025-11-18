@@ -33,6 +33,46 @@ const utils = {
             top: offsetPosition,
             behavior: 'smooth'
         });
+    },
+
+    // Show feedback for copy actions
+    showFeedback(element) {
+        const originalBorder = element.style.borderColor;
+        const originalShadow = element.style.boxShadow;
+
+        element.style.borderColor = 'var(--primary)';
+        element.style.boxShadow = '0 0 15px var(--glow)';
+
+        // If it's a button or card, add copied class
+        if (element.classList.contains('contact-card') || element.tagName === 'BUTTON') {
+            element.classList.add('copied');
+            const originalText = element.innerText;
+
+            // Try to find the value span or just change text
+            const valueSpan = element.querySelector('.contact-value');
+            if (valueSpan) {
+                const oldVal = valueSpan.innerText;
+                valueSpan.innerText = 'Copied!';
+                setTimeout(() => {
+                    valueSpan.innerText = oldVal;
+                    element.classList.remove('copied');
+                }, 2000);
+            } else {
+                // It might be an input or just text
+                if (element.tagName !== 'INPUT') {
+                    element.innerText = 'Copied!';
+                    setTimeout(() => {
+                        element.innerText = originalText;
+                        element.classList.remove('copied');
+                    }, 2000);
+                }
+            }
+        }
+
+        setTimeout(() => {
+            element.style.borderColor = originalBorder;
+            element.style.boxShadow = originalShadow;
+        }, 400);
     }
 };
 
@@ -317,6 +357,91 @@ class AnimationObserver {
 }
 
 // ============================================
+// EASTER EGG HANDLER
+// ============================================
+
+class EasterEggHandler {
+    constructor() {
+        this.clickCount = 0;
+        this.resetTimeout = null;
+        this.init();
+    }
+
+    init() {
+        const avatar = document.querySelector('.avatar');
+        const easterEgg = document.getElementById('switch-easter-egg');
+
+        if (!avatar || !easterEgg) return;
+
+        avatar.style.cursor = 'pointer';
+
+        avatar.addEventListener('click', () => {
+            this.clickCount++;
+
+            // Reset counter after 2 seconds of inactivity
+            clearTimeout(this.resetTimeout);
+            this.resetTimeout = setTimeout(() => {
+                this.clickCount = 0;
+            }, 2000);
+
+            // Reveal easter egg after 3 clicks
+            if (this.clickCount === 3) {
+                easterEgg.classList.add('revealed');
+                this.clickCount = 0;
+
+                // Scroll to it
+                setTimeout(() => {
+                    utils.scrollToElement(easterEgg, 100);
+                }, 300);
+            }
+        });
+    }
+}
+
+// ============================================
+// DONATE PAGE INTERACTIONS
+// ============================================
+
+class DonateInteractions {
+    constructor() {
+        this.coffeeCount = 0;
+        this.init();
+    }
+
+    init() {
+        this.initCoffeeCounter();
+    }
+
+    initCoffeeCounter() {
+        const coffeeIcon = document.querySelector('.coffee-icon');
+        const coffeeNum = document.querySelector('.coffee-num');
+
+        if (!coffeeIcon || !coffeeNum) return;
+
+        coffeeIcon.addEventListener('click', () => {
+            this.coffeeCount++;
+
+            if (this.coffeeCount < 10) {
+                coffeeNum.textContent = this.coffeeCount;
+            } else if (this.coffeeCount === 10) {
+                coffeeNum.textContent = '∞';
+                coffeeNum.style.animation = 'pulse 0.5s ease-in-out';
+                setTimeout(() => {
+                    coffeeNum.style.animation = '';
+                }, 500);
+            } else if (this.coffeeCount === 20) {
+                coffeeNum.textContent = '∞ + ∞';
+            } else if (this.coffeeCount === 42) {
+                coffeeNum.textContent = '42 (the answer)';
+            } else if (this.coffeeCount > 50) {
+                coffeeNum.textContent = 'please stop';
+                this.coffeeCount = 0;
+            }
+        });
+    }
+}
+
+// ============================================
 // CONSOLE BRANDING
 // ============================================
 
@@ -353,6 +478,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Animate elements on scroll
     new AnimationObserver('.contact-card, .project-item');
+
+    // Easter egg handler
+    new EasterEggHandler();
+
+    // Donate page interactions
+    new DonateInteractions();
 
     // Console branding
     ConsoleBranding.init();

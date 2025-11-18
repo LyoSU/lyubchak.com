@@ -63,6 +63,7 @@
                     <span class="name-part highlight">LY</span>
                     <span class="name-hidden">UBCHAK</span>
                 </span>
+                <span class="typing-cursor"></span>
             </h1>
             <p class="tagline">
                 <span class="bracket">[</span>
@@ -121,6 +122,12 @@
                     <span class="contact-value">yuri@lyubchak.com</span>
                 </a>
             </div>
+
+            <!-- Easter Egg: Click avatar 3 times to reveal -->
+            <div class="easter-egg" id="switch-easter-egg">
+                <span class="egg-label">Nintendo Switch</span>
+                <input type="text" value="SW-2573-5817-3401" readonly class="egg-code">
+            </div>
         </section>
     </main>
 
@@ -161,7 +168,13 @@
             <button class="close-btn" data-close="donate">×</button>
         </div>
         <div class="section-content">
-            <p style="margin-bottom: 20px; color: var(--text-muted);">Building AI-powered tools takes time and coffee.</p>
+            <div class="donate-intro-block">
+                <p class="donate-intro">Building AI-powered tools takes time and coffee.</p>
+                <div class="coffee-counter" id="coffee-counter">
+                    <span class="coffee-icon" title="Click for surprise">☕</span>
+                    <span class="coffee-text">Coffees consumed: <span class="coffee-num">∞</span></span>
+                </div>
+            </div>
             
             <div class="donate-options">
                 <a href="https://send.monobank.ua/jar/2fpLioJzU8" target="_blank" class="contact-card" style="margin-bottom: 15px;">
