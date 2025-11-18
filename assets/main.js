@@ -653,12 +653,103 @@ class TerminalHandler {
             case 'whoami':
                 this.printLine('guest');
                 break;
+            case 'neofetch':
+                this.showNeofetch();
+                break;
             default:
                 this.printLine(`Command not found: ${command}`, 'error');
         }
 
         // Scroll to bottom
         this.output.scrollTop = this.output.scrollHeight;
+    }
+
+    showNeofetch() {
+        const logo = [
+            '       /\\       ',
+            '      /  \\      ',
+            '     / /\\ \\     ',
+            '    / /  \\ \\    ',
+            '   / /    \\ \\   ',
+            '  / /      \\ \\  ',
+            ' / /        \\ \\ ',
+            '/_/          \\_\\'
+        ];
+
+        const info = [
+            { label: 'guest@lyubchak.com', value: '', header: true },
+            { label: '------------------', value: '', header: true },
+            { label: 'OS', value: 'LyOS v2.0.5 x86_64' },
+            { label: 'Host', value: 'MacBook Pro (Web Edition)' },
+            { label: 'Kernel', value: '5.15.0-ly-generic' },
+            { label: 'Uptime', value: `${utils.calculateAge(new Date(1999, 1, 27))} years` },
+            { label: 'Shell', value: 'LyShell 3.2.57' },
+            { label: 'Resolution', value: `${window.innerWidth}x${window.innerHeight}` },
+            { label: 'DE', value: 'CSS Grid' },
+            { label: 'WM', value: 'Flexbox' },
+            { label: 'Theme', value: 'Deep Purple [GTK2/3]' },
+            { label: 'Icons', value: 'FontAwesome' },
+            { label: 'Terminal', value: 'LyTerm' },
+            { label: 'CPU', value: 'Neural Engine (Bio-based)' },
+            { label: 'Memory', value: 'Loading...' }
+        ];
+
+        const container = document.createElement('div');
+        container.style.display = 'flex';
+        container.style.gap = '20px';
+        container.style.marginTop = '10px';
+        container.style.marginBottom = '10px';
+        container.style.fontFamily = 'monospace';
+        container.style.lineHeight = '1.2';
+
+        // Logo Column
+        const logoDiv = document.createElement('div');
+        logoDiv.style.color = 'var(--primary)';
+        logoDiv.style.fontWeight = 'bold';
+        logoDiv.innerHTML = logo.join('<br>').replace(/ /g, '&nbsp;');
+
+        // Info Column
+        const infoDiv = document.createElement('div');
+        info.forEach(item => {
+            const line = document.createElement('div');
+            if (item.header) {
+                line.style.fontWeight = 'bold';
+                line.style.color = 'var(--primary)';
+                line.textContent = item.label;
+            } else {
+                const labelSpan = document.createElement('span');
+                labelSpan.style.color = 'var(--primary)';
+                labelSpan.textContent = item.label;
+
+                const valueSpan = document.createElement('span');
+                valueSpan.style.color = '#fff';
+                valueSpan.textContent = `: ${item.value}`;
+
+                line.appendChild(labelSpan);
+                line.appendChild(valueSpan);
+            }
+            infoDiv.appendChild(line);
+        });
+
+        // Color Palette
+        const paletteDiv = document.createElement('div');
+        paletteDiv.style.marginTop = '10px';
+        const colors = ['#000', '#f00', '#0f0', '#ff0', '#00f', '#f0f', '#0ff', '#fff'];
+        colors.forEach(color => {
+            const block = document.createElement('span');
+            block.style.display = 'inline-block';
+            block.style.width = '20px';
+            block.style.height = '10px';
+            block.style.backgroundColor = color;
+            block.style.marginRight = '2px';
+            paletteDiv.appendChild(block);
+        });
+        infoDiv.appendChild(paletteDiv);
+
+        container.appendChild(logoDiv);
+        container.appendChild(infoDiv);
+
+        this.output.appendChild(container);
     }
 
     printLine(text, type = 'normal') {
