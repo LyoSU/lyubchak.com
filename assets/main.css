@@ -415,7 +415,7 @@ body::before {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--space-md);
     margin-bottom: var(--space-xl);
 }
@@ -449,7 +449,9 @@ body::before {
     color: var(--text-main);
     font-weight: 500;
     word-break: normal;
-    overflow-wrap: anywhere; /* Better wrapping for emails/URLs */
+    white-space: nowrap; /* Force single line */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Graceful degradation */
 }
 
 /* ============================================
