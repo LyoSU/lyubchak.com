@@ -92,6 +92,45 @@ class AgeUpdater {
     }
 }
 
+class AgeClicker {
+    constructor(elementId, birthDate) {
+        this.element = document.getElementById(elementId);
+        this.birthDate = birthDate;
+        this.mode = 0; // 0: years, 1: days, 2: hours, 3: hex, 4: binary
+        this.init();
+    }
+
+    init() {
+        if (!this.element) return;
+
+        this.element.style.cursor = 'pointer';
+        this.element.title = 'Click to cycle format';
+
+        this.element.addEventListener('click', () => {
+            this.mode = (this.mode + 1) % 5;
+            this.updateDisplay();
+        });
+    }
+
+    updateDisplay() {
+        const ageYears = utils.calculateAge(this.birthDate);
+        const diffTime = Math.abs(new Date() - this.birthDate);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        const diffHours = Math.ceil(diffTime / (1000 * 60 * 60));
+
+        let text = '';
+        switch (this.mode) {
+            case 0: text = ageYears; break;
+            case 1: text = `${diffDays} days`; break;
+            case 2: text = `${diffHours} hours`; break;
+            case 3: text = `0x${ageYears.toString(16)}`; break;
+            case 4: text = ageYears.toString(2); break;
+        }
+
+        this.element.textContent = text;
+    }
+}
+
 // ============================================
 // MODAL MANAGER
 // ============================================
@@ -442,6 +481,202 @@ class DonateInteractions {
 }
 
 // ============================================
+// VIBE CODER HANDLER
+// ============================================
+
+class VibeCoderHandler {
+    constructor() {
+        this.trigger = document.getElementById('vibe-coder-trigger');
+        this.isActive = false;
+        this.init();
+    }
+
+    init() {
+        if (!this.trigger) return;
+
+        this.trigger.addEventListener('click', () => {
+            this.isActive = !this.isActive;
+            document.body.classList.toggle('vibe-mode');
+
+            if (this.isActive) {
+                console.log('%c VIBE MODE ACTIVATED ', 'background: #ff00c1; color: white; font-weight: bold;');
+            } else {
+                console.log('%c Vibe mode deactivated ', 'color: #888;');
+            }
+        });
+    }
+}
+
+// ============================================
+// TERMINAL HANDLER
+// ============================================
+
+class TerminalHandler {
+    constructor() {
+        this.overlay = document.getElementById('terminal-overlay');
+        this.input = document.querySelector('.terminal-input');
+        this.output = document.querySelector('.terminal-output');
+        this.closeBtn = document.querySelector('.terminal-close');
+        this.isOpen = false;
+        this.history = [];
+        this.historyIndex = -1;
+
+        this.init();
+    }
+
+    init() {
+        if (!this.overlay || !this.input) return;
+
+        // Open terminal with Cmd+K or Ctrl+K
+        document.addEventListener('keydown', (e) => {
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                this.toggleTerminal();
+            }
+        });
+
+        // Close button
+        if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.closeTerminal());
+        }
+
+        // Click outside to close
+        this.overlay.addEventListener('click', (e) => {
+            if (e.target === this.overlay) {
+                this.closeTerminal();
+            }
+        });
+
+        // Input handling
+        this.input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const command = this.input.value.trim();
+                this.processCommand(command);
+                this.input.value = '';
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (this.historyIndex < this.history.length - 1) {
+                    this.historyIndex++;
+                    this.input.value = this.history[this.history.length - 1 - this.historyIndex];
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (this.historyIndex > 0) {
+                    this.historyIndex--;
+                    this.input.value = this.history[this.history.length - 1 - this.historyIndex];
+                } else if (this.historyIndex === 0) {
+                    this.historyIndex = -1;
+                    this.input.value = '';
+                }
+            }
+        });
+    }
+
+    toggleTerminal() {
+        if (this.isOpen) {
+            this.closeTerminal();
+        } else {
+            this.openTerminal();
+        }
+    }
+
+    openTerminal() {
+        this.overlay.classList.add('active');
+        this.input.focus();
+        this.isOpen = true;
+        document.body.style.overflow = 'hidden';
+    }
+
+    closeTerminal() {
+        this.overlay.classList.remove('active');
+        this.isOpen = false;
+        document.body.style.overflow = '';
+    }
+
+    processCommand(cmd) {
+        if (!cmd) return;
+
+        this.history.push(cmd);
+        this.historyIndex = -1;
+
+        this.printLine(`guest@lyubchak:~$ ${cmd}`, 'command');
+
+        const command = cmd.toLowerCase().split(' ')[0];
+        const args = cmd.split(' ').slice(1);
+
+        switch (command) {
+            case 'help':
+                this.printLine('Available commands:');
+                this.printLine('  help      - Show this help message');
+                this.printLine('  clear     - Clear terminal output');
+                this.printLine('  about     - Display about info');
+                this.printLine('  contact   - Show contact details');
+                this.printLine('  projects  - List projects');
+                this.printLine('  sudo      - Try it and see');
+                this.printLine('  exit      - Close terminal');
+                break;
+            case 'clear':
+                this.output.innerHTML = '';
+                break;
+            case 'about':
+                this.printLine('Yuri Lyubchak - AI Researcher & Developer');
+                this.printLine('Based in Ukraine. Leveraging modern AI to build cool stuff.');
+                break;
+            case 'contact':
+                this.printLine('Email: yuri@lyubchak.com');
+                this.printLine('Telegram: @LyoSU');
+                this.printLine('GitHub: @LyoSU');
+                break;
+            case 'projects':
+                this.printLine('Active Projects:');
+                this.printLine('* fStikBot - Sticker manager');
+                this.printLine('* LyBot - Music downloader');
+                this.printLine('* QuotLyBot - Quote generator');
+                this.printLine('* LyOSBot - Hacking simulator');
+                break;
+            case 'sudo':
+                if (args.join(' ') === 'make me a sandwich') {
+                    this.printLine('Make it yourself.', 'error');
+                } else {
+                    this.printLine('Permission denied: you are not root.', 'error');
+                }
+                break;
+            case 'exit':
+                this.closeTerminal();
+                break;
+            case 'ls':
+                this.printLine('index.html  assets/  images/  README.md');
+                break;
+            case 'date':
+                this.printLine(new Date().toString());
+                break;
+            case 'whoami':
+                this.printLine('guest');
+                break;
+            default:
+                this.printLine(`Command not found: ${command}`, 'error');
+        }
+
+        // Scroll to bottom
+        this.output.scrollTop = this.output.scrollHeight;
+    }
+
+    printLine(text, type = 'normal') {
+        const div = document.createElement('div');
+        div.className = 'terminal-line';
+        div.textContent = text;
+
+        if (type === 'error') {
+            div.style.color = '#ff5555';
+        } else if (type === 'command') {
+            div.style.color = '#aaa';
+        }
+
+        this.output.appendChild(div);
+    }
+}
+
+// ============================================
 // CONSOLE BRANDING
 // ============================================
 
@@ -484,6 +719,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Donate page interactions
     new DonateInteractions();
+
+    // Vibe Coder toggle
+    new VibeCoderHandler();
+
+    // Hidden Terminal
+    new TerminalHandler();
+
+    // Age Clicker (replaces simple updater)
+    new AgeClicker('age', new Date(1999, 1, 27));
 
     // Console branding
     ConsoleBranding.init();

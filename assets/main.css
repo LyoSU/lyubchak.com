@@ -458,6 +458,198 @@ body::before {
    EASTER EGG & EXTRAS
    ============================================ */
 
+/* Vibe Coder Mode */
+body.vibe-mode {
+    animation: vibe-bg 5s infinite alternate;
+}
+
+body.vibe-mode .name-part {
+    animation: vibe-text 0.5s infinite alternate;
+}
+
+@keyframes vibe-bg {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes vibe-text {
+    0% { transform: skewX(0deg); }
+    100% { transform: skewX(-10deg); }
+}
+
+.interactive-text {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s;
+    border-bottom: 1px dashed var(--text-muted);
+}
+
+.interactive-text:hover {
+    color: var(--primary);
+    border-bottom-style: solid;
+}
+
+/* Glitch Effect */
+.glitch-text {
+    position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-dark);
+    opacity: 0.8;
+}
+
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -1px 0 #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-1 5s infinite linear alternate-reverse;
+    display: none;
+}
+
+.glitch-text::after {
+    left: -2px;
+    text-shadow: -1px 0 #00fff9;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-2 5s infinite linear alternate-reverse;
+    display: none;
+}
+
+.glitch-text:hover::before,
+.glitch-text:hover::after {
+    display: block;
+}
+
+@keyframes glitch-anim-1 {
+    0% { clip: rect(30px, 9999px, 10px, 0); }
+    20% { clip: rect(50px, 9999px, 80px, 0); }
+    40% { clip: rect(10px, 9999px, 90px, 0); }
+    60% { clip: rect(80px, 9999px, 20px, 0); }
+    80% { clip: rect(40px, 9999px, 60px, 0); }
+    100% { clip: rect(60px, 9999px, 30px, 0); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip: rect(60px, 9999px, 30px, 0); }
+    20% { clip: rect(40px, 9999px, 60px, 0); }
+    40% { clip: rect(80px, 9999px, 20px, 0); }
+    60% { clip: rect(10px, 9999px, 90px, 0); }
+    80% { clip: rect(50px, 9999px, 80px, 0); }
+    100% { clip: rect(30px, 9999px, 10px, 0); }
+}
+
+/* Terminal */
+.terminal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.terminal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.terminal-window {
+    width: 800px;
+    max-width: 90%;
+    height: 500px;
+    background: #1e1e1e;
+    border-radius: 6px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #333;
+    font-family: 'JetBrains Mono', monospace;
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.terminal-overlay.active .terminal-window {
+    transform: scale(1);
+}
+
+.terminal-header {
+    background: #2d2d2d;
+    padding: 10px 15px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.terminal-title {
+    color: #ccc;
+    font-size: 0.8rem;
+}
+
+.terminal-close {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 1.2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.terminal-close:hover {
+    color: #fff;
+}
+
+.terminal-body {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    color: #0f0;
+    font-size: 0.9rem;
+}
+
+.terminal-line {
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    color: #00ff00;
+    margin-right: 8px;
+}
+
+.terminal-input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: inherit;
+    font-size: inherit;
+    flex: 1;
+    outline: none;
+}
+
 .easter-egg {
     margin-top: 0;
     padding: 0;
