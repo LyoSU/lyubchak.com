@@ -346,27 +346,95 @@ class Terminal {
 
         const commands = {
             help: () => {
-                this.print('Commands: help, about, contact, projects, clear, exit');
+                this.print('Available commands:', '#cbafff');
+                this.print('  about     - who am I');
+                this.print('  skills    - tech stack');
+                this.print('  projects  - my work');
+                this.print('  contact   - get in touch');
+                this.print('  neofetch  - system info');
+                this.print('  clear     - clear screen');
+                this.print('  exit      - close terminal');
             },
             clear: () => {
                 this.clearOutput();
             },
             about: () => {
-                this.print('Yuri Ly — AI Developer from Ukraine');
-                this.print('Building Telegram bots since 2017');
+                this.print('Yuri Lyubchak', '#cbafff');
+                this.print('AI Software Engineer from Ukraine 🇺🇦');
+                this.print('10+ years coding • 3M+ users served');
+                this.print('Vibe coder with Claude');
+            },
+            skills: () => {
+                this.print('Languages:', '#cbafff');
+                this.print('  TypeScript, JavaScript, Python, PHP, Go');
+                this.print('Backend:', '#cbafff');
+                this.print('  Node.js, Fastify, GraphQL, MongoDB, Redis');
+                this.print('AI/ML:', '#cbafff');
+                this.print('  Claude API, OpenAI, LangChain, Agents');
+                this.print('Other:', '#cbafff');
+                this.print('  Telegram Bot API, Docker, Linux');
             },
             contact: () => {
-                this.print('Telegram: @LyoSU');
-                this.print('GitHub: @LyoSU');
-                this.print('Email: yuri@lyubchak.com');
+                this.print('Telegram: @LyDev');
+                this.print('GitHub:   @LyoSU');
+                this.print('LinkedIn: /in/lyubchak');
+                this.print('Email:    yuri@lyubchak.com');
             },
             projects: () => {
-                this.print('fStikBot, LyBot, QuotLyBot, LyAdminBot, LyOSBot');
+                this.print('fStik      - 800K MAU, #1 sticker platform', '#cbafff');
+                this.print('QuotLyBot  - 80K+ groups, 370+ ⭐');
+                this.print('LyBot      - YouTube Music bot');
+                this.print('LyOSBot    - Hacker simulator game');
+            },
+            neofetch: () => {
+                this.print('ly@lyubchak.com', '#cbafff');
+                this.print('─────────────────');
+                this.print('OS:     LyOS v2.0');
+                this.print('Host:   Ukraine 🇺🇦');
+                this.print('Uptime: 10+ years');
+                this.print('Users:  3M+');
+                this.print('Shell:  Claude');
+                this.print('Stars:  800+ ⭐');
             },
             exit: () => this.close(),
             whoami: () => this.print('guest'),
             date: () => this.print(new Date().toLocaleString()),
-            ls: () => this.print('index.html  assets/  images/'),
+            ls: () => this.print('index.html  assets/  images/  README.md'),
+            pwd: () => this.print('/home/guest/lyubchak.com'),
+            sudo: () => this.print('Nice try 😏', '#f55'),
+            rm: () => this.print('Permission denied. This is a read-only filesystem.', '#f55'),
+            cat: () => {
+                if (args[0] === 'readme.md' || args[0] === 'readme') {
+                    this.print('# Yuri Lyubchak', '#cbafff');
+                    this.print('Building things that scale.');
+                    this.print('Open source enthusiast. 800+ GitHub stars.');
+                } else {
+                    this.print(`cat: ${args[0] || 'missing file'}: No such file`);
+                }
+            },
+            echo: () => this.print(args.join(' ')),
+            coffee: () => {
+                this.print('☕ Brewing...');
+                setTimeout(() => this.print('☕☕☕ Coffee ready!', '#cbafff'), 500);
+            },
+            matrix: () => {
+                this.print('Wake up, Neo...', '#0f0');
+                setTimeout(() => this.print('The Matrix has you...', '#0f0'), 1000);
+                setTimeout(() => this.print('Follow the white rabbit. 🐇', '#0f0'), 2000);
+            },
+            ping: () => {
+                this.print('PING lyubchak.com');
+                this.print('64 bytes: time=0.042ms');
+                this.print('64 bytes: time=0.038ms');
+                this.print('--- lyubchak.com ping statistics ---');
+                this.print('2 packets transmitted, 2 received, 0% loss');
+            },
+            hire: () => {
+                this.print('📧 Sending email to yuri@lyubchak.com...', '#cbafff');
+                setTimeout(() => {
+                    this.print('Just kidding! Use the contact info above 😄');
+                }, 800);
+            },
         };
 
         if (commands[command]) {
@@ -403,7 +471,13 @@ document.addEventListener('DOMContentLoaded', () => {
     new EasterEggs();
 
     // Terminal
-    new Terminal();
+    const terminal = new Terminal();
+
+    // Terminal hint click
+    const terminalHint = document.getElementById('terminal-hint');
+    if (terminalHint) {
+        terminalHint.addEventListener('click', () => terminal.open());
+    }
 
     // Console branding
     console.log('%c LYUBCHAK.COM ', 'background: linear-gradient(135deg, #d6bfff, #b58dff); color: #1c132c; font-weight: bold; padding: 8px 16px; border-radius: 20px;');

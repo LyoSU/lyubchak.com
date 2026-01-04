@@ -404,6 +404,35 @@ body {
 }
 
 /* ============================================
+   TERMINAL HINT
+   ============================================ */
+
+.terminal-hint {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+    cursor: pointer;
+    z-index: 50;
+}
+
+.terminal-hint:hover {
+    opacity: 0.8;
+}
+
+.terminal-hint kbd {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    color: var(--text-muted);
+    backdrop-filter: blur(10px);
+}
+
+/* ============================================
    EASTER EGG
    ============================================ */
 
@@ -800,6 +829,17 @@ body {
 
 .project-link-inline:hover {
     color: var(--primary);
+}
+
+.project-links {
+    display: flex;
+    gap: 16px;
+    margin-top: 4px;
+}
+
+.project-featured {
+    border-color: var(--border-hover);
+    background: rgba(203, 175, 255, 0.03);
 }
 
 /* ============================================
