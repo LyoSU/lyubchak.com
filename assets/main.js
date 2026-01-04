@@ -473,9 +473,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Terminal
     const terminal = new Terminal();
 
-    // Terminal hint click
+    // Terminal hint click + platform detection
     const terminalHint = document.getElementById('terminal-hint');
     if (terminalHint) {
+        const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform);
+        terminalHint.querySelector('kbd').textContent = isMac ? '⌘K' : 'Ctrl+K';
         terminalHint.addEventListener('click', () => terminal.open());
     }
 
