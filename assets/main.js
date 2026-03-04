@@ -347,32 +347,52 @@ class Terminal {
         const commands = {
             help: () => {
                 this.print('Available commands:', '#cbafff');
-                this.print('  about     - who am I');
-                this.print('  skills    - tech stack');
-                this.print('  projects  - my work');
-                this.print('  contact   - get in touch');
-                this.print('  neofetch  - system info');
-                this.print('  clear     - clear screen');
-                this.print('  exit      - close terminal');
+                this.print('  about     — who am I');
+                this.print('  skills    — tech stack');
+                this.print('  ai        — AI/LLM expertise');
+                this.print('  projects  — my work');
+                this.print('  contact   — get in touch');
+                this.print('  neofetch  — system info');
+                this.print('  clear     — clear screen');
+                this.print('  exit      — close terminal');
             },
             clear: () => {
                 this.clearOutput();
             },
             about: () => {
                 this.print('Yuri Lyubchak', '#cbafff');
-                this.print('AI Software Engineer from Ukraine 🇺🇦');
-                this.print('10+ years coding • 3M+ users served');
-                this.print('Vibe coder with Claude');
+                this.print('Full-Stack Developer from Ukraine');
+                this.print('Telegram bots for millions, enterprise AI for business');
+                this.print('10+ years · 3M+ users · 150+ projects · 800+ GitHub stars');
             },
             skills: () => {
                 this.print('Languages:', '#cbafff');
-                this.print('  TypeScript, JavaScript, Python, PHP, Go');
+                this.print('  TypeScript, JavaScript, Python, Go, Swift');
                 this.print('Backend:', '#cbafff');
-                this.print('  Node.js, Fastify, GraphQL, MongoDB, Redis');
-                this.print('AI/ML:', '#cbafff');
-                this.print('  Claude API, OpenAI, LangChain, Agents');
-                this.print('Other:', '#cbafff');
-                this.print('  Telegram Bot API, Docker, Linux');
+                this.print('  Node.js, NestJS, Fastify, Hono, Express');
+                this.print('Frontend:', '#cbafff');
+                this.print('  React, Next.js, Vite, Tailwind CSS');
+                this.print('AI/LLM:', '#cbafff');
+                this.print('  OpenAI, Claude, Gemini, LangChain, Qdrant, RAG');
+                this.print('Telegram:', '#cbafff');
+                this.print('  Telegraf, grammY, TDLib, MTProto, Mini Apps');
+                this.print('Data:', '#cbafff');
+                this.print('  MongoDB, Redis, PostgreSQL, BullMQ');
+                this.print('Infra:', '#cbafff');
+                this.print('  Docker, PM2, Sentry, Prometheus');
+            },
+            ai: () => {
+                this.print('AI/LLM Engineering', '#cbafff');
+                this.print('─────────────────');
+                this.print('Models:     OpenAI GPT, Claude, Gemini, ElevenLabs');
+                this.print('Frameworks: LangChain, Vertex AI, Transformers.js');
+                this.print('Vector DB:  Qdrant, HNSWLib, FlexSearch');
+                this.print('RAG:        PDF/Excel indexing, semantic search');
+                this.print('ML:         TensorFlow.js, NSFW detection, NMT');
+                this.print('Infra:      Dify, LangFuse, LiteLLM');
+                this.print('');
+                this.print('Production AI in Telegram bots, enterprise tools,');
+                this.print('RAG systems, and analytics dashboards.');
             },
             contact: () => {
                 this.print('Telegram: @LyDev');
@@ -381,20 +401,26 @@ class Terminal {
                 this.print('Email:    yuri@lyubchak.com');
             },
             projects: () => {
-                this.print('fStik      - 800K MAU, #1 sticker platform', '#cbafff');
-                this.print('QuotLyBot  - 80K+ groups, 370+ ⭐');
-                this.print('LyBot      - YouTube Music bot');
-                this.print('LyOSBot    - Hacker simulator game');
+                this.print('fStik      — 800K MAU, #1 sticker platform', '#cbafff');
+                this.print('QuotLyBot  — 80K+ groups, 370+ stars');
+                this.print('LyBot      — YouTube Music bot');
+                this.print('LyOSBot    — Hacker simulator game');
+                this.print('');
+                this.print('40+ bots, 150+ projects total.', '#888');
+                this.print('Follow @LyBlog for updates.', '#888');
             },
             neofetch: () => {
                 this.print('ly@lyubchak.com', '#cbafff');
                 this.print('─────────────────');
-                this.print('OS:     LyOS v2.0');
-                this.print('Host:   Ukraine 🇺🇦');
-                this.print('Uptime: 10+ years');
-                this.print('Users:  3M+');
-                this.print('Shell:  Claude');
-                this.print('Stars:  800+ ⭐');
+                this.print('OS:       LyOS v2.0');
+                this.print('Host:     Ukraine');
+                this.print('Uptime:   10+ years');
+                this.print('Users:    3M+');
+                this.print('Projects: 150+');
+                this.print('Bots:     40+');
+                this.print('Stars:    800+');
+                this.print('Stack:    TypeScript, Node.js, React');
+                this.print('AI:       OpenAI, Claude, Gemini');
             },
             exit: () => this.close(),
             whoami: () => this.print('guest'),

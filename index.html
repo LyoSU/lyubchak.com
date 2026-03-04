@@ -3,30 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Yuri Lyubchak — AI Software Engineer</title>
+    <title>Yuri Lyubchak — Full-Stack Developer · Telegram · AI</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Full-Stack Developer & AI Engineer from Ukraine. 10+ years coding, 3M+ users served. Building systems that scale.">
-    <meta name="keywords" content="AI engineer, full-stack developer, Telegram bots, Ukraine developer, Yuri Lyubchak">
+    <meta name="description" content="Yuri Lyubchak (Yurii Liubchak, Юрій Любчак) — Full-Stack Developer. Telegram bots for millions, enterprise AI and business automation. Creator of fStikBot and Quotly. 10+ years, 150+ projects.">
+    <meta name="keywords" content="Yuri Lyubchak, Yurii Liubchak, Юрій Любчак, full-stack developer, Telegram bots, AI engineer, LLM integration, business automation, Node.js, TypeScript, Ukraine developer, fStikBot, Quotly, KNESS">
     <meta name="author" content="Yuri Lyubchak">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://lyubchak.com/">
+    <link rel="alternate" hreflang="en" href="https://lyubchak.com/">
+    <link rel="alternate" hreflang="uk" href="https://lyubchak.com/">
+    <link rel="alternate" hreflang="x-default" href="https://lyubchak.com/">
 
     <!-- Theme & Icons -->
     <meta name="theme-color" content="#0f0a15">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="site.webmanifest">
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Yuri Lyubchak — AI Software Engineer">
-    <meta property="og:description" content="Full-Stack Developer & AI Engineer from Ukraine. 10+ years coding, 3M+ users served.">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Yuri Lyubchak — Full-Stack Developer · Telegram · AI">
+    <meta property="og:description" content="Telegram bots for millions, enterprise AI for business. Full-stack, open source.">
     <meta property="og:image" content="https://lyubchak.com/images/avatar.jpg">
     <meta property="og:url" content="https://lyubchak.com/">
+    <meta property="profile:first_name" content="Yurii">
+    <meta property="profile:last_name" content="Liubchak">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Yuri Lyubchak — AI Software Engineer">
-    <meta name="twitter:description" content="Full-Stack Developer & AI Engineer from Ukraine. 10+ years coding, 3M+ users served.">
+    <meta name="twitter:title" content="Yuri Lyubchak — Full-Stack Developer · Telegram · AI">
+    <meta name="twitter:description" content="Telegram bots for millions, enterprise AI for business. Full-stack, open source.">
     <meta name="twitter:image" content="https://lyubchak.com/images/avatar.jpg">
 
     <!-- Fonts -->
@@ -35,6 +41,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <link href="assets/main.css" rel="stylesheet">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Yuri Lyubchak",
+        "alternateName": ["Yurii Liubchak", "Юрій Любчак", "LyoSU"],
+        "url": "https://lyubchak.com",
+        "image": "https://lyubchak.com/images/avatar.jpg",
+        "jobTitle": "Full-Stack Developer",
+        "description": "Full-Stack Developer specializing in Telegram platform, AI/LLM integration, and business automation. 10+ years experience, 3M+ users served.",
+        "knowsAbout": [
+            "Telegram Bot Development",
+            "AI/LLM Integration",
+            "Full-Stack Web Development",
+            "Business Automation",
+            "Node.js", "TypeScript", "React", "Next.js",
+            "MongoDB", "Redis", "PostgreSQL",
+            "OpenAI", "Claude", "Gemini", "LangChain",
+            "RAG Systems", "Vector Databases"
+        ],
+        "nationality": "Ukrainian",
+        "sameAs": [
+            "https://github.com/LyoSU",
+            "https://www.linkedin.com/in/lyubchak/",
+            "https://t.me/LyDev"
+        ],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "KNESS Group"
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Background -->
@@ -53,12 +93,23 @@
                 <span class="name-part highlight">Ly<span class="name-hidden">ubchak</span></span>
             </h1>
             <div class="divider"></div>
-            <p class="tagline">AI Software Engineer</p>
+            <p class="tagline">Full-Stack · Telegram · AI</p>
 
             <p class="bio-short">
-                Full-Stack Developer from Ukraine<br>
-                <span id="vibe-coder-trigger" class="interactive-text">Vibe coder</span> with Claude
+                Telegram bots for millions, enterprise <span id="vibe-coder-trigger" class="interactive-text">AI</span> for business.<br>
+                10+ years shipping production code.
             </p>
+
+            <div class="tech-tags">
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">OpenAI</span>
+                <span class="tech-tag">Claude</span>
+                <span class="tech-tag">Telegram API</span>
+            </div>
         </section>
 
         <!-- Stats Row -->
@@ -81,12 +132,13 @@
         <section class="actions">
             <a href="tg://resolve?domain=LyBlog" class="btn">Blog</a>
             <button class="btn" data-section="projects">Projects</button>
+            <button class="btn" data-section="stack">Stack</button>
             <button class="btn btn-ghost" data-section="story">Story</button>
         </section>
 
         <!-- Contact Bento -->
         <section class="contact-bento">
-            <a href="https://github.com/LyoSU" target="_blank" class="contact-card">
+            <a href="https://github.com/LyoSU" target="_blank" rel="noopener noreferrer" class="contact-card">
                 <span class="contact-icon">→</span>
                 <span class="contact-name">GitHub</span>
                 <span class="contact-handle">@LyoSU</span>
@@ -96,7 +148,7 @@
                 <span class="contact-name">Telegram</span>
                 <span class="contact-handle">@LyDev</span>
             </a>
-            <a href="https://www.linkedin.com/in/lyubchak/" target="_blank" class="contact-card">
+            <a href="https://www.linkedin.com/in/lyubchak/" target="_blank" rel="noopener noreferrer" class="contact-card">
                 <span class="contact-icon">→</span>
                 <span class="contact-name">LinkedIn</span>
                 <span class="contact-handle">/in/lyubchak</span>
@@ -129,33 +181,28 @@
             <button class="close-btn" data-close="story">×</button>
         </div>
         <div class="section-content">
-            <p class="story-intro">Self-taught developer since age 12. From building websites on uCoz to scaling bots to millions of users.</p>
+            <p class="story-intro">Self-taught since 12. From uCoz sites to enterprise AI and bots with millions of users.</p>
 
             <div class="story-grid">
                 <div class="story-card">
-                    <span class="story-emoji">🌱</span>
                     <span class="story-period">2011–2016</span>
-                    <p class="story-text">Learning PHP, building mobile sites, VK bots. Started getting paid at 16.</p>
+                    <p class="story-text">PHP, mobile sites, VK bots. First paid work at 16.</p>
                 </div>
                 <div class="story-card">
-                    <span class="story-emoji">🚀</span>
                     <span class="story-period">2017–2020</span>
                     <p class="story-text">Telegram era. Built bot ecosystem from scratch — now 3M+ users.</p>
                 </div>
                 <div class="story-card">
-                    <span class="story-emoji">💼</span>
                     <span class="story-period">2020–2023</span>
-                    <p class="story-text">Joined KNESS Group. Building enterprise solutions for 1,500+ employees.</p>
+                    <p class="story-text">KNESS Group. Enterprise solutions, business automation for 1,500+ employees.</p>
                 </div>
                 <div class="story-card highlight">
-                    <span class="story-emoji">🏆</span>
                     <span class="story-period">2023</span>
                     <p class="story-text">Telegram Mini App Contest — 1st Place</p>
                 </div>
                 <div class="story-card active">
-                    <span class="story-emoji">⚡</span>
                     <span class="story-period">2023–Now</span>
-                    <p class="story-text">AI era at KNESS. Building agents, vibe coding with Claude.</p>
+                    <p class="story-text">AI/LLM at KNESS. Agents, RAG, business automation with OpenAI, Claude, Gemini.</p>
                 </div>
             </div>
         </div>
@@ -176,7 +223,7 @@
             </div>
 
             <div class="donate-options">
-                <a href="https://send.monobank.ua/jar/2fpLioJzU8" target="_blank" class="contact-card">
+                <a href="https://send.monobank.ua/jar/2fpLioJzU8" target="_blank" rel="noopener noreferrer" class="contact-card">
                     <span class="contact-label">Bank Card</span>
                     <span class="contact-value">Monobank →</span>
                 </a>
@@ -213,6 +260,41 @@
         </div>
     </section>
 
+    <section id="stack" class="collapsible-section">
+        <div class="section-header">
+            <h2 class="section-title">Stack</h2>
+            <button class="close-btn" data-close="stack">×</button>
+        </div>
+        <div class="section-content">
+            <div class="stack-grid">
+                <div class="stack-item">
+                    <span class="stack-label">Backend</span>
+                    <span class="stack-techs">Node.js, NestJS, Fastify, Hono, Express</span>
+                </div>
+                <div class="stack-item">
+                    <span class="stack-label">Frontend</span>
+                    <span class="stack-techs">React, Next.js, Vite, Tailwind CSS</span>
+                </div>
+                <div class="stack-item">
+                    <span class="stack-label">AI / LLM</span>
+                    <span class="stack-techs">OpenAI, Claude, Gemini, LangChain, Qdrant, RAG</span>
+                </div>
+                <div class="stack-item">
+                    <span class="stack-label">Telegram</span>
+                    <span class="stack-techs">Telegraf, grammY, TDLib, MTProto, Mini Apps</span>
+                </div>
+                <div class="stack-item">
+                    <span class="stack-label">Data</span>
+                    <span class="stack-techs">MongoDB, Redis, PostgreSQL, BullMQ</span>
+                </div>
+                <div class="stack-item">
+                    <span class="stack-label">Infra</span>
+                    <span class="stack-techs">Docker, PM2, Sentry, Prometheus, GitHub Actions</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Section Backdrop -->
     <div class="section-backdrop" id="section-backdrop"></div>
 
@@ -235,8 +317,8 @@
                         <div class="project-links">
                             <a href="tg://resolve?domain=fStikBot" class="project-link-inline">@fStikBot</a>
                             <a href="https://fstik.app" class="project-link-inline">fstik.app</a>
-                            <a href="https://play.google.com/store/apps/details?id=app.fstik" target="_blank" class="project-link-inline">Play Store</a>
-                            <a href="https://github.com/LyoSU/fStikBot" target="_blank" class="project-link-inline">GitHub</a>
+                            <a href="https://play.google.com/store/apps/details?id=app.fstik" target="_blank" rel="noopener noreferrer" class="project-link-inline">Play Store</a>
+                            <a href="https://github.com/LyoSU/fStikBot" target="_blank" rel="noopener noreferrer" class="project-link-inline">GitHub</a>
                         </div>
                     </div>
                 </article>
@@ -249,7 +331,7 @@
                         <p class="project-description">Create beautiful quote images from messages. 48K msg/min peak.</p>
                         <div class="project-links">
                             <a href="tg://resolve?domain=QuotLyBot" class="project-link-inline">Open →</a>
-                            <a href="https://github.com/LyoSU/quote-bot" target="_blank" class="project-link-inline">GitHub</a>
+                            <a href="https://github.com/LyoSU/quote-bot" target="_blank" rel="noopener noreferrer" class="project-link-inline">GitHub</a>
                         </div>
                     </div>
                 </article>
@@ -273,6 +355,11 @@
                         <a href="tg://resolve?domain=LyOSBot" class="project-link-inline">Open →</a>
                     </div>
                 </article>
+
+                <div class="projects-footer">
+                    <p>40+ bots, 150+ projects in total.</p>
+                    <a href="tg://resolve?domain=LyBlog" class="project-link-inline">Updates in @LyBlog →</a>
+                </div>
             </div>
         </div>
     </div>

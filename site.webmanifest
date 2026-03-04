@@ -1,0 +1,16 @@
+{
+    "name": "Yuri Lyubchak",
+    "short_name": "Ly",
+    "description": "Full-Stack Developer · Telegram · AI",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f0a15",
+    "theme_color": "#0f0a15",
+    "icons": [
+        {
+            "src": "images/favicon.ico",
+            "sizes": "48x48",
+            "type": "image/x-icon"
+        }
+    ]
+}

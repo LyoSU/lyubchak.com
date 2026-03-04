@@ -14,8 +14,8 @@
     --border-hover: rgba(203, 175, 255, 0.3);
     --text: #ffffff;
     --text-muted: #8a8a9a;
-    --radius: 16px;
-    --radius-sm: 10px;
+    --radius: 14px;
+    --radius-sm: 8px;
 }
 
 /* ============================================
@@ -204,6 +204,34 @@ body {
 
 .interactive-text:hover {
     opacity: 0.7;
+}
+
+/* ============================================
+   TECH TAGS
+   ============================================ */
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 14px;
+}
+
+.tech-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+}
+
+.tech-tag:hover {
+    color: var(--primary);
+    border-color: var(--border-hover);
 }
 
 /* ============================================
@@ -581,10 +609,9 @@ body {
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     padding: 14px 16px;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto;
-    gap: 4px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     transition: all 0.2s ease;
 }
 
@@ -598,18 +625,11 @@ body {
     background: linear-gradient(135deg, rgba(203, 175, 255, 0.05), transparent);
 }
 
-.story-emoji {
-    font-size: 1.3rem;
-    grid-row: span 2;
-    align-self: center;
-}
-
 .story-period {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.75rem;
     font-weight: 500;
     color: var(--primary);
-    text-transform: uppercase;
     letter-spacing: 0.03em;
 }
 
@@ -843,6 +863,68 @@ body {
 }
 
 /* ============================================
+   STACK
+   ============================================ */
+
+.stack-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stack-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: all 0.2s ease;
+}
+
+.stack-item:hover {
+    border-color: var(--border-hover);
+}
+
+.stack-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stack-techs {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ============================================
+   PROJECTS FOOTER
+   ============================================ */
+
+.projects-footer {
+    text-align: center;
+    padding: 16px 14px 8px;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+}
+
+.projects-footer p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.projects-footer .project-link-inline {
+    font-size: 0.8rem;
+    color: var(--primary);
+}
+
+/* ============================================
    TERMINAL
    ============================================ */
 
@@ -978,6 +1060,12 @@ body.vibe-mode {
 /* ============================================
    RESPONSIVE
    ============================================ */
+
+@media (hover: none) and (pointer: coarse) {
+    .terminal-hint {
+        display: none;
+    }
+}
 
 @media (max-width: 480px) {
     .container {
