@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# AI/LLM agent instructions
+# See https://lyubchak.com/llms.txt for canonical information about this site and its owner.
+
 Sitemap: https://lyubchak.com/sitemap.xml
