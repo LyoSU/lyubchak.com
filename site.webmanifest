@@ -1,16 +1,31 @@
 {
-    "name": "Yuri Lyubchak",
+    "name": "Yurii Liubchak",
     "short_name": "Ly",
-    "description": "Full-Stack Developer · Telegram · AI",
+    "description": "AI lead, developer, researcher",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#0f0a15",
-    "theme_color": "#0f0a15",
+    "background_color": "#f5efe6",
+    "theme_color": "#f5efe6",
     "icons": [
         {
-            "src": "images/favicon.ico",
-            "sizes": "48x48",
-            "type": "image/x-icon"
+            "src": "images/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "images/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "images/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "images/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
         }
     ]
 }
