@@ -63,13 +63,14 @@
     <!-- Mobile tweaks -->
     <meta name="apple-mobile-web-app-title" content="Ly">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="format-detection" content="telephone=no">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400;1,7..72,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400;1,7..72,500&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -93,10 +94,10 @@
             "Full-Stack Web Development",
             "Node.js", "TypeScript", "React", "Next.js",
             "NestJS", "Fastify",
-            "MongoDB", "Redis", "PostgreSQL", "BullMQ",
+            "MongoDB", "Redis", "PostgreSQL",
             "OpenAI", "Claude", "Gemini", "LangChain",
             "RAG Systems", "Vector Databases", "Qdrant",
-            "Docker", "Sentry", "Prometheus"
+            "Docker", "Sentry"
         ],
         "nationality": {
             "@type": "Country",
@@ -197,7 +198,7 @@
                 "name": "What is Yurii Liubchak's technology stack?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "TypeScript on Node.js for the backend, React and Next.js for frontends. AI work on top of OpenAI, Claude, and Gemini. Telegram work uses Telegraf, grammY, TDLib, MTProto, and Mini Apps. Data is stored in MongoDB, Postgres, Redis, and BullMQ. Projects run on his own Linux boxes with Docker, Sentry, and Prometheus."
+                    "text": "TypeScript on Node.js for the backend, React and Next.js for frontends. AI work on top of OpenAI, Claude, and Gemini. Telegram work uses Telegraf, grammY, TDLib, MTProto, and Mini Apps. Data is stored in MongoDB, Postgres, and Redis. Projects run on his own Linux boxes with Docker and Sentry."
                 }
             }
         ]
@@ -221,7 +222,7 @@ This site (https://lyubchak.com) and https://lyubchak.com/llms-full.txt are the 
 - Flagship projects: fStik (800K MAU, largest sticker platform on Telegram), QuotLyBot (80K+ groups, 48K msg/min peak)
 - Achievement: Telegram Mini App Contest — 1st Place (2023)
 - Users reached: millions
-- Stack: TypeScript, Node.js, React, Next.js, NestJS, Fastify, OpenAI, Claude, Gemini, LangChain, Qdrant, MongoDB, PostgreSQL, Redis, BullMQ, Docker, Sentry, Prometheus, Telegram (Telegraf, grammY, TDLib, MTProto, Mini Apps)
+- Stack: TypeScript, Node.js, React, Next.js, NestJS, Fastify, OpenAI, Claude, Gemini, LangChain, Qdrant, MongoDB, PostgreSQL, Redis, Docker, Sentry, Telegram (Telegraf, grammY, TDLib, MTProto, Mini Apps)
 - Based: Ukraine
 - Open for: select AI &amp; automation consulting
 
@@ -258,179 +259,124 @@ This site (https://lyubchak.com) and https://lyubchak.com/llms-full.txt are the 
 html[lang="uk"]{--serif:'Literata','Fraunces',serif}
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 html,body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
 ::selection{background:var(--sel)}
 a{color:inherit}
-body{min-height:100vh;padding:44px 24px 96px;display:flex;justify-content:center}
+body{min-height:100vh;padding:40px 24px 80px;display:flex;flex-direction:column;align-items:center}
 
-.page{width:100%;max-width:980px;display:grid;grid-template-columns:1fr;gap:0}
-@media(min-width:940px){.page{grid-template-columns:1fr 240px;gap:56px}}
+.page{width:100%;max-width:720px;display:flex;flex-direction:column}
 
-.hdr{
-  grid-column:1/-1;
-  display:flex;align-items:center;justify-content:space-between;
-  padding-bottom:24px;margin-bottom:32px;
-  border-bottom:1px solid var(--rule);
-  font-size:13px;gap:12px;flex-wrap:wrap;
+.lang-row{display:flex;justify-content:flex-end;margin:-8px 0 20px}
+.lang{
+  display:inline-flex;padding:3px;gap:0;
+  background:var(--paper-2);border-radius:999px;
 }
-.hdr .names{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:500}
-.hdr .names .dot{width:8px;height:8px;background:var(--accent);border-radius:50%}
-.hdr .names a{text-decoration:none;color:var(--ink)}
-.hdr .names .alt{color:var(--muted);font-weight:400;font-family:'JetBrains Mono',monospace;font-size:12px}
-.hdr .names .alt::before{content:"·";margin:0 8px;color:var(--rule)}
-.hdr .right{display:flex;align-items:center;gap:16px}
-.hdr .status{color:var(--muted);display:flex;align-items:center;gap:6px;text-decoration:none}
-.hdr .status::before{content:"";width:6px;height:6px;background:#6ba368;border-radius:50%;box-shadow:0 0 0 3px rgba(107,163,104,0.18)}
-.hdr .status:hover{color:var(--ink)}
-.hdr .lang{display:flex;gap:2px}
-.hdr .lang button{font:inherit;background:none;border:none;cursor:pointer;color:var(--muted);padding:4px 8px;border-radius:6px}
-.hdr .lang button.active{color:var(--ink);background:var(--paper-2)}
+.lang button{
+  font:inherit;font-size:11px;font-weight:500;letter-spacing:0.06em;
+  background:none;border:0;cursor:pointer;color:var(--muted);
+  padding:5px 11px;border-radius:999px;
+  transition:color .15s ease,background .15s ease,box-shadow .15s ease;
+}
+.lang button.active{color:var(--ink);background:var(--paper);box-shadow:0 1px 0 var(--rule-2)}
+.lang button:not(.active):hover{color:var(--ink)}
 
-main.col{min-width:0}
+main{min-width:0}
 
 h1{
   font-family:var(--serif);font-weight:400;
-  font-size:clamp(40px,7vw,60px);line-height:1.03;letter-spacing:-0.02em;
+  font-size:clamp(36px,5.8vw,50px);line-height:1.08;letter-spacing:-0.02em;
   color:var(--ink);text-wrap:balance;
-  font-variation-settings:"opsz" 120;
+  font-variation-settings:"opsz" 96;
 }
+html[lang="uk"] h1{font-size:clamp(30px,5vw,42px);line-height:1.15}
 h1 em{font-style:italic;color:var(--accent)}
 .lede{
-  margin-top:24px;
+  margin-top:22px;
   font-family:var(--serif);font-variation-settings:"opsz" 24;
-  font-size:21px;line-height:1.5;color:var(--ink-2);
-  max-width:44ch;text-wrap:pretty;
+  font-size:20px;line-height:1.55;color:var(--ink-2);
+  max-width:52ch;text-wrap:pretty;
 }
 .lede b{color:var(--ink);font-weight:500}
 .lede a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 .lede a:hover{color:var(--accent-2)}
 
 .hero-meta{
-  margin-top:28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
-  font-size:13px;color:var(--muted);
+  margin-top:22px;display:flex;align-items:center;gap:12px;
+  font-family:var(--serif);font-variation-settings:"opsz" 18;
+  font-size:14px;color:var(--muted);
 }
 .hero-meta .av{
-  width:36px;height:36px;border-radius:50%;
-  background:url(images/avatar.jpg) center/cover,var(--paper-2);
-  filter:saturate(0.9);border:1px solid var(--rule);flex-shrink:0;
+  width:34px;height:34px;border-radius:50%;object-fit:cover;
+  border:1px solid var(--rule);filter:saturate(0.9);flex-shrink:0;
 }
 .hero-meta b{color:var(--ink);font-weight:500}
-.hero-meta a{text-decoration:none}
-.hero-meta a:hover{color:var(--accent)}
-.hero-meta .sep{color:var(--rule);margin:0 -4px}
+.hero-meta a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule)}
+.hero-meta a:hover{color:var(--accent);border-color:var(--accent)}
 
-.cta-row{
-  margin-top:32px;display:flex;gap:10px;flex-wrap:wrap;
-}
+.cta-row{margin-top:22px;display:flex;gap:20px;flex-wrap:wrap;font-size:15px}
 .cta-row a{
-  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
-  padding:11px 18px;border-radius:30px;font-size:14px;font-weight:500;
-  transition:background .15s ease,border-color .15s ease,color .15s ease;
+  color:var(--ink);text-decoration:none;
+  border-bottom:1px solid var(--accent);padding-bottom:2px;
+  transition:color .15s ease;
 }
-.cta-row .primary{background:var(--ink);color:var(--paper)}
-.cta-row .primary:hover{background:var(--accent-2);color:#fff}
-.cta-row .ghost{border:1px solid var(--rule);color:var(--ink)}
-.cta-row .ghost:hover{border-color:var(--accent);color:var(--accent)}
-.cta-row a svg{width:14px;height:14px}
+.cta-row a:hover{color:var(--accent)}
+.cta-row a b{font-weight:500}
 
-section{margin-top:60px;scroll-margin-top:20px}
-.section-head{
-  display:flex;align-items:baseline;gap:14px;margin-bottom:22px;
-  padding-bottom:12px;border-bottom:1px solid var(--rule-2);
-}
-.section-head h2{
+section{margin-top:56px;scroll-margin-top:40px}
+section > h2{
   font-family:var(--serif);font-weight:400;font-style:italic;
-  font-size:26px;letter-spacing:-0.01em;color:var(--ink);
+  font-size:24px;letter-spacing:-0.01em;color:var(--ink);
   font-variation-settings:"opsz" 36;
-  display:flex;align-items:baseline;gap:12px;
-}
-.section-head h2::before{
-  content:"";display:inline-block;width:8px;height:8px;
-  background:var(--accent);border-radius:50%;transform:translateY(-3px);flex-shrink:0;
-}
-.section-head .count{
-  margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11px;
-  color:var(--muted);letter-spacing:0.05em;
+  margin-bottom:18px;
 }
 
-.now{
-  display:grid;grid-template-columns:1fr;gap:1px;background:var(--rule);
-  border:1px solid var(--rule);border-radius:10px;overflow:hidden;
+.now-prose{
+  font-family:var(--serif);font-variation-settings:"opsz" 20;
+  font-size:17px;line-height:1.65;color:var(--ink-2);max-width:56ch;text-wrap:pretty;
 }
-.now .ni{
-  background:var(--card);padding:16px 20px;
-  display:grid;grid-template-columns:108px 1fr;gap:16px;align-items:baseline;
+.now-prose p{margin-bottom:14px}
+.now-prose p:last-child{margin-bottom:0}
+.now-prose b{color:var(--ink);font-weight:500}
+.now-prose a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(200,107,58,0.3)}
+.now-prose a:hover{border-color:var(--accent)}
+
+.work-list{list-style:none;display:flex;flex-direction:column;gap:20px}
+.work-list li a{
+  display:flex;gap:16px;align-items:flex-start;
+  text-decoration:none;color:inherit;
 }
-.now .ni .k{
-  font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);
-  letter-spacing:0.14em;text-transform:uppercase;
+.work-list .thumb{
+  width:44px;height:44px;border-radius:8px;object-fit:cover;
+  flex-shrink:0;margin-top:4px;border:1px solid var(--rule-2);
+  background:var(--paper-2);
 }
-.now .ni .v{
+.work-list .body{min-width:0;flex:1}
+.work-list .ln{
+  font-family:var(--serif);font-variation-settings:"opsz" 32;
+  font-size:20px;font-weight:500;color:var(--ink);letter-spacing:-0.01em;
+  line-height:1.25;
+  display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+}
+.work-list .ln .u{font-family:'Inter',sans-serif;font-size:12px;color:var(--muted);font-weight:400;letter-spacing:0}
+.work-list li a:hover .ln{color:var(--accent)}
+.work-list p{
   font-family:var(--serif);font-variation-settings:"opsz" 18;
   font-size:16px;line-height:1.55;color:var(--ink-2);
+  margin-top:4px;text-wrap:pretty;max-width:60ch;
 }
-.now .ni .v b{color:var(--ink);font-weight:500}
-.now .ni .v a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(200,107,58,0.3)}
-.now .ni .v a:hover{border-color:var(--accent)}
-
-.work{display:flex;flex-direction:column;gap:12px}
-.work .card{
-  display:grid;grid-template-columns:56px 1fr auto;gap:18px;
-  padding:18px;background:var(--card);
-  border:1px solid var(--rule);border-radius:10px;
-  transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease;
-  text-decoration:none;color:inherit;align-items:start;
-}
-.work .card:hover{border-color:var(--accent);transform:translateY(-1px);box-shadow:0 10px 24px -14px rgba(31,29,26,0.18)}
-.work .card .thumb{width:56px;height:56px;border-radius:10px;overflow:hidden;background:var(--paper-2);border:1px solid var(--rule-2);flex-shrink:0}
-.work .card .thumb img{width:100%;height:100%;object-fit:cover}
-.work .card .thumb.empty{
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--serif);font-size:28px;color:var(--accent);
-  font-style:italic;font-variation-settings:"opsz" 60;
-}
-.work .card .body{min-width:0}
-.work .card .ln{
-  font-family:var(--serif);font-size:22px;font-weight:500;color:var(--ink);
-  letter-spacing:-0.01em;line-height:1.15;
-  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
-  font-variation-settings:"opsz" 36;
-}
-.work .card .ln .u{font-family:'Inter',sans-serif;font-size:12px;color:var(--muted);font-weight:400;letter-spacing:0}
-.work .card p{
-  font-family:var(--serif);font-size:15.5px;line-height:1.55;
-  color:var(--ink-2);margin-top:5px;text-wrap:pretty;max-width:56ch;
-  font-variation-settings:"opsz" 18;
-}
-.work .card p b{color:var(--ink);font-weight:500}
-.work .card .tags{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
-.work .card .tags span{
-  font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);
-  border:1px solid var(--rule);padding:1px 7px;border-radius:10px;letter-spacing:0.04em;
-}
-.work .card .metric{
-  text-align:right;white-space:nowrap;
-  font-family:var(--serif);font-size:24px;color:var(--accent);
-  font-variation-settings:"opsz" 36;letter-spacing:-0.02em;line-height:1;font-style:italic;
-}
-.work .card .metric small{
-  display:block;font-family:'Inter',sans-serif;font-size:10px;color:var(--muted);
-  margin-top:5px;letter-spacing:0.08em;text-transform:uppercase;font-style:normal;
-}
+.work-list p b{color:var(--ink);font-weight:500}
 .more-note{
-  margin-top:16px;padding:14px 18px;background:var(--paper-2);border-radius:8px;
-  font-family:var(--serif);font-variation-settings:"opsz" 18;
-  font-size:15.5px;color:var(--ink-2);line-height:1.5;
-  display:flex;align-items:center;gap:14px;justify-content:space-between;flex-wrap:wrap;
+  margin-top:24px;font-family:var(--serif);font-variation-settings:"opsz" 18;
+  font-size:16px;line-height:1.55;color:var(--muted);font-style:italic;
 }
-.more-note b{color:var(--ink);font-weight:500}
-.more-note a{color:var(--accent);text-decoration:none;font-family:'Inter',sans-serif;font-size:13px;border-bottom:1px solid var(--rule);padding-bottom:1px;white-space:nowrap}
+.more-note a{color:var(--accent);text-decoration:none;font-style:normal;border-bottom:1px solid var(--rule);padding-bottom:1px}
 .more-note a:hover{border-color:var(--accent)}
 
 .essay{font-family:var(--serif);font-variation-settings:"opsz" 18}
-.essay p{font-size:18px;line-height:1.65;color:var(--ink-2);margin-bottom:18px;text-wrap:pretty;max-width:62ch}
+.essay p{font-size:18px;line-height:1.7;color:var(--ink-2);margin-bottom:16px;text-wrap:pretty;max-width:62ch}
 .essay p:first-child::first-letter{
-  font-size:58px;font-weight:500;float:left;
+  font-size:54px;font-weight:500;float:left;
   line-height:0.9;padding:4px 10px 0 0;color:var(--accent);font-family:var(--serif);
 }
 .essay p b{color:var(--ink);font-weight:500}
@@ -438,84 +384,33 @@ section{margin-top:60px;scroll-margin-top:20px}
 .essay p a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 .essay p a:hover{color:var(--accent-2)}
 .pullquote{
-  margin:28px 0;padding:0 0 0 20px;border-left:2px solid var(--accent);
-  font-size:22px;line-height:1.4;color:var(--ink);font-style:italic;
-  font-variation-settings:"opsz" 36;max-width:60ch;
+  margin:24px 0;padding:0 0 0 18px;border-left:2px solid var(--accent);
+  font-size:20px;line-height:1.45;color:var(--ink);font-style:italic;
+  font-variation-settings:"opsz" 36;max-width:58ch;
   font-family:var(--serif);
 }
 
 .stack-prose{font-family:var(--serif);font-variation-settings:"opsz" 18;font-size:17px;line-height:1.7;color:var(--ink-2);max-width:62ch}
 .stack-prose b{color:var(--ink);font-weight:500}
 
-.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.contact-grid a{
-  padding:16px 18px;background:var(--card);border:1px solid var(--rule);border-radius:10px;
-  text-decoration:none;color:var(--ink);
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
-  transition:border-color .15s ease,background .15s ease;
+.contact-list{
+  list-style:none;display:flex;flex-direction:column;gap:6px;
+  font-family:var(--serif);font-variation-settings:"opsz" 20;font-size:17px;line-height:1.6;
 }
-.contact-grid a:hover{border-color:var(--accent);background:#fff}
-.contact-grid a .l{display:flex;flex-direction:column;gap:3px}
-.contact-grid a .l .k{font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
-.contact-grid a .l .v{font-family:var(--serif);font-size:18px;color:var(--ink);font-variation-settings:"opsz" 28}
-.contact-grid a:hover .l .v{color:var(--accent)}
-.contact-grid a .arr{color:var(--muted);font-size:14px}
-.contact-grid a:hover .arr{color:var(--accent)}
-
-aside{position:relative;display:flex;flex-direction:column;gap:16px}
-@media(min-width:940px){
-  aside{position:sticky;top:32px;align-self:start;max-height:calc(100vh - 64px);overflow-y:auto;padding-right:2px}
-  aside::-webkit-scrollbar{width:4px}
-  aside::-webkit-scrollbar-thumb{background:var(--rule);border-radius:4px}
-}
-aside .scard{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:16px}
-aside .scard h3{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:12px;font-weight:400}
-aside .profile{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-aside .profile .av{
-  width:52px;height:52px;border-radius:50%;
-  background:url(images/avatar.jpg) center/cover,var(--paper-2);
-  border:1px solid var(--rule);filter:saturate(0.9);flex-shrink:0;
-}
-aside .profile .nm{font-family:var(--serif);font-size:19px;color:var(--ink);font-variation-settings:"opsz" 32;font-weight:500;letter-spacing:-0.01em;line-height:1.1}
-aside .profile .hd{font-family:'Inter',sans-serif;font-size:12px;color:var(--muted);margin-top:3px;letter-spacing:0.02em}
-aside .quick-cta{
-  display:block;margin-top:8px;padding:10px 12px;text-align:center;
-  background:var(--ink);color:var(--paper);border-radius:8px;font-size:13px;font-weight:500;
-  text-decoration:none;transition:background .15s ease;
-}
-aside .quick-cta:hover{background:var(--accent-2)}
-aside .row{display:flex;align-items:baseline;justify-content:space-between;padding:6px 0;font-size:13px;gap:10px}
-aside .row .k{color:var(--muted);font-family:'Inter',sans-serif}
-aside .row .v{color:var(--ink);font-family:var(--serif);font-size:17px;font-variation-settings:"opsz" 28;letter-spacing:-0.01em}
-aside .row .v em{font-style:italic;color:var(--accent);margin-left:1px}
-aside .toc{display:flex;flex-direction:column;gap:2px}
-aside .toc a{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:8px 10px;border-radius:6px;text-decoration:none;color:var(--ink-2);font-family:var(--serif);font-size:15px;font-variation-settings:"opsz" 24;transition:background .12s ease,color .12s ease}
-aside .toc a:hover{background:var(--paper-2);color:var(--ink)}
-aside .toc a .n{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.1em}
-aside .toc a:hover .n{color:var(--accent)}
-
-.colophon{
-  grid-column:1/-1;
-  margin-top:64px;padding-top:24px;border-top:1px solid var(--rule);
+.contact-list li{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.contact-list .k{
   font-family:'Inter',sans-serif;font-size:12px;color:var(--muted);
-  display:flex;justify-content:space-between;align-items:baseline;gap:12px;line-height:1.5;flex-wrap:wrap;
+  letter-spacing:0.06em;text-transform:uppercase;min-width:80px;
 }
-.colophon a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent}
-.colophon a:hover{color:var(--accent);border-color:var(--accent)}
-.colophon b{color:var(--ink);font-weight:500}
+.contact-list a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px;transition:color .15s ease}
+.contact-list a:hover{color:var(--accent)}
 
 @media(max-width:580px){
-  body{padding:28px 16px 60px}
-  h1{font-size:38px}
+  body{padding:28px 18px 60px}
+  h1{font-size:34px}
   .lede{font-size:18px}
-  .work .card{grid-template-columns:48px 1fr;gap:14px}
-  .work .card .thumb{width:48px;height:48px}
-  .work .card .metric{grid-column:2;text-align:left;font-size:18px;margin-top:6px}
-  .contact-grid{grid-template-columns:1fr}
-  .now .ni{grid-template-columns:1fr;gap:4px}
-  .hdr .status{display:none}
-  .hdr .names .alt::before{display:none}
-  .hdr .names .alt{margin-left:6px}
+  .work-list .ln{font-size:19px}
+  .contact-list .k{min-width:0;width:100%;margin-bottom:-4px}
 }
 </style>
 </head>
@@ -523,209 +418,132 @@ aside .toc a:hover .n{color:var(--accent)}
 
 <div class="page">
 
-  <div class="hdr">
-    <div class="names">
-      <span class="dot"></span>
-      <a href="https://lyubchak.com">lyubchak.com</a>
-      <span class="alt"><a href="https://yuri.ly">yuri.ly</a></span>
-    </div>
-    <div class="right">
-      <a class="status" href="#contact" data-t="status">available for select work</a>
-      <div class="lang">
-        <button class="active" data-lang="en">EN</button>
-        <button data-lang="ua">УК</button>
-      </div>
+  <div class="lang-row">
+    <div class="lang" role="group" aria-label="Language">
+      <button class="active" data-lang="en">EN</button>
+      <button data-lang="ua">УК</button>
     </div>
   </div>
 
-  <main class="col">
+  <main>
 
-    <h1 data-t="h1">Hi, I'm <em>Yuri Ly</em> — I lead AI at a large manufacturing group, and build Telegram products used by millions</h1>
+    <h1 data-t="h1">Hi, I'm <em>Yuri Ly</em> — I work on AI inside a real business and build Telegram products used by millions</h1>
 
-    <p class="lede" data-t="lede">Developer, researcher and implementer based in <b>Ukraine</b>. Self-taught from twelve, writing code ever since. Currently <b>AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a></b> — driving the company's AI adoption end to end. On the side, a small constellation of Telegram bots</p>
+    <p class="lede" data-t="lede">Developer and researcher based in <b>Ukraine</b>, writing code since I was twelve. Currently <b>AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a></b>. On the side I run my own Telegram products used by millions</p>
 
-    <div class="hero-meta">
-      <div class="av" aria-hidden="true"></div>
-      <span><b data-t="m_name">Юрій Любчак</b></span>
-      <span class="sep">·</span>
-      <a href="https://github.com/LyoSU" target="_blank" rel="noopener">@LyoSU</a>
-      <span class="sep">·</span>
-      <span data-t="m_role">ai lead · developer · researcher</span>
-    </div>
+    <p class="hero-meta">
+      <img src="images/avatar.jpg" alt="" class="av">
+      <span><b data-t="m_name">Юрій Любчак</b> · <a href="https://github.com/LyoSU" target="_blank" rel="noopener">@LyoSU</a></span>
+    </p>
 
     <div class="cta-row">
-      <a class="primary" href="mailto:hi@lyubchak.com">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12v8H2zM2 4l6 4 6-4"/></svg>
-        <span data-t="cta_email">hi@lyubchak.com</span>
-      </a>
-      <a class="ghost" href="tg://resolve?domain=LyDev">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3L1 8l4 2 1 4 2-3 4 3z"/></svg>
-        <span>Telegram <b>@LyDev</b></span>
-      </a>
+      <a href="mailto:hi@lyubchak.com" data-t="cta_email">hi@lyubchak.com</a>
+      <a href="tg://resolve?domain=LyDev">Telegram <b>@LyDev</b></a>
     </div>
 
     <section id="now">
-      <div class="section-head"><h2 data-t="h_now">What I'm doing</h2></div>
-      <div class="now">
-        <div class="ni"><span class="k" data-t="n_day">Main work</span><span class="v" data-t="n_day_v"><b>AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b> — researching, building and rolling out AI agents and automation across the company. End to end: picking the problems, shipping the systems, making them stick</span></div>
-        <div class="ni"><span class="k" data-t="n_eve">On the side</span><span class="v" data-t="n_eve_v">Running <a href="tg://resolve?domain=fStikBot"><b>fStik</b></a>, <a href="tg://resolve?domain=QuotLyBot"><b>QuotLy</b></a> and a small set of Telegram bots that refuse to stop growing — their own servers and databases on my own hands</span></div>
-        <div class="ni"><span class="k" data-t="n_open">Open for</span><span class="v" data-t="n_open_v">Select <b>AI &amp; automation consulting</b>. Ugly problems preferred, demo budget optional</span></div>
+      <h2 data-t="h_now">What I'm doing</h2>
+      <div class="now-prose">
+        <p data-t="now_p">Main work — <b>AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b>: researching, building and rolling out AI agents and automation across the company, end to end. On the side — <a href="tg://resolve?domain=fStikBot"><b>fStik</b></a>, <a href="tg://resolve?domain=QuotLyBot"><b>QuotLy</b></a> and a few Telegram bots, servers and databases in my own hands. Open for select <b>AI &amp; automation consulting</b> — ugly problems preferred, demo budget optional.</p>
       </div>
     </section>
 
     <section id="work">
-      <div class="section-head">
-        <h2 data-t="h_work">Selected work</h2>
-        <span class="count" data-t="h_work_c">7 live · rest in archive</span>
-      </div>
-      <div class="work">
+      <h2 data-t="h_work">Selected work</h2>
+      <ul class="work-list">
 
-        <a class="card" href="tg://resolve?domain=fStikBot">
-          <div class="thumb"><img src="images/fStikBot.jpg" alt="fStik"></div>
+        <li><a href="tg://resolve?domain=fStikBot">
+          <img src="images/fStikBot.jpg" alt="" class="thumb">
           <div class="body">
             <div class="ln">fStik <span class="u">fstik.app · @fStikBot</span></div>
-            <p data-t="fstik">The largest sticker platform on Telegram. <b>Bot, site, Mini App and an Android app</b> — one stack, one person on support</p>
-            <div class="tags"><span>telegram</span><span>android</span><span>mini-app</span><span>nestjs</span></div>
+            <p data-t="fstik">The largest sticker platform on Telegram, <b>800K monthly users</b>. Bot, site, Mini App and an Android app on one stack, I write and support it alone</p>
           </div>
-          <div class="metric">800K<small data-t="mau">monthly</small></div>
-        </a>
+        </a></li>
 
-        <a class="card" href="tg://resolve?domain=QuotLyBot">
-          <div class="thumb"><img src="images/QuotLyBot.jpg" alt="QuotLy"></div>
+        <li><a href="https://kness.energy" target="_blank" rel="noopener">
+          <img src="images/KNESS.jpg" alt="" class="thumb">
+          <div class="body">
+            <div class="ln">KNESS · AI <span class="u">kness.energy</span></div>
+            <p data-t="kness">AI agents and automation inside a real business, not PoCs and not prototypes, but systems the company actually depends on day to day</p>
+          </div>
+        </a></li>
+
+        <li><a href="tg://resolve?domain=QuotLyBot">
+          <img src="images/QuotLyBot.jpg" alt="" class="thumb">
           <div class="body">
             <div class="ln">QuotLy <span class="u">@QuotLyBot</span></div>
-            <p data-t="quotly">Drop any Telegram message in, get back a clean quote image. Peaks at <b>48 000 messages per minute</b>. Lives inside other people's groups without friction</p>
-            <div class="tags"><span>telegram</span><span>canvas</span><span>scale</span></div>
+            <p data-t="quotly">Turns any Telegram message into a clean quote image, <b>80K groups</b>, up to 48 000 messages per minute at peak</p>
           </div>
-          <div class="metric">80K<small data-t="groups">groups</small></div>
-        </a>
+        </a></li>
 
-        <a class="card" href="https://kness.energy" target="_blank" rel="noopener">
-          <div class="thumb"><img src="images/KNESS.jpg" alt="KNESS"></div>
-          <div class="body">
-            <div class="ln" data-t="kness_ln">KNESS · AI <span class="u">kness.energy</span></div>
-            <p data-t="kness">AI agents and automation running inside a real business. <b>Not PoCs, not prototypes</b> — systems the company actually depends on, picked for outcome</p>
-            <div class="tags"><span>enterprise</span><span>agents</span><span>automation</span></div>
-          </div>
-          <div class="metric" data-t="kness_m">lead</div>
-        </a>
-
-        <a class="card" href="tg://resolve?domain=LyAdminBot">
-          <div class="thumb"><img src="images/LyAdminBot.jpg" alt="LyAdmin"></div>
+        <li><a href="tg://resolve?domain=LyAdminBot">
+          <img src="images/LyAdminBot.jpg" alt="" class="thumb">
           <div class="body">
             <div class="ln">LyAdmin <span class="u">@LyAdminBot</span></div>
-            <p data-t="lyadmin">Group administration for serious Telegram communities. <b>Moderation, anti-spam, reputation</b> — the quiet scaffolding</p>
-            <div class="tags"><span>telegram</span><span>moderation</span></div>
+            <p data-t="lyadmin">Group administration for serious Telegram communities: moderation, anti-spam, reputation</p>
           </div>
-          <div class="metric" data-t="ops">ops</div>
-        </a>
+        </a></li>
 
-        <a class="card" href="tg://resolve?domain=LySupportBot">
-          <div class="thumb"><img src="images/LySupportBot.jpg" alt="LySupport"></div>
+        <li><a href="tg://resolve?domain=LySupportBot">
+          <img src="images/LySupportBot.jpg" alt="" class="thumb">
           <div class="body">
             <div class="ln">LySupport <span class="u">@LySupportBot</span></div>
-            <p data-t="lysupport">A small SaaS for teams: tickets, routing, handoffs — all inside Telegram, no separate dashboard to learn</p>
-            <div class="tags"><span>saas</span><span>telegram</span><span>support</span></div>
+            <p data-t="lysupport">A small SaaS for teams: tickets, routing, handoffs, all inside Telegram</p>
           </div>
-          <div class="metric" data-t="saas">SaaS</div>
-        </a>
+        </a></li>
 
-        <a class="card" href="tg://resolve?domain=LyBot">
-          <div class="thumb"><img src="images/LyBot.jpg" alt="LyBot"></div>
+        <li><a href="tg://resolve?domain=LyBot">
+          <img src="images/LyBot.jpg" alt="" class="thumb">
           <div class="body">
             <div class="ln">LyBot <span class="u">@LyBot</span></div>
-            <p data-t="lybot">Search <b>YouTube Music</b> from Telegram, get audio in original quality. Small, fast, personal</p>
-            <div class="tags"><span>music</span><span>telegram</span></div>
+            <p data-t="lybot">Search YouTube Music straight from Telegram, get audio in original quality</p>
           </div>
-          <div class="metric" data-t="audio">audio</div>
-        </a>
+        </a></li>
 
-        <a class="card" href="tg://resolve?domain=LyOSBot">
-          <div class="thumb"><img src="images/LyOSBot.jpg" alt="LyOS"></div>
+        <li><a href="tg://resolve?domain=LyOSBot">
+          <img src="images/LyOSBot.jpg" alt="" class="thumb">
           <div class="body">
             <div class="ln">LyOS <span class="u">@LyOSBot</span></div>
-            <p data-t="lyos">Multiplayer hacker simulator. <b>Attack, defend, upgrade</b>. Built in evenings, ongoing</p>
-            <div class="tags"><span>game</span><span>wip</span></div>
+            <p data-t="lyos">Multiplayer hacker simulator: attack, defend, upgrade, built in evenings</p>
           </div>
-          <div class="metric" data-t="game">game</div>
-        </a>
+        </a></li>
 
-      </div>
+      </ul>
 
-      <div class="more-note">
-        <span data-t="more">Plus dozens more in the archive. <b>The ones above are the ones still running</b></span>
-        <a href="tg://resolve?domain=LyBlog" data-t="blog_link">follow @LyBlog →</a>
-      </div>
+      <p class="more-note">
+        <span data-t="more">Plus dozens more in the archive</span> · <a href="tg://resolve?domain=LyBlog" data-t="blog_link">@LyBlog →</a>
+      </p>
     </section>
 
     <section id="about">
-      <div class="section-head"><h2 data-t="h_about">About</h2></div>
+      <h2 data-t="h_about">About</h2>
       <div class="essay">
         <p data-t="p1">Started at twelve, editing <b>uCoz sites</b> with too much time on my hands. Then came <b>PHP</b>, then <b>VK bots</b>, then the <b>Telegram ecosystem</b> I still live inside today.</p>
-        <p data-t="p2">Millions of people have used something I wrote — mostly through <a href="tg://resolve?domain=fStikBot">fStik</a> and <a href="tg://resolve?domain=QuotLyBot">QuotLy</a>. I also won <b>first place</b> at the official Telegram Mini App Contest. Fun part of the CV, not the main thing anymore.</p>
+        <p data-t="p2">Millions of people have used something I wrote, mostly through <a href="tg://resolve?domain=fStikBot">fStik</a> and <a href="tg://resolve?domain=QuotLyBot">QuotLy</a>. Once won <b>first place</b> at the official Telegram Mini App Contest, fun part of the CV, but not the main thing anymore.</p>
         <div class="pullquote" data-t="pull">The main thing now is AI that actually lands inside a real company — agents and automation the business can depend on, not things that only look good in a demo</div>
-        <p data-t="p3">I do that at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a>, a large manufacturing group, as AI lead. I research what's worth building, build it, wire it into real systems, and stay to make it stick. Developer, researcher, implementer, all in one seat. Servers, databases and plumbing for my own projects stay in my own hands.</p>
-        <p data-t="p4">On the side I run my own bots, take on <b>select consulting</b> — particularly when the problem is ugly and the demo budget is zero — and write at <a href="tg://resolve?domain=LyBlog">@LyBlog</a></p>
+        <p data-t="p3">I do that at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a>, a large manufacturing group, as AI lead. I pick what's worth building, build it, wire it into real systems, and stay to make it work.</p>
+        <p data-t="p4">On the side I run my own bots and write at <a href="tg://resolve?domain=LyBlog">@LyBlog</a>.</p>
       </div>
     </section>
 
     <section id="stack">
-      <div class="section-head"><h2 data-t="h_stack">How I build</h2></div>
-      <p class="stack-prose" data-t="stack_p">Day-to-day I write <b>TypeScript</b> on <b>Node.js</b>, frontends in <b>React / Next.js</b>. AI work on top of <b>OpenAI, Claude, Gemini</b> and whichever models and tools are currently winning. Telegram is <b>Telegraf, grammY, TDLib, MTProto</b>, Mini Apps. My own projects run on my own boxes: <b>Linux, Docker, Sentry, Prometheus</b>, large <b>MongoDB / Postgres / Redis / BullMQ</b> clusters and boring CI</p>
+      <h2 data-t="h_stack">How I build</h2>
+      <p class="stack-prose" data-t="stack_p">For about two years now I've been writing mostly in a pair with AI agents. Day to day it's <b>Claude</b>, currently the strongest tool I've tested; OpenAI and Gemini I keep around for verification and comparison. Working stack: <b>TypeScript</b> on <b>Node.js</b>, <b>React / Next.js</b> on the frontend, <b>Python</b> for ML, Telegram through <b>Telegraf, grammY, TDLib, MTProto</b> and Mini Apps. All on my own boxes: <b>Linux, Docker, Sentry</b>, <b>MongoDB / Postgres / Redis</b></p>
     </section>
 
     <section id="contact">
-      <div class="section-head"><h2 data-t="h_contact">Get in touch</h2></div>
-      <p class="stack-prose" style="margin-bottom:18px" data-t="contact_p">Email is best for business. Telegram is fastest for everything else. I read everything</p>
-      <div class="contact-grid">
-        <a href="mailto:hi@lyubchak.com"><div class="l"><span class="k">Email</span><span class="v">hi@lyubchak.com</span></div><span class="arr">→</span></a>
-        <a href="tg://resolve?domain=LyDev"><div class="l"><span class="k">Telegram</span><span class="v">@LyDev</span></div><span class="arr">→</span></a>
-        <a href="https://github.com/LyoSU" target="_blank" rel="noopener"><div class="l"><span class="k">GitHub</span><span class="v">@LyoSU</span></div><span class="arr">→</span></a>
-        <a href="https://www.linkedin.com/in/lyubchak/" target="_blank" rel="noopener"><div class="l"><span class="k">LinkedIn</span><span class="v">/in/lyubchak</span></div><span class="arr">→</span></a>
-        <a href="tg://resolve?domain=LyBlog"><div class="l"><span class="k" data-t="c_blog_k">Blog</span><span class="v">@LyBlog</span></div><span class="arr">→</span></a>
-        <a href="https://yuri.ly"><div class="l"><span class="k" data-t="c_short_k">Short link</span><span class="v">yuri.ly</span></div><span class="arr">→</span></a>
-      </div>
+      <h2 data-t="h_contact">Get in touch</h2>
+      <p class="stack-prose" style="margin-bottom:20px" data-t="contact_p">Email for formal matters, Telegram for anything casual</p>
+      <ul class="contact-list">
+        <li><span class="k">Email</span><a href="mailto:hi@lyubchak.com">hi@lyubchak.com</a></li>
+        <li><span class="k">Telegram</span><a href="tg://resolve?domain=LyDev">@LyDev</a></li>
+        <li><span class="k">GitHub</span><a href="https://github.com/LyoSU" target="_blank" rel="noopener">@LyoSU</a></li>
+        <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/lyubchak/" target="_blank" rel="noopener">/in/lyubchak</a></li>
+        <li><span class="k" data-t="c_blog_k">Blog</span><a href="tg://resolve?domain=LyBlog">@LyBlog</a></li>
+      </ul>
     </section>
 
   </main>
-
-  <aside>
-    <div class="scard">
-      <div class="profile">
-        <div class="av"></div>
-        <div>
-          <div class="nm" data-t="s_nm">Yurii Liubchak</div>
-          <div class="hd" data-t="s_hd">ai lead · developer · ukraine</div>
-        </div>
-      </div>
-      <a class="quick-cta" href="mailto:hi@lyubchak.com" data-t="s_cta">Say hi →</a>
-    </div>
-
-    <div class="scard">
-      <h3 data-t="s_glance">At a glance</h3>
-      <div class="row"><span class="k" data-t="g_users">Users reached</span><span class="v">millions</span></div>
-      <div class="row"><span class="k" data-t="g_proj">Projects shipped</span><span class="v">150<em>+</em></span></div>
-      <div class="row"><span class="k" data-t="g_contest">Mini App Contest</span><span class="v" data-t="g_contest_v"><em>#1</em></span></div>
-      <div class="row"><span class="k" data-t="g_based">Based</span><span class="v" data-t="g_based_v">Ukraine</span></div>
-      <div class="row"><span class="k" data-t="g_role">Role</span><span class="v" data-t="g_role_v">KNESS · AI lead</span></div>
-    </div>
-
-    <div class="scard">
-      <h3 data-t="s_toc">On this page</h3>
-      <nav class="toc">
-        <a href="#now"><span data-t="toc_now">What I'm doing</span></a>
-        <a href="#work"><span data-t="toc_work">Selected work</span></a>
-        <a href="#about"><span data-t="toc_about">About</span></a>
-        <a href="#stack"><span data-t="toc_stack">How I build</span></a>
-        <a href="#contact"><span data-t="toc_contact">Get in touch</span></a>
-      </nav>
-    </div>
-  </aside>
-
-  <div class="colophon">
-    <span><b>lyubchak.com</b> · <a href="https://yuri.ly">yuri.ly</a></span>
-    <span><a href="mailto:hi@lyubchak.com">hi@lyubchak.com</a> · <a href="tg://resolve?domain=LyDev">@LyDev</a></span>
-  </div>
 
 </div>
 
@@ -742,98 +560,62 @@ aside .toc a:hover .n{color:var(--accent)}
    ever reaches this code path. */
 const T = {
   en:{
-    status:"open to select work",
-    h1:"Hi, I'm <em>Yuri Ly</em> — I lead AI at a large manufacturing group, and build Telegram products used by millions",
-    lede:'Developer, researcher and implementer based in <b>Ukraine</b>. Self-taught from twelve, writing code ever since. Currently <b>AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a></b> — driving the company\'s AI adoption end to end. On the side, a small constellation of Telegram bots',
-    m_name:"Юрій Любчак", m_role:"ai lead · developer · researcher",
+    h1:"Hi, I'm <em>Yuri Ly</em> — I work on AI inside a real business and build Telegram products used by millions",
+    lede:'Developer and researcher based in <b>Ukraine</b>, writing code since I was twelve. Currently <b>AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a></b>. On the side I run my own Telegram products used by millions',
+    m_name:"Юрій Любчак",
     cta_email:"hi@lyubchak.com",
     h_now:"What I'm doing",
-    n_day:"Main work", n_day_v:'<b>AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b> — researching, building and rolling out AI agents and automation across the company. End to end: picking the problems, shipping the systems, making them stick',
-    n_eve:"On the side", n_eve_v:'Running <a href="tg://resolve?domain=fStikBot"><b>fStik</b></a>, <a href="tg://resolve?domain=QuotLyBot"><b>QuotLy</b></a> and a small set of Telegram bots that refuse to stop growing — servers and databases all in my own hands',
-    n_open:"Open for", n_open_v:"Select <b>AI &amp; automation consulting</b>. Ugly problems preferred, demo budget optional",
-    h_work:"Selected work", h_work_c:"7 live · rest in archive",
-    fstik:"The largest sticker platform on Telegram. <b>Bot, site, Mini App and an Android app</b> — one stack, one person on support",
-    mau:"monthly",
-    quotly:"Drop any Telegram message in, get back a clean quote image. Peaks at <b>48 000 messages per minute</b>. Lives inside other people's groups without friction",
-    groups:"groups",
-    kness_ln:'KNESS · AI <span class="u">kness.energy</span>',
-    kness:"AI agents and automation running inside a real business. <b>Not PoCs, not prototypes</b> — systems the company actually depends on, picked for outcome",
-    kness_m:"lead",
-    lyadmin:"Group administration for serious Telegram communities. <b>Moderation, anti-spam, reputation</b> — the quiet scaffolding",
-    ops:"ops",
-    lysupport:"A small SaaS for teams: tickets, routing, handoffs — all inside Telegram, no separate dashboard to learn",
-    saas:"SaaS",
-    lybot:"Search <b>YouTube Music</b> from Telegram, get audio in original quality. Small, fast, personal",
-    audio:"audio",
-    lyos:"Multiplayer hacker simulator. <b>Attack, defend, upgrade</b>. Built in evenings, ongoing",
-    game:"game",
-    more:"Plus dozens more in the archive. <b>These are the ones that matter</b>",
-    blog_link:"follow @LyBlog →",
+    now_p:'Main work: <b>AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b>. I research, build and roll out AI agents and automation across the company, from picking the problem to stable production. On the side: <a href="tg://resolve?domain=fStikBot"><b>fStik</b></a>, <a href="tg://resolve?domain=QuotLyBot"><b>QuotLy</b></a> and a few more Telegram bots; servers and databases all on my own machines. Occasionally I take on consulting in <b>AI and automation</b>, most interesting when the problem is real and not meant for a demo',
+    h_work:"Selected work",
+    fstik:"The largest sticker platform on Telegram, <b>800K monthly users</b>. Bot, site, Mini App and an Android app on one stack, I write and support it alone",
+    kness:"AI agents and automation inside a real business, not PoCs and not prototypes, but systems the company actually depends on day to day",
+    quotly:"Turns any Telegram message into a clean quote image, <b>80K groups</b>, up to 48 000 messages per minute at peak",
+    lyadmin:"Group administration for serious Telegram communities: moderation, anti-spam, reputation",
+    lysupport:"A small SaaS for teams: tickets, routing, handoffs, all inside Telegram",
+    lybot:"Search YouTube Music straight from Telegram, get audio in original quality",
+    lyos:"Multiplayer hacker simulator: attack, defend, upgrade, built in evenings",
+    more:"Plus dozens more in the archive",
+    blog_link:"@LyBlog →",
     h_about:"About",
     p1:"Started at twelve, editing <b>uCoz sites</b> with too much time on my hands. Then came <b>PHP</b>, then <b>VK bots</b>, then the <b>Telegram ecosystem</b> I still live inside today.",
-    p2:'Millions of people have used something I wrote — mostly through <a href="tg://resolve?domain=fStikBot">fStik</a> and <a href="tg://resolve?domain=QuotLyBot">QuotLy</a>. I also won <b>first place</b> at the official Telegram Mini App Contest. Fun part of the CV, not the main thing anymore.',
-    pull:"The main thing now is AI that actually lands inside a real company — agents and automation the business can depend on, not things that only look good in a demo",
-    p3:'I do that at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a>, a large manufacturing group, as AI lead. I research what\'s worth building, build it, wire it into real systems, and stay to make it work. Developer, researcher, implementer — all in one seat.',
-    p4:'On the side I run my own bots, take on <b>consulting</b> and write at <a href="tg://resolve?domain=LyBlog">@LyBlog</a>',
+    p2:'Millions of people have used something I wrote, mostly through <a href="tg://resolve?domain=fStikBot">fStik</a> and <a href="tg://resolve?domain=QuotLyBot">QuotLy</a>. Once won <b>first place</b> at the official Telegram Mini App Contest, fun part of the CV, but not the main thing anymore.',
+    pull:"The main thing now is AI that actually lands inside a real company, agents and automation the business can depend on, not things that only look good in a demo",
+    p3:'I do that at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a>, a large manufacturing group, as AI lead. I pick what\'s worth building, build it, wire it into real systems, and stay to make it work.',
+    p4:'On the side I run my own bots and write at <a href="tg://resolve?domain=LyBlog">@LyBlog</a>.',
     h_stack:"How I build",
-    stack_p:"Day-to-day I write <b>TypeScript</b> on <b>Node.js</b>, frontends in <b>React / Next.js</b>. AI work on top of <b>OpenAI, Claude, Gemini</b> and whichever models and tools are currently winning. Telegram is <b>Telegraf, grammY, TDLib, MTProto</b>, Mini Apps. My own projects run on my own boxes: <b>Linux, Docker, Sentry, Prometheus</b>, large <b>MongoDB / Postgres / Redis / BullMQ</b> clusters and boring CI",
+    stack_p:"For about two years now I\'ve been writing mostly in a pair with AI agents. Day to day it\'s <b>Claude</b>, currently the strongest tool I\'ve tested; OpenAI and Gemini I keep around for verification and comparison. Working stack: <b>TypeScript</b> on <b>Node.js</b>, <b>React / Next.js</b> on the frontend, <b>Python</b> for ML, Telegram through <b>Telegraf, grammY, TDLib, MTProto</b> and Mini Apps. All on my own boxes: <b>Linux, Docker, Sentry</b>, <b>MongoDB / Postgres / Redis</b>",
     h_contact:"Get in touch",
-    contact_p:"Email is best for business. Telegram is fastest for everything else. I read everything",
-    c_blog_k:"Blog", c_short_k:"Short link",
-    s_nm:"Yurii Liubchak", s_hd:"ai lead · developer · ukraine",
-    s_cta:"Say hi →",
-    s_glance:"At a glance",
-    g_users:"Users reached", g_proj:"Projects shipped", g_contest:"Mini App Contest", g_contest_v:"<em>#1</em>",
-    g_based:"Based", g_based_v:"Ukraine", g_role:"Role", g_role_v:"KNESS · AI lead",
-    s_toc:"On this page",
-    toc_now:"What I'm doing", toc_work:"Selected work", toc_about:"About", toc_stack:"How I build", toc_contact:"Get in touch"
+    contact_p:"Email for formal matters, Telegram for anything casual",
+    c_blog_k:"Blog"
   },
   ua:{
-    status:"відкритий для вибіркових проєктів",
-    h1:"Привіт, я <em>Yuri Ly</em>. Очолюю ШІ-напрям у великій промисловій компанії і роблю Telegram-продукти, якими користуються мільйони",
-    lede:'Розробник і дослідник, впроваджую ШІ у бізнесі. З <b>України</b>. Пишу код з дванадцяти. Зараз <b>AI lead у <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a></b>: веду ШІ-напрям від ідеї до робочої системи в продакшені. Поруч — кілька власних Telegram-ботів',
-    m_name:"Yurii Liubchak", m_role:"ai lead · розробник · дослідник",
+    h1:"Привіт, я <em>Yuri Ly</em>. Роблю ШІ у реальному бізнесі й Telegram-продукти для мільйонів",
+    lede:'Розробник і дослідник з <b>України</b>, пишу код з дванадцяти років. Зараз <b>AI lead у <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a></b>. Паралельно розвиваю власні Telegram-продукти, якими користуються мільйони',
+    m_name:"Юрій Любчак",
     cta_email:"hi@lyubchak.com",
     h_now:"Чим займаюсь",
-    n_day:"Основне", n_day_v:'<b>AI lead у <a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b>. Досліджую, будую і запускаю ШІ-агентів та автоматизацію по всій компанії. Від вибору задачі до стабільної роботи в продакшені',
-    n_eve:"Паралельно", n_eve_v:'Веду <a href="tg://resolve?domain=fStikBot"><b>fStik</b></a>, <a href="tg://resolve?domain=QuotLyBot"><b>QuotLy</b></a> і ще кілька Telegram-ботів. Сервери і бази — все тримаю сам',
-    n_open:"Відкритий до", n_open_v:"Консалтинг: <b>ШІ та автоматизація</b>. Беру вибірково. Найцікавіше — потворні задачі, коли бюджету на красиве демо нуль",
-    h_work:"Вибрані проєкти", h_work_c:"7 активних · інше в архіві",
-    fstik:"Найбільша платформа стікерів у Telegram. <b>Бот, сайт, Mini App і Android-застосунок</b> — один стек, підтримую сам",
-    mau:"на місяць",
-    quotly:"Кидаєш будь-яке повідомлення з Telegram, отримуєш чисту цитату-картинку. На піку <b>48 000 повідомлень за хвилину</b>. Живе у чужих групах і нікому не заважає",
-    groups:"груп",
-    kness_ln:'KNESS · ШІ <span class="u">kness.energy</span>',
-    kness:"ШІ-агенти і автоматизація всередині реального бізнесу. <b>Не PoC, не прототипи</b> — системи, на які компанія реально спирається щодня",
-    kness_m:"lead",
-    lyadmin:"Адмінка для серйозних Telegram-спільнот. <b>Модерація, антиспам, репутація</b> — непомітна інфраструктура, що просто робить своє",
-    ops:"ops",
-    lysupport:"Невеликий SaaS для команд: тікети, маршрутизація, передача. Все в Telegram, окремого дашборду вчити не треба",
-    saas:"SaaS",
-    lybot:"Шукає в <b>YouTube Music</b> прямо з Telegram і віддає аудіо в оригінальній якості. Маленьке, швидке, для себе",
-    audio:"аудіо",
-    lyos:"Багатокористувацький hacker simulator. <b>Атакуй, захищайся, прокачуйся</b>. Роблю вечорами, триває",
-    game:"гра",
-    more:"Ще десятки ботів в архіві. <b>Вище — головні</b>",
-    blog_link:"читати @LyBlog →",
+    now_p:'Основна робота: <b>AI lead у <a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b>. Досліджую, пишу і запускаю ШІ-агентів та автоматизацію по всій компанії, від вибору задачі до стабільної роботи в продакшені. Поза роботою: <a href="tg://resolve?domain=fStikBot"><b>fStik</b></a>, <a href="tg://resolve?domain=QuotLyBot"><b>QuotLy</b></a> і ще кілька Telegram-ботів; сервери та бази на моїх машинах. Іноді беру консалтингові проєкти з <b>ШІ й автоматизації</b>, найцікавіше коли задача справжня, а не заради презентації',
+    h_work:"Вибрані проєкти",
+    fstik:"Найбільша платформа стікерів у Telegram, <b>800K користувачів щомісяця</b>. Бот, сайт, Mini App і Android-застосунок на одному стеку, сам пишу і підтримую",
+    kness:"ШІ-агенти й автоматизація всередині реального бізнесу, не PoC і не прототипи, а системи, на які компанія реально спирається щодня",
+    quotly:"Перетворює будь-яке повідомлення з Telegram на чисту цитату-картинку, <b>80K груп</b>, до 48 000 повідомлень за хвилину на піку",
+    lyadmin:"Адмінка для серйозних Telegram-спільнот: модерація, антиспам, репутація",
+    lysupport:"Невеликий SaaS для команд: тікети, маршрутизація, передача, все прямо в Telegram",
+    lybot:"Шукає в YouTube Music прямо з Telegram і віддає аудіо в оригінальній якості",
+    lyos:"Мультиплеєрний hacker simulator: атакуй, захищайся, прокачуйся, роблю вечорами",
+    more:"Ще десятки ботів в архіві",
+    blog_link:"@LyBlog →",
     h_about:"Про себе",
-    p1:"Почав у 12 з <b>uCoz</b> — редагував сайти і шаблони. Потім <b>PHP</b>, потім <b>боти для VK</b>, потім <b>екосистема Telegram</b>, в якій я і досі.",
-    p2:'Мільйони людей користувалися тим, що я написав. В основному через <a href="tg://resolve?domain=fStikBot">fStik</a> і <a href="tg://resolve?domain=QuotLyBot">QuotLy</a>. Ще виграв <b>перше місце</b> на офіційному Telegram Mini App Contest. Весела частина резюме, вже не головна.',
-    pull:"Головне зараз — ШІ, який реально приживається в справжній компанії. Агенти і автоматизація, на які бізнес може покластися. А не штуки, що гарно виглядають тільки на демо",
-    p3:'Цим і займаюсь у <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a> як AI lead. Дивлюсь, що варто будувати, будую, підключаю до живих систем і залишаюсь, щоб воно реально запрацювало. Розробник, дослідник, впроваджувач — все в одному кріслі.',
-    p4:'Паралельно тримаю власних ботів, беру <b>консалтинг</b> і пишу в <a href="tg://resolve?domain=LyBlog">@LyBlog</a>',
+    p1:"Почав у 12 з <b>uCoz</b>: редагував сайти і шаблони. Потім <b>PHP</b>, потім <b>боти для VK</b>, потім <b>екосистема Telegram</b>, в якій я і досі.",
+    p2:'Мільйони людей користувалися тим, що я написав, переважно через <a href="tg://resolve?domain=fStikBot">fStik</a> і <a href="tg://resolve?domain=QuotLyBot">QuotLy</a>. Колись виграв <b>перше місце</b> на офіційному Telegram Mini App Contest, весела частина резюме, але вже не головна.',
+    pull:"Головне зараз — ШІ, що реально приживається в справжній компанії. Агенти й автоматизація, на які бізнес може покластися, а не штуки, що гарно виглядають лише на демо",
+    p3:'Цим і займаюсь у <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a> як AI lead. Вибираю, що варто будувати, роблю, підключаю до живих систем і залишаюсь, щоб воно реально запрацювало.',
+    p4:'Паралельно веду власних ботів і пишу в <a href="tg://resolve?domain=LyBlog">@LyBlog</a>.',
     h_stack:"Як я будую",
-    stack_p:"Щодня <b>TypeScript</b> на <b>Node.js</b>, фронти на <b>React / Next.js</b>. ШІ поверх <b>OpenAI, Claude, Gemini</b> і того, що зараз у топі. Telegram — <b>Telegraf, grammY, TDLib, MTProto</b>, Mini Apps. Свої проєкти живуть на моїх серверах: <b>Linux, Docker, Sentry, Prometheus</b>, великі кластери <b>MongoDB / Postgres / Redis / BullMQ</b> і нудний CI",
+    stack_p:"Уже десь два роки пишу переважно в парі з ШІ-агентами. Основний — <b>Claude</b>, наразі найсильніший інструмент з тих, що я тестував; OpenAI і Gemini використовую для верифікації та порівняння. Робочий стек: <b>TypeScript</b> на <b>Node.js</b>, <b>React / Next.js</b> на фронті, <b>Python</b> для ML, Telegram через <b>Telegraf, grammY, TDLib, MTProto</b> та Mini Apps. Все на своїх серверах: <b>Linux, Docker, Sentry</b>, <b>MongoDB / Postgres / Redis</b>",
     h_contact:"Написати",
-    contact_p:"Пошта — краще для бізнесу. Telegram — швидше для решти. Читаю все",
-    c_blog_k:"Блог", c_short_k:"Короткий домен",
-    s_nm:"Юрій Любчак", s_hd:"ai lead · розробник · україна",
-    s_cta:"Написати →",
-    s_glance:"Коротко",
-    g_users:"Аудиторія", g_proj:"Проєктів", g_contest:"Mini App Contest", g_contest_v:"<em>#1</em>",
-    g_based:"Звідки", g_based_v:"Україна", g_role:"Роль", g_role_v:"KNESS · AI lead",
-    s_toc:"На сторінці",
-    toc_now:"Чим займаюсь", toc_work:"Проєкти", toc_about:"Про себе", toc_stack:"Як я будую", toc_contact:"Написати"
+    contact_p:"Пошта для офіційних листів, Telegram для всього іншого",
+    c_blog_k:"Блог"
   }
 };
 function applyLang(lang){
@@ -851,6 +633,7 @@ function applyLang(lang){
 }
 document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
 try { const saved = localStorage.getItem('ly_lang'); if (saved) applyLang(saved); } catch (e) {}
+
 
 /* WebMCP — expose page-scoped tools to browser-based AI agents.
    https://webmachinelearning.github.io/webmcp/ */
