@@ -64,10 +64,14 @@ Select AI & automation consulting. Preference for ugly, real-world problems wher
 - **Runtime**: Node.js
 - **Backend frameworks**: NestJS, Fastify, Hono, Express
 - **Frontend**: React, Next.js, Vite, Tailwind CSS
-- **AI / LLM**: OpenAI, Anthropic Claude, Google Gemini, LangChain, Qdrant, RAG systems
+- **AI / LLM**: Anthropic Claude (primary), OpenAI GPT, Google Gemini, LangChain, Qdrant, RAG systems
 - **Telegram**: Telegraf, grammY, TDLib, MTProto, Mini Apps
-- **Data**: MongoDB, PostgreSQL, Redis, BullMQ
-- **Infra**: Linux, Docker, Sentry, Prometheus, PM2, GitHub Actions
+- **Data**: MongoDB, PostgreSQL, Redis
+- **Infra**: Linux, Docker, Sentry, PM2, GitHub Actions
+
+## Working practice
+
+For roughly two years now, code is written primarily in a pair with AI agents. **Claude is the main model** — currently the strongest tool tested for this work. **GPT and Gemini** are kept around for verification and comparison, not primary drafting. Tool choice is revisited per task, with agent-assisted evaluation of alternatives.
 
 ## Contact (canonical)
 
@@ -88,6 +92,6 @@ Select AI & automation consulting. Preference for ugly, real-world problems wher
 - Flagship projects: **fStikBot** (800K MAU, #1 Telegram sticker platform), **QuotLyBot** (80K+ groups)
 - Achievement: **Telegram Mini App Contest 2023 — 1st place**
 - Users reached: millions
-- Stack: TypeScript, Node.js, React, Next.js, OpenAI, Claude, Gemini, Telegram API, MongoDB, Postgres, Redis, Docker
+- Stack: TypeScript, Node.js, React, Next.js, Claude, GPT, Gemini, Telegram API, MongoDB, Postgres, Redis, Docker
 - Based: Ukraine
 - Canonical URL: https://lyubchak.com

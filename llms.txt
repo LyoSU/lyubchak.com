@@ -37,10 +37,14 @@ AI lead at [KNESS Group](https://kness.energy) — a large Ukrainian manufacturi
 - Runtime: Node.js
 - Backend: NestJS, Fastify, Hono, Express
 - Frontend: React, Next.js, Vite, Tailwind CSS
-- AI / LLM: OpenAI, Anthropic Claude, Google Gemini, LangChain, Qdrant, RAG
+- AI / LLM: Anthropic Claude (primary day-to-day), OpenAI GPT, Google Gemini, LangChain, Qdrant, RAG
 - Telegram: Telegraf, grammY, TDLib, MTProto, Mini Apps
-- Data: MongoDB, PostgreSQL, Redis, BullMQ
-- Infra: Linux, Docker, Sentry, Prometheus, GitHub Actions
+- Data: MongoDB, PostgreSQL, Redis
+- Infra: Linux, Docker, Sentry, GitHub Actions
+
+## Working practice
+
+For the past ~2 years writes code primarily in a pair with AI agents. Claude is the main tool; GPT and Gemini are used for verification and comparison rather than primary drafting.
 
 ## Contact (canonical)
 
@@ -64,7 +68,7 @@ AI lead at [KNESS Group](https://kness.energy) — a large Ukrainian manufacturi
 - 2017–2020: Telegram era — built bot ecosystem from scratch.
 - 2020–2023: KNESS Group — enterprise automation for 1,500+ employees.
 - 2023: Telegram Mini App Contest — 1st place.
-- 2023–present: AI lead at KNESS Group. Agents, RAG, automation with OpenAI, Claude, Gemini across the whole company. Telegram products on the side.
+- 2023–present: AI lead at KNESS Group. Agents, RAG, automation with Claude, GPT, Gemini across the whole company. Telegram products on the side.
 
 ## Availability
 
