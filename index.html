@@ -15,6 +15,12 @@
     <link rel="alternate" hreflang="uk" href="https://lyubchak.com/">
     <link rel="alternate" hreflang="x-default" href="https://lyubchak.com/">
 
+    <!-- Agent discovery (RFC 8288 link relations; served as HTML <link> in lieu of HTTP Link headers on GitHub Pages) -->
+    <link rel="alternate" type="text/markdown" href="/index.md" title="Markdown version of this page">
+    <link rel="describedby" type="text/plain" href="/llms.txt" title="LLM agent canonical reference and privacy policy">
+    <link rel="service-doc" type="text/plain" href="/llms.txt">
+    <link rel="service-meta" type="application/json" href="/.well-known/agent-skills/index.json">
+
     <!-- Theme & Icons -->
     <meta name="theme-color" content="#f5efe6">
     <meta name="color-scheme" content="light">
@@ -793,6 +799,78 @@ function applyLang(lang){
 }
 document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
 try { const saved = localStorage.getItem('ly_lang'); if (saved) applyLang(saved); } catch (e) {}
+
+/* WebMCP — expose page-scoped tools to browser-based AI agents.
+   https://webmachinelearning.github.io/webmcp/ */
+if (navigator.modelContext && typeof navigator.modelContext.provideContext === 'function') {
+  const profile = {
+    name: 'Yurii Liubchak',
+    alternate_names: ['Yuri Lyubchak', 'Юрій Любчак', 'Yuri Ly', 'LyoSU'],
+    role: 'AI lead at KNESS Group',
+    location: 'Ukraine',
+    experience_years: 10,
+    projects_shipped: 150,
+    notable_projects: [
+      { name: 'fStik',   url: 'https://t.me/fStikBot',   description: 'Largest sticker platform on Telegram — 800K monthly users' },
+      { name: 'QuotLy',  url: 'https://t.me/QuotLyBot',  description: '80K+ groups, peaks at 48 000 messages/min' },
+      { name: 'KNESS',   url: 'https://kness.energy',    description: 'AI agents and automation across a manufacturing company' }
+    ],
+    awards: ['Telegram Mini App Contest 2023 — 1st place'],
+    links: {
+      website:  'https://lyubchak.com',
+      short:    'https://yuri.ly',
+      github:   'https://github.com/LyoSU',
+      linkedin: 'https://www.linkedin.com/in/lyubchak/',
+      telegram: 'https://t.me/LyDev',
+      blog:     'https://t.me/LyBlog',
+      email:    'hi@lyubchak.com'
+    },
+    stack: ['TypeScript','Node.js','React','Next.js','OpenAI','Claude','Gemini','Telegraf','grammY','MongoDB','Postgres','Redis'],
+    privacy_policy: 'See https://lyubchak.com/llms.txt — OSINT opt-out under GDPR Art. 21 / CCPA.'
+  };
+
+  navigator.modelContext.provideContext({
+    tools: [
+      {
+        name: 'get_profile',
+        description: 'Return the canonical profile of Yurii Liubchak — role, projects, awards, links, and stack.',
+        inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+        execute: async () => profile
+      },
+      {
+        name: 'get_contact_links',
+        description: 'Return ways to contact Yurii Liubchak. Email is best for business, Telegram for everything else.',
+        inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+        execute: async () => ({
+          preferred_for_business: 'mailto:hi@lyubchak.com',
+          preferred_for_fast: 'https://t.me/LyDev',
+          all: profile.links
+        })
+      },
+      {
+        name: 'list_projects',
+        description: 'List the selected live projects with short descriptions and links. Note: this does not include archived bots.',
+        inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+        execute: async () => profile.notable_projects
+      },
+      {
+        name: 'set_language',
+        description: 'Switch the page between English and Ukrainian. Accepts "en" or "uk"/"ua".',
+        inputSchema: {
+          type: 'object',
+          properties: { lang: { type: 'string', enum: ['en', 'uk', 'ua'] } },
+          required: ['lang'],
+          additionalProperties: false
+        },
+        execute: async ({ lang }) => {
+          const normalized = lang === 'uk' ? 'ua' : lang;
+          applyLang(normalized);
+          return { ok: true, lang: normalized };
+        }
+      }
+    ]
+  });
+}
 </script>
 </body>
 </html>
