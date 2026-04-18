@@ -1,0 +1,50 @@
+# Cloudflare Pages _headers
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: interest-cohort=()
+  Link: </llms.txt>; rel="describedby"; type="text/plain"
+  Link: </llms-full.txt>; rel="alternate"; type="text/plain"; title="LLM full reference"
+  Link: </index.md>; rel="alternate"; type="text/markdown"; title="Markdown version"
+  Link: </.well-known/agent-skills/index.json>; rel="service-meta"; type="application/json"
+
+# Plain-text LLM docs — explicit Content-Type, CORS open for agent/JS fetches
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+# Markdown view
+/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+# Agent skills discovery index
+/.well-known/agent-skills/index.json
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+# robots.txt / sitemap.xml should be freshly cached
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=600
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+# Assets
+/images/*
+  Cache-Control: public, max-age=2592000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=2592000, immutable
