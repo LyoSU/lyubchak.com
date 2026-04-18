@@ -22,7 +22,9 @@ const MARKDOWN_ALTERNATES = {
 
 function prefersMarkdown(acceptHeader) {
   if (!acceptHeader) return false;
-  // Lowercase once, tokenise on ','. Accept q= values when ranking.
+  // Only opt in when the client EXPLICITLY asks for text/markdown. A wildcard
+  // Accept: */* (curl default, some bots) must NOT flip to markdown — that
+  // would break the default HTML served to browsers and crawlers.
   const parts = acceptHeader.toLowerCase().split(',').map(s => s.trim());
   let mdQ = -1;
   let htmlQ = -1;
@@ -34,10 +36,9 @@ function prefersMarkdown(acceptHeader) {
     }
     if (type === 'text/markdown') mdQ = Math.max(mdQ, q);
     if (type === 'text/html' || type === 'application/xhtml+xml') htmlQ = Math.max(htmlQ, q);
-    if (type === '*/*' && mdQ < 0) mdQ = Math.max(mdQ, q * 0.01); // very weak signal
   }
-  // Only treat as markdown preference if it beats html; otherwise browsers with
-  // catch-all Accept headers would accidentally get markdown.
+  // text/markdown must be present AND rank at least as high as text/html. If
+  // the client didn't name text/markdown at all (mdQ === -1), fall through.
   return mdQ > 0 && mdQ >= htmlQ;
 }
 
