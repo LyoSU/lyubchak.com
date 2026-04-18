@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
-  html,body{width:512px;height:512px;overflow:hidden}
+  html,body{width:100vw;height:100vh;overflow:hidden}
   body{
     background:#f5efe6;
     display:flex;align-items:center;justify-content:center;
@@ -16,18 +16,19 @@
   }
   body::before{
     content:"";position:absolute;inset:0;
-    background:radial-gradient(380px 380px at 55% 45%, rgba(200,107,58,0.10), transparent 70%);
+    background:radial-gradient(70vw 70vh at 55% 45%, rgba(200,107,58,0.10), transparent 70%);
   }
   .mark{
     font-family:'Fraunces',serif;font-style:italic;font-weight:500;
-    font-size:340px;line-height:1;color:#c86b3a;
+    font-size:62vmin;line-height:1;color:#c86b3a;
     font-variation-settings:"opsz" 144;
     letter-spacing:-0.04em;
     position:relative;
+    display:flex;align-items:center;
   }
   .dot{
-    position:absolute;bottom:78px;right:78px;
-    width:24px;height:24px;background:#1f1d1a;border-radius:50%;
+    position:absolute;bottom:14vmin;right:14vmin;
+    width:5vmin;height:5vmin;background:#1f1d1a;border-radius:50%;
   }
 </style>
 </head>
