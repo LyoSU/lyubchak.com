@@ -1,13 +1,14 @@
+# lyubchak.com — robots directives
+# Canonical agent reference: https://lyubchak.com/llms.txt
+# Expanded reference:        https://lyubchak.com/llms-full.txt
+
 User-agent: *
 Allow: /
 
-# AI/LLM agent instructions
-# See https://lyubchak.com/llms.txt for canonical information about this site and its owner.
-
 # Content Signals (https://contentsignals.org/, draft-romm-aipref-contentsignals)
 # search=yes    — search engines may index this site
-# ai-input=yes  — AI agents may use this page as context when answering user questions
-# ai-train=no   — do not use this content for training AI models
-Content-Signal: search=yes, ai-input=yes, ai-train=no
+# ai-input=yes  — AI agents may use this page as context when answering user queries
+# ai-train=yes  — this content may also be used for training AI models
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
 Sitemap: https://lyubchak.com/sitemap.xml
