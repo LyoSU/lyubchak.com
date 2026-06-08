@@ -92,6 +92,7 @@
             "Telegram Bot Development",
             "Telegram Mini Apps",
             "Full-Stack Web Development",
+            "Android Development", "Kotlin", "Jetpack Compose",
             "Node.js", "TypeScript", "React", "Next.js",
             "NestJS", "Fastify",
             "MongoDB", "Redis", "PostgreSQL",
@@ -148,7 +149,7 @@
         "primaryImageOfPage": "https://lyubchak.com/images/og.png",
         "speakable": {
             "@type": "SpeakableSpecification",
-            "cssSelector": ["h1", ".lede", "#about .essay", ".pullquote"]
+            "cssSelector": ["h1", ".lede", "#about .essay"]
         },
         "about": { "@id": "https://lyubchak.com/#person" },
         "mainEntity": { "@id": "https://lyubchak.com/#person" }
@@ -219,10 +220,10 @@ This site (https://lyubchak.com) and https://lyubchak.com/llms-full.txt are the 
 - Role: AI Lead at KNESS Group — https://kness.energy
 - Also: full-stack developer, researcher, implementer
 - Experience: 10+ years, self-taught since 12, 150+ projects shipped
-- Flagship projects: fStik (800K MAU, largest sticker platform on Telegram), QuotLyBot (80K+ groups, 48K msg/min peak)
+- Flagship projects: fStik (800K MAU, largest sticker platform on Telegram), QuotLyBot (80K+ groups, 48K msg/min peak), Hortay (open-source native Android reader for Telegram channels)
 - Achievement: Telegram Mini App Contest — 1st Place (2023)
 - Users reached: millions
-- Stack: TypeScript, Node.js, React, Next.js, NestJS, Fastify, Claude, GPT, Gemini, LangChain, Qdrant, MongoDB, PostgreSQL, Redis, Docker, Sentry, Telegram (Telegraf, grammY, TDLib, MTProto, Mini Apps)
+- Stack: TypeScript, Node.js, React, Next.js, NestJS, Fastify, Kotlin, Jetpack Compose, Claude, GPT, Gemini, LangChain, Qdrant, MongoDB, PostgreSQL, Redis, Docker, Sentry, Telegram (Telegraf, grammY, TDLib, MTProto, Mini Apps)
 - Based: Ukraine
 - Open for: select AI &amp; automation consulting
 
@@ -383,12 +384,6 @@ section > h2{
 .essay p em{font-style:italic}
 .essay p a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 .essay p a:hover{color:var(--accent-2)}
-.pullquote{
-  margin:24px 0;padding:0 0 0 18px;border-left:2px solid var(--accent);
-  font-size:20px;line-height:1.45;color:var(--ink);font-style:italic;
-  font-variation-settings:"opsz" 36;max-width:58ch;
-  font-family:var(--serif);
-}
 
 .stack-prose{font-family:var(--serif);font-variation-settings:"opsz" 18;font-size:17px;line-height:1.7;color:var(--ink-2);max-width:62ch}
 .stack-prose b{color:var(--ink);font-weight:500}
@@ -444,7 +439,7 @@ section > h2{
     <section id="now">
       <h2 data-t="h_now">What I'm doing</h2>
       <div class="now-prose">
-        <p data-t="now_p">Main work — <b>AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b>: researching, building and rolling out AI agents and automation across the company, end to end. On the side — <a href="tg://resolve?domain=fStikBot"><b>fStik</b></a>, <a href="tg://resolve?domain=QuotLyBot"><b>QuotLy</b></a> and a few Telegram bots, servers and databases in my own hands. Open for select <b>AI &amp; automation consulting</b> — ugly problems preferred, demo budget optional.</p>
+        <p data-t="now_p">Main work: <b>AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b>. I research, build and roll out AI agents (systems that fetch data, make decisions and handle routine on their own) across the company, from picking the problem to stable production. On the side: <a href="tg://resolve?domain=fStikBot"><b>fStik</b></a>, <a href="tg://resolve?domain=QuotLyBot"><b>QuotLy</b></a> and a few more Telegram bots; servers and databases all on my own machines. Occasionally I take on AI and automation consulting, picking real business problems, like teaching AI to process documents or handle requests on its own instead of a whole department.</p>
       </div>
     </section>
 
@@ -456,7 +451,7 @@ section > h2{
           <img src="images/fStikBot.jpg" alt="" class="thumb">
           <div class="body">
             <div class="ln">fStik <span class="u">fstik.app · @fStikBot</span></div>
-            <p data-t="fstik">The largest sticker platform on Telegram, <b>800K monthly users</b>. Bot, site, Mini App and an Android app on one stack, I write and support it alone</p>
+            <p data-t="fstik">The largest sticker platform on Telegram, <b>800K monthly users</b>. Bot, site, Mini App and an Android app on one stack, built and maintained solo</p>
           </div>
         </a></li>
 
@@ -464,7 +459,15 @@ section > h2{
           <img src="images/KNESS.jpg" alt="" class="thumb">
           <div class="body">
             <div class="ln">KNESS · AI <span class="u">kness.energy</span></div>
-            <p data-t="kness">AI agents and automation inside a real business, not PoCs and not prototypes, but systems the company actually depends on day to day</p>
+            <p data-t="kness">AI agents and automation running in a live enterprise. No throwaway PoCs, only systems the company actually relies on day to day</p>
+          </div>
+        </a></li>
+
+        <li><a href="https://github.com/LyoSU/hortay-android" target="_blank" rel="noopener">
+          <img src="images/hortay.jpg" alt="" class="thumb">
+          <div class="body">
+            <div class="ln">Hortay <span class="u">github · Google Play</span></div>
+            <p data-t="hortay">Reads Telegram channels as one chronological feed instead of a chat list. Native Android, open source, Material 3, 13 languages, on Google Play</p>
           </div>
         </a></li>
 
@@ -519,16 +522,15 @@ section > h2{
       <h2 data-t="h_about">About</h2>
       <div class="essay">
         <p data-t="p1">Started at twelve, editing <b>uCoz sites</b> with too much time on my hands. Then came <b>PHP</b>, then <b>VK bots</b>, then the <b>Telegram ecosystem</b> I still live inside today.</p>
-        <p data-t="p2">Millions of people have used something I wrote, mostly through <a href="tg://resolve?domain=fStikBot">fStik</a> and <a href="tg://resolve?domain=QuotLyBot">QuotLy</a>. Once won <b>first place</b> at the official Telegram Mini App Contest, fun part of the CV, but not the main thing anymore.</p>
-        <div class="pullquote" data-t="pull">The main thing now is AI that actually lands inside a real company — agents and automation the business can depend on, not things that only look good in a demo</div>
-        <p data-t="p3">I do that at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a>, a large manufacturing group, as AI lead. I pick what's worth building, build it, wire it into real systems, and stay to make it work.</p>
+        <p data-t="p2">Millions of people have used something I wrote, mostly through <a href="tg://resolve?domain=fStikBot">fStik</a> and <a href="tg://resolve?domain=QuotLyBot">QuotLy</a>. Once won <b>first place</b> at the official Telegram Mini App Contest, a cool milestone, but not the main focus anymore.</p>
+        <p data-t="p3">The main focus now is AI that actually works inside a real company. I do that at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a>, a large manufacturing group, as AI lead: I work with teams across the company to find what's worth automating, build it, wire it into live systems, and see it through to stable production.</p>
         <p data-t="p4">On the side I run my own bots and write at <a href="tg://resolve?domain=LyBlog">@LyBlog</a>.</p>
       </div>
     </section>
 
     <section id="stack">
       <h2 data-t="h_stack">How I build</h2>
-      <p class="stack-prose" data-t="stack_p">For about two years now I've been writing mostly in a pair with AI agents. Day to day it's <b>Claude</b>, currently the strongest tool I've tested; GPT and Gemini I keep around for verification and comparison. Working stack: <b>TypeScript</b> on <b>Node.js</b>, <b>React / Next.js</b> on the frontend, <b>Python</b> for ML, Telegram through <b>Telegraf, grammY, TDLib, MTProto</b> and Mini Apps. All on my own boxes: <b>Linux, Docker, Sentry</b>, <b>MongoDB / Postgres / Redis</b></p>
+      <p class="stack-prose" data-t="stack_p">For about two years now I've done most of my coding alongside AI agents. Day to day it's <b>Claude</b>, currently the strongest tool I've tested; GPT and Gemini I keep around for verification and comparison. Working stack: <b>TypeScript</b> on <b>Node.js</b>, <b>React / Next.js</b> on the frontend, <b>Python</b> for ML, Telegram through <b>Telegraf, grammY, TDLib, MTProto</b> and Mini Apps. All on my own boxes: <b>Linux, Docker, Sentry</b>, <b>MongoDB / Postgres / Redis</b></p>
     </section>
 
     <section id="contact">
@@ -565,10 +567,11 @@ const T = {
     m_name:"Юрій Любчак",
     cta_email:"hi@lyubchak.com",
     h_now:"What I'm doing",
-    now_p:'Main work: <b>AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b>. I research, build and roll out AI agents and automation across the company, from picking the problem to stable production. On the side: <a href="tg://resolve?domain=fStikBot"><b>fStik</b></a>, <a href="tg://resolve?domain=QuotLyBot"><b>QuotLy</b></a> and a few more Telegram bots; servers and databases all on my own machines. Occasionally I take on consulting in <b>AI and automation</b>, most interesting when the problem is real and not meant for a demo',
+    now_p:'Main work: <b>AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b>. I research, build and roll out AI agents (systems that fetch data, make decisions and handle routine on their own) across the company, from picking the problem to stable production. On the side: <a href="tg://resolve?domain=fStikBot"><b>fStik</b></a>, <a href="tg://resolve?domain=QuotLyBot"><b>QuotLy</b></a> and a few more Telegram bots; servers and databases all on my own machines. Occasionally I take on AI and automation consulting, picking real business problems, like teaching AI to process documents or handle requests on its own instead of a whole department.',
     h_work:"Selected work",
-    fstik:"The largest sticker platform on Telegram, <b>800K monthly users</b>. Bot, site, Mini App and an Android app on one stack, I write and support it alone",
-    kness:"AI agents and automation inside a real business, not PoCs and not prototypes, but systems the company actually depends on day to day",
+    fstik:"The largest sticker platform on Telegram, <b>800K monthly users</b>. Bot, site, Mini App and an Android app on one stack, built and maintained solo",
+    kness:"AI agents and automation running in a live enterprise. No throwaway PoCs, only systems the company actually relies on day to day",
+    hortay:"Reads Telegram channels as one chronological feed instead of a chat list. Native Android, open source, Material 3, 13 languages, on Google Play",
     quotly:"Turns any Telegram message into a clean quote image, <b>80K groups</b>, up to 48 000 messages per minute at peak",
     lyadmin:"Group administration for serious Telegram communities: moderation, anti-spam, reputation",
     lysupport:"A small SaaS for teams: tickets, routing, handoffs, all inside Telegram",
@@ -578,41 +581,40 @@ const T = {
     blog_link:"@LyBlog →",
     h_about:"About",
     p1:"Started at twelve, editing <b>uCoz sites</b> with too much time on my hands. Then came <b>PHP</b>, then <b>VK bots</b>, then the <b>Telegram ecosystem</b> I still live inside today.",
-    p2:'Millions of people have used something I wrote, mostly through <a href="tg://resolve?domain=fStikBot">fStik</a> and <a href="tg://resolve?domain=QuotLyBot">QuotLy</a>. Once won <b>first place</b> at the official Telegram Mini App Contest, fun part of the CV, but not the main thing anymore.',
-    pull:"The main thing now is AI that actually lands inside a real company, agents and automation the business can depend on, not things that only look good in a demo",
-    p3:'I do that at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a>, a large manufacturing group, as AI lead. I pick what\'s worth building, build it, wire it into real systems, and stay to make it work.',
+    p2:'Millions of people have used something I wrote, mostly through <a href="tg://resolve?domain=fStikBot">fStik</a> and <a href="tg://resolve?domain=QuotLyBot">QuotLy</a>. Once won <b>first place</b> at the official Telegram Mini App Contest, a cool milestone, but not the main focus anymore.',
+    p3:'The main focus now is AI that actually works inside a real company. I do that at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a>, a large manufacturing group, as AI lead: I work with teams across the company to find what\'s worth automating, build it, wire it into live systems, and see it through to stable production.',
     p4:'On the side I run my own bots and write at <a href="tg://resolve?domain=LyBlog">@LyBlog</a>.',
     h_stack:"How I build",
-    stack_p:"For about two years now I\'ve been writing mostly in a pair with AI agents. Day to day it\'s <b>Claude</b>, currently the strongest tool I\'ve tested; OpenAI and Gemini I keep around for verification and comparison. Working stack: <b>TypeScript</b> on <b>Node.js</b>, <b>React / Next.js</b> on the frontend, <b>Python</b> for ML, Telegram through <b>Telegraf, grammY, TDLib, MTProto</b> and Mini Apps. All on my own boxes: <b>Linux, Docker, Sentry</b>, <b>MongoDB / Postgres / Redis</b>",
+    stack_p:"For about two years now I\'ve done most of my coding alongside AI agents. Day to day it\'s <b>Claude</b>, currently the strongest tool I\'ve tested; GPT and Gemini I keep around for verification and comparison. Working stack: <b>TypeScript</b> on <b>Node.js</b>, <b>React / Next.js</b> on the frontend, <b>Python</b> for ML, Telegram through <b>Telegraf, grammY, TDLib, MTProto</b> and Mini Apps. All on my own boxes: <b>Linux, Docker, Sentry</b>, <b>MongoDB / Postgres / Redis</b>",
     h_contact:"Get in touch",
     contact_p:"Email for formal matters, Telegram for anything casual",
     c_blog_k:"Blog"
   },
   ua:{
-    h1:"Привіт, я <em>Yuri Ly</em>. Роблю ШІ у реальному бізнесі й Telegram-продукти для мільйонів",
+    h1:"Привіт, я <em>Yuri Ly</em>. Впроваджую ШІ в реальному бізнесі та роблю Telegram-продукти, якими користуються мільйони",
     lede:'Розробник і дослідник з <b>України</b>, пишу код з дванадцяти років. Зараз <b>AI lead у <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a></b>. Паралельно розвиваю власні Telegram-продукти, якими користуються мільйони',
     m_name:"Юрій Любчак",
     cta_email:"hi@lyubchak.com",
     h_now:"Чим займаюсь",
-    now_p:'Основна робота: <b>AI lead у <a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b>. Досліджую, пишу і запускаю ШІ-агентів та автоматизацію по всій компанії, від вибору задачі до стабільної роботи в продакшені. Поза роботою: <a href="tg://resolve?domain=fStikBot"><b>fStik</b></a>, <a href="tg://resolve?domain=QuotLyBot"><b>QuotLy</b></a> і ще кілька Telegram-ботів; сервери та бази на моїх машинах. Іноді беру консалтингові проєкти з <b>ШІ й автоматизації</b>, найцікавіше коли задача справжня, а не заради презентації',
+    now_p:'Основна робота: <b>AI lead у <a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b>. Досліджую процеси, пишу і запускаю ШІ-агентів (системи, що самі ходять у бази, ухвалюють рішення і закривають рутину) по всій компанії, від вибору задачі до стабільної роботи в продакшені. Поза роботою: <a href="tg://resolve?domain=fStikBot"><b>fStik</b></a>, <a href="tg://resolve?domain=QuotLyBot"><b>QuotLy</b></a> і ще кілька Telegram-ботів; сервери та бази на моїх машинах. Іноді беру консалтинг з ШІ й автоматизації, обираю проєкти з реальною задачею бізнесу, наприклад навчити ШІ самостійно обробляти документи чи запити замість цілого відділу.',
     h_work:"Вибрані проєкти",
     fstik:"Найбільша платформа стікерів у Telegram, <b>800K користувачів щомісяця</b>. Бот, сайт, Mini App і Android-застосунок на одному стеку, сам пишу і підтримую",
-    kness:"ШІ-агенти й автоматизація всередині реального бізнесу, не PoC і не прототипи, а системи, на які компанія реально спирається щодня",
+    kness:"ШІ-агенти й автоматизація в процесах реальної компанії. Ніяких PoC заради PoC, лише системи, від яких щодня залежить її робота",
+    hortay:"Читає Telegram-канали як одну стрічку за часом, замість списку чатів. Нативний Android, відкритий код, Material 3, 13 мов, у Google Play",
     quotly:"Перетворює будь-яке повідомлення з Telegram на чисту цитату-картинку, <b>80K груп</b>, до 48 000 повідомлень за хвилину на піку",
     lyadmin:"Адмінка для серйозних Telegram-спільнот: модерація, антиспам, репутація",
-    lysupport:"Невеликий SaaS для команд: тікети, маршрутизація, передача, все прямо в Telegram",
+    lysupport:"Невеликий SaaS для команд: тікети, маршрутизація, ескалація, все прямо в Telegram",
     lybot:"Шукає в YouTube Music прямо з Telegram і віддає аудіо в оригінальній якості",
     lyos:"Мультиплеєрний hacker simulator: атакуй, захищайся, прокачуйся, роблю вечорами",
     more:"Ще десятки ботів в архіві",
     blog_link:"@LyBlog →",
     h_about:"Про себе",
     p1:"Почав у 12 з <b>uCoz</b>: редагував сайти і шаблони. Потім <b>PHP</b>, потім <b>боти для VK</b>, потім <b>екосистема Telegram</b>, в якій я і досі.",
-    p2:'Мільйони людей користувалися тим, що я написав, переважно через <a href="tg://resolve?domain=fStikBot">fStik</a> і <a href="tg://resolve?domain=QuotLyBot">QuotLy</a>. Колись виграв <b>перше місце</b> на офіційному Telegram Mini App Contest, весела частина резюме, але вже не головна.',
-    pull:"Головне зараз — ШІ, що реально приживається в справжній компанії. Агенти й автоматизація, на які бізнес може покластися, а не штуки, що гарно виглядають лише на демо",
-    p3:'Цим і займаюсь у <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a> як AI lead. Вибираю, що варто будувати, роблю, підключаю до живих систем і залишаюсь, щоб воно реально запрацювало.',
+    p2:'Мільйони людей користувалися тим, що я написав, переважно через <a href="tg://resolve?domain=fStikBot">fStik</a> і <a href="tg://resolve?domain=QuotLyBot">QuotLy</a>. Колись виграв <b>перше місце</b> на офіційному Telegram Mini App Contest, приємна ачівка, але вже не головна.',
+    p3:'Найбільше зараз мене цікавить ШІ, який реально працює на бізнес. Цим і займаюсь у <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a> як AI lead: працюю з командами по всій компанії, шукаю, що варто автоматизувати, пишу рішення, інтегрую в живі процеси й доводжу до стабільної роботи в продакшені.',
     p4:'Паралельно веду власних ботів і пишу в <a href="tg://resolve?domain=LyBlog">@LyBlog</a>.',
-    h_stack:"Як я будую",
-    stack_p:"Уже десь два роки пишу переважно в парі з ШІ-агентами. Основний — <b>Claude</b>, наразі найсильніший інструмент з тих, що я тестував; OpenAI і Gemini використовую для верифікації та порівняння. Робочий стек: <b>TypeScript</b> на <b>Node.js</b>, <b>React / Next.js</b> на фронті, <b>Python</b> для ML, Telegram через <b>Telegraf, grammY, TDLib, MTProto</b> та Mini Apps. Все на своїх серверах: <b>Linux, Docker, Sentry</b>, <b>MongoDB / Postgres / Redis</b>",
+    h_stack:"Під капотом",
+    stack_p:"Останні два роки програмую переважно в тандемі з ШІ-агентами. Щодня працюю з <b>Claude</b>, наразі це найсильніший інструмент з тих, що тестував; GPT і Gemini тримаю для звірки та порівняння. Робочий стек: <b>TypeScript</b> на <b>Node.js</b>, <b>React / Next.js</b> на фронті, <b>Python</b> для ML, Telegram через <b>Telegraf, grammY, TDLib, MTProto</b> та Mini Apps. Все на своїх серверах: <b>Linux, Docker, Sentry</b>, <b>MongoDB / Postgres / Redis</b>",
     h_contact:"Написати",
     contact_p:"Пошта для офіційних листів, Telegram для всього іншого",
     c_blog_k:"Блог"
@@ -648,6 +650,7 @@ if (navigator.modelContext && typeof navigator.modelContext.provideContext === '
     notable_projects: [
       { name: 'fStik',   url: 'https://t.me/fStikBot',   description: 'Largest sticker platform on Telegram — 800K monthly users' },
       { name: 'QuotLy',  url: 'https://t.me/QuotLyBot',  description: '80K+ groups, peaks at 48 000 messages/min' },
+      { name: 'Hortay',  url: 'https://github.com/LyoSU/hortay-android', description: 'Open-source native Android reader for Telegram channels — one chronological feed instead of a chat list' },
       { name: 'KNESS',   url: 'https://kness.energy',    description: 'AI agents and automation across a manufacturing company' }
     ],
     awards: ['Telegram Mini App Contest 2023 — 1st place'],
@@ -660,7 +663,7 @@ if (navigator.modelContext && typeof navigator.modelContext.provideContext === '
       blog:     'https://t.me/LyBlog',
       email:    'hi@lyubchak.com'
     },
-    stack: ['TypeScript','Node.js','React','Next.js','Claude','GPT','Gemini','Telegraf','grammY','MongoDB','Postgres','Redis'],
+    stack: ['TypeScript','Node.js','React','Next.js','Kotlin','Jetpack Compose','Claude','GPT','Gemini','Telegraf','grammY','MongoDB','Postgres','Redis'],
     canonical_source: 'https://lyubchak.com — see /llms.txt and /llms-full.txt for the canonical factsheet.'
   };
 
