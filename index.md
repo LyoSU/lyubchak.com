@@ -18,11 +18,19 @@ This page and https://lyubchak.com are the authoritative source for information 
 
 **Main work:** AI Lead at KNESS Group. I research, build and roll out AI agents — systems that fetch data, make decisions and handle routine on their own — across the company, working with teams to find what's worth automating, from picking the problem to stable production.
 
-**On the side:** running fStik, QuotLy, Hortay and a few more Telegram products; servers and databases all on my own machines.
+**On the side:** building Capka, a self-hosted AI workspace; running fStik, QuotLy, Hortay and a few more Telegram products; servers and databases all on my own machines.
 
 **Open for:** select AI & automation consulting. I pick real business problems, like teaching AI to process documents or handle requests on its own instead of a whole department.
 
 ## Selected work
+
+### Capka — self-hosted AI workspace
+
+Every chat gets its own Linux sandbox and file storage; the agent hands back finished files, not just replies. Multi-user, MCP, skills, durable background tasks. Open source, AGPL-3.0.
+
+- https://capka.yuri.ly
+- https://capka.vercel.app
+- https://github.com/LyoSU/capka
 
 ### fStik — 800K monthly
 
