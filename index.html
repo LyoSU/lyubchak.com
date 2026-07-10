@@ -269,6 +269,11 @@ a{color:inherit}
 a,button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
 body{min-height:100vh;padding:40px 24px 80px;display:flex;flex-direction:column;align-items:center}
+.skip-link{
+  position:fixed;top:12px;left:12px;z-index:10;transform:translateY(-160%);
+  background:var(--ink);color:var(--paper);padding:9px 13px;border-radius:4px;text-decoration:none;
+}
+.skip-link:focus{transform:translateY(0)}
 /* Ледь помітне паперове зерно поверх майже білого фону:
    без нього суцільний білий виглядає стерильно. multiply @ 3.5% не чіпає читабельність. */
 body::before{
@@ -287,7 +292,7 @@ body::before{
 .lang button{
   font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:0.04em;
   background:none;border:0;cursor:pointer;color:var(--muted);
-  padding:5px 11px;border-radius:999px;
+  min-width:42px;min-height:36px;padding:5px 11px;border-radius:999px;
   transition:color .15s ease,background .15s ease,box-shadow .15s ease;
 }
 .lang button.active{color:var(--ink);background:var(--paper);box-shadow:0 1px 0 var(--rule-2)}
@@ -324,22 +329,26 @@ h1 em{
   border:1px solid var(--rule);filter:saturate(0.92);
   display:block;margin-bottom:24px;
 }
-.hero-meta{
-  margin-top:22px;display:flex;align-items:center;gap:12px;
-  font-family:var(--serif);font-variation-settings:"opsz" 18;
-  font-size:14px;color:var(--muted);
-}
-.hero-meta b{color:var(--ink);font-weight:500}
-.hero-meta a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule)}
-.hero-meta a:hover{color:var(--accent);border-color:var(--accent)}
-
-.cta-row{margin-top:22px;display:flex;gap:20px;flex-wrap:wrap;font-size:15px}
+.cta-row{margin-top:26px;display:flex;gap:20px;flex-wrap:wrap;font-size:15px}
 .cta-row a{
   color:var(--ink);text-decoration:none;
   border-bottom:1px solid var(--rule);padding-bottom:2px;
   transition:color .15s ease,border-color .15s ease;
 }
 .cta-row a:hover{color:var(--accent);border-color:var(--accent)}
+
+.proof-row{
+  margin-top:44px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+}
+.proof-row strong{
+  display:block;font-family:var(--serif);font-size:25px;line-height:1.1;font-weight:500;
+  font-variation-settings:"opsz" 40;color:var(--ink);letter-spacing:-.02em;
+}
+.proof-row span{
+  display:block;margin-top:6px;font-family:var(--mono);font-size:10px;line-height:1.45;
+  color:var(--muted);text-transform:uppercase;letter-spacing:.035em;
+}
 .cta-row a b{font-weight:500}
 
 /* Секції розділяє повітря, а не лінії: ієрархія тримається на відступах і контрасті */
@@ -357,6 +366,11 @@ section > h2{
 }
 .now-prose p{margin-bottom:14px}
 .now-prose p:last-child{margin-bottom:0}
+.now-prose p + p{margin-top:18px}
+.eyebrow{
+  display:block;margin-bottom:4px;font-family:var(--mono);font-size:10px;line-height:1.4;
+  color:var(--muted);text-transform:uppercase;letter-spacing:.04em;
+}
 .now-prose b{color:var(--ink);font-weight:500}
 .now-prose a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(28,26,23,0.25)}
 .now-prose a:hover{color:var(--accent-2);border-color:currentColor}
@@ -416,6 +430,16 @@ section > h2{
 }
 .contact-list a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;transition:color .15s ease,border-color .15s ease}
 .contact-list a:hover{color:var(--accent);border-color:var(--accent)}
+.contact-intro{
+  font-family:var(--serif);font-variation-settings:"opsz" 22;font-size:20px;line-height:1.6;
+  color:var(--ink-2);max-width:55ch;margin-bottom:24px;text-wrap:pretty;
+}
+.contact-intro strong{font-weight:500;color:var(--ink)}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+}
 
 @media(max-width:580px){
   body{padding:28px 18px 60px}
@@ -425,41 +449,49 @@ section > h2{
   .lede{font-size:18px}
   .work-list .ln{font-size:19px}
   .contact-list .k{min-width:72px}
+  .proof-row{grid-template-columns:1fr;gap:14px;margin-top:32px}
+  .proof-row div{display:grid;grid-template-columns:78px 1fr;align-items:baseline;gap:12px}
+  .proof-row span{margin-top:0}
 }
 </style>
 </head>
 <body>
 
+<a class="skip-link" href="#main" data-t="skip">Skip to content</a>
+
 <div class="page">
 
   <div class="lang-row">
     <div class="lang" role="group" aria-label="Language">
-      <button class="active" data-lang="en">EN</button>
-      <button data-lang="ua">УК</button>
+      <button class="active" data-lang="en" aria-pressed="true">EN</button>
+      <button data-lang="ua" aria-pressed="false">УК</button>
     </div>
   </div>
 
-  <main>
+  <main id="main">
 
     <img src="images/avatar.jpg" alt="Yurii Liubchak" class="portrait" width="84" height="84">
 
-    <h1 data-t="h1">Hi, I'm <em>Yuri Ly</em>. I work on AI inside a real business and build Telegram products used by millions</h1>
+    <h1 data-t="h1">I build products used by <em>millions</em></h1>
 
-    <p class="lede" data-t="lede">Developer and researcher based in <b>Ukraine</b>, writing code since I was twelve. Currently <b>AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a></b>. On the side I run my own Telegram products used by millions</p>
-
-    <p class="hero-meta">
-      <span><b data-t="m_name">Юрій Любчак</b> · <a href="https://github.com/LyoSU" target="_blank" rel="noopener">@LyoSU</a></span>
-    </p>
+    <p class="lede" data-t="lede">I'm <b>Yurii Liubchak</b>, AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a> in Ukraine. I take AI from a messy business problem to a system people rely on every day. The millions are mostly in Telegram, in products I've built and run solo for years.</p>
 
     <div class="cta-row">
-      <a href="mailto:hi@lyubchak.com" data-t="cta_email">hi@lyubchak.com</a>
-      <a href="tg://resolve?domain=LyDev">Telegram <b>@LyDev</b></a>
+      <a href="mailto:hi@lyubchak.com" data-t="cta_email">Tell me about a problem →</a>
+      <a href="https://t.me/LyDev">Telegram <b>@LyDev</b></a>
+    </div>
+
+    <div class="proof-row" aria-label="Selected results">
+      <div><strong>10+</strong><span data-t="proof_years">years in production</span></div>
+      <div><strong>150+</strong><span data-t="proof_projects">projects shipped</span></div>
+      <div><strong>1K+</strong><span data-t="proof_stars">open-source stars</span></div>
     </div>
 
     <section id="now">
       <h2 data-t="h_now">What I'm doing</h2>
       <div class="now-prose">
-        <p data-t="now_p">Main work: <b>AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b>. I research, build and roll out AI agents (systems that fetch data, make decisions and handle routine on their own) across the company, from picking the problem to stable production. On the side: <a href="https://capka.vercel.app" target="_blank" rel="noopener"><b>Capka</b></a>, a self-hosted AI workspace, plus <a href="tg://resolve?domain=fStikBot"><b>fStik</b></a>, <a href="tg://resolve?domain=QuotLyBot"><b>QuotLy</b></a> and a few more Telegram bots; servers and databases all on my own machines. Occasionally I take on AI and automation consulting, picking real business problems, like teaching AI to process documents or handle requests on its own instead of a whole department.</p>
+        <p><span class="eyebrow" data-t="main_work">Main work</span><span data-t="now_main">At <b><a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b>, I find workflows worth automating, build AI agents around live company data and take them all the way to stable production. The job is equal parts research, engineering and getting a system adopted by the people who will actually use it.</span></p>
+        <p><span class="eyebrow" data-t="independent_work">Independent work</span><span data-t="now_side">I run <b>fStik</b>, <b>QuotLy</b> and other Telegram products on my own infrastructure, and I build <a href="https://capka.yuri.ly" target="_blank" rel="noopener"><b>Capka</b></a>, an open-source AI workspace. I occasionally help companies with difficult AI and automation problems where a polished demo is not enough.</span></p>
       </div>
     </section>
 
@@ -467,15 +499,15 @@ section > h2{
       <h2 data-t="h_work">Selected work</h2>
       <ul class="work-list">
 
-        <li><a href="https://capka.yuri.ly" target="_blank" rel="noopener">
-          <img src="images/capka.png" alt="" class="thumb" width="44" height="44" loading="lazy">
+        <li><a href="https://kness.energy" target="_blank" rel="noopener">
+          <img src="images/KNESS.jpg" alt="" class="thumb" width="44" height="44" loading="lazy">
           <div class="body">
-            <div class="ln">Capka <span class="u">capka.yuri.ly · github</span></div>
-            <p data-t="capka">Self-hosted AI workspace: every chat gets its own Linux sandbox and file storage, the agent hands back finished files, not just replies. Everything I want from an ideal AI platform, open source</p>
+            <div class="ln">KNESS · AI <span class="u">enterprise · production</span></div>
+            <p data-t="kness">AI agents embedded in live company workflows, from finding the right problem to rollout and daily operation. Built for adoption and reliability, not a throwaway PoC.</p>
           </div>
         </a></li>
 
-        <li><a href="tg://resolve?domain=fStikBot">
+        <li><a href="https://t.me/fStikBot">
           <img src="images/fStikBot.jpg" alt="" class="thumb" width="44" height="44" loading="lazy">
           <div class="body">
             <div class="ln">fStik <span class="u">fstik.app · @fStikBot</span></div>
@@ -483,23 +515,15 @@ section > h2{
           </div>
         </a></li>
 
-        <li><a href="https://kness.energy" target="_blank" rel="noopener">
-          <img src="images/KNESS.jpg" alt="" class="thumb" width="44" height="44" loading="lazy">
+        <li><a href="https://capka.yuri.ly" target="_blank" rel="noopener">
+          <img src="images/capka.png" alt="" class="thumb" width="44" height="44" loading="lazy">
           <div class="body">
-            <div class="ln">KNESS · AI <span class="u">kness.energy</span></div>
-            <p data-t="kness">AI agents and automation running in a live enterprise. No throwaway PoCs, only systems the company actually relies on day to day</p>
+            <div class="ln">Capka <span class="u">open source · self-hosted</span></div>
+            <p data-t="capka">An AI workspace where every chat gets its own Linux sandbox and file storage, so the agent can do the work and hand back finished files, not just replies.</p>
           </div>
         </a></li>
 
-        <li><a href="https://github.com/LyoSU/hortay-android" target="_blank" rel="noopener">
-          <img src="images/hortay.jpg" alt="" class="thumb" width="44" height="44" loading="lazy">
-          <div class="body">
-            <div class="ln">Hortay <span class="u">github · Google Play</span></div>
-            <p data-t="hortay">Reads Telegram channels as one chronological feed instead of a chat list. Native Android, open source, Material 3, 13 languages, on Google Play</p>
-          </div>
-        </a></li>
-
-        <li><a href="tg://resolve?domain=QuotLyBot">
+        <li><a href="https://t.me/QuotLyBot">
           <img src="images/QuotLyBot.jpg" alt="" class="thumb" width="44" height="44" loading="lazy">
           <div class="body">
             <div class="ln">QuotLy <span class="u">@QuotLyBot</span></div>
@@ -507,42 +531,10 @@ section > h2{
           </div>
         </a></li>
 
-        <li><a href="tg://resolve?domain=LyAdminBot">
-          <img src="images/LyAdminBot.jpg" alt="" class="thumb" width="44" height="44" loading="lazy">
-          <div class="body">
-            <div class="ln">LyAdmin <span class="u">@LyAdminBot</span></div>
-            <p data-t="lyadmin">Group administration for serious Telegram communities: moderation, anti-spam, reputation</p>
-          </div>
-        </a></li>
-
-        <li><a href="tg://resolve?domain=LySupportBot">
-          <img src="images/LySupportBot.jpg" alt="" class="thumb" width="44" height="44" loading="lazy">
-          <div class="body">
-            <div class="ln">LySupport <span class="u">@LySupportBot</span></div>
-            <p data-t="lysupport">A small SaaS for teams: tickets, routing, handoffs, all inside Telegram</p>
-          </div>
-        </a></li>
-
-        <li><a href="tg://resolve?domain=LyBot">
-          <img src="images/LyBot.jpg" alt="" class="thumb" width="44" height="44" loading="lazy">
-          <div class="body">
-            <div class="ln">LyBot <span class="u">@LyBot</span></div>
-            <p data-t="lybot">Search YouTube Music straight from Telegram, get audio in original quality</p>
-          </div>
-        </a></li>
-
-        <li><a href="tg://resolve?domain=LyOSBot">
-          <img src="images/LyOSBot.jpg" alt="" class="thumb" width="44" height="44" loading="lazy">
-          <div class="body">
-            <div class="ln">LyOS <span class="u">@LyOSBot</span></div>
-            <p data-t="lyos">Multiplayer hacker simulator: attack, defend, upgrade, built in evenings</p>
-          </div>
-        </a></li>
-
       </ul>
 
       <p class="more-note">
-        <span data-t="more">Plus dozens more in the archive</span> · <a href="tg://resolve?domain=LyBlog" data-t="blog_link">@LyBlog →</a>
+        <span data-t="more">More products, experiments and notes</span> · <a href="https://t.me/LyBlog" data-t="blog_link">@LyBlog →</a>
       </p>
     </section>
 
@@ -550,9 +542,9 @@ section > h2{
       <h2 data-t="h_about">About</h2>
       <div class="essay">
         <p data-t="p1">Started at twelve, editing <b>uCoz sites</b> with too much time on my hands. Then came <b>PHP</b>, then <b>VK bots</b>, then the <b>Telegram ecosystem</b> I still live inside today.</p>
-        <p data-t="p2">Millions of people have used something I wrote, mostly through <a href="tg://resolve?domain=fStikBot">fStik</a> and <a href="tg://resolve?domain=QuotLyBot">QuotLy</a>. Once won <b>first place</b> at the official Telegram Mini App Contest, a cool milestone, but not the main focus anymore.</p>
-        <p data-t="p3">The main focus now is AI that actually works inside a real company. I do that at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a>, a large manufacturing group, as AI lead: I work with teams across the company to find what's worth automating, build it, wire it into live systems, and see it through to stable production.</p>
-        <p data-t="p4">On the side I run my own bots and write at <a href="tg://resolve?domain=LyBlog">@LyBlog</a>.</p>
+        <p data-t="p2">Most of those millions came through <a href="https://t.me/fStikBot">fStik</a> and <a href="https://t.me/QuotLyBot">QuotLy</a>. I also won first place at the official Telegram Mini App Contest. Useful proof, though production has taught me more than contests ever could.</p>
+        <p data-t="p3">I like work with consequences: systems that hold real data, save real hours and still have to behave on a bad Monday morning. That is the thread connecting enterprise AI, open-source experiments and Telegram products at scale.</p>
+        <p data-t="p4">I write about the work and what I learn at <a href="https://t.me/LyBlog">@LyBlog</a>.</p>
       </div>
     </section>
 
@@ -563,13 +555,13 @@ section > h2{
 
     <section id="contact">
       <h2 data-t="h_contact">Get in touch</h2>
-      <p class="stack-prose" style="margin-bottom:20px" data-t="contact_p">Email for formal matters, Telegram for anything casual</p>
+      <p class="contact-intro" data-t="contact_p">Have a workflow that wastes a team’s time, an AI system stuck at demo stage, or a product that needs to survive real scale? <strong>Tell me what is broken.</strong></p>
       <ul class="contact-list">
         <li><span class="k">Email</span><a href="mailto:hi@lyubchak.com">hi@lyubchak.com</a></li>
-        <li><span class="k">Telegram</span><a href="tg://resolve?domain=LyDev">@LyDev</a></li>
+        <li><span class="k">Telegram</span><a href="https://t.me/LyDev">@LyDev</a></li>
         <li><span class="k">GitHub</span><a href="https://github.com/LyoSU" target="_blank" rel="noopener">@LyoSU</a></li>
         <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/lyubchak/" target="_blank" rel="noopener">/in/lyubchak</a></li>
-        <li><span class="k" data-t="c_blog_k">Blog</span><a href="tg://resolve?domain=LyBlog">@LyBlog</a></li>
+        <li><span class="k" data-t="c_blog_k">Blog</span><a href="https://t.me/LyBlog">@LyBlog</a></li>
       </ul>
     </section>
 
@@ -590,63 +582,75 @@ section > h2{
    ever reaches this code path. */
 const T = {
   en:{
-    h1:"Hi, I'm <em>Yuri Ly</em>. I work on AI inside a real business and build Telegram products used by millions",
-    lede:'Developer and researcher based in <b>Ukraine</b>, writing code since I was twelve. Currently <b>AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a></b>. On the side I run my own Telegram products used by millions',
-    m_name:"Юрій Любчак",
-    cta_email:"hi@lyubchak.com",
+    skip:"Skip to content",
+    h1:"I build products used by <em>millions</em>",
+    lede:'I\'m <b>Yurii Liubchak</b>, AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a> in Ukraine. I take AI from a messy business problem to a system people rely on every day. The millions are mostly in Telegram, in products I\'ve built and run solo for years.',
+    cta_email:"Tell me about a problem →",
+    proof_years:"years in production",
+    proof_projects:"projects shipped",
+    proof_stars:"open-source stars",
     h_now:"What I'm doing",
-    now_p:'Main work: <b>AI lead at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b>. I research, build and roll out AI agents (systems that fetch data, make decisions and handle routine on their own) across the company, from picking the problem to stable production. On the side: <a href="https://capka.vercel.app" target="_blank" rel="noopener"><b>Capka</b></a>, a self-hosted AI workspace, plus <a href="tg://resolve?domain=fStikBot"><b>fStik</b></a>, <a href="tg://resolve?domain=QuotLyBot"><b>QuotLy</b></a> and a few more Telegram bots; servers and databases all on my own machines. Occasionally I take on AI and automation consulting, picking real business problems, like teaching AI to process documents or handle requests on its own instead of a whole department.',
+    main_work:"Main work",
+    independent_work:"Independent work",
+    now_main:'At <b><a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b>, I find workflows worth automating, build AI agents around live company data and take them all the way to stable production. The job is equal parts research, engineering and getting a system adopted by the people who will actually use it.',
+    now_side:'I run <b>fStik</b>, <b>QuotLy</b> and other Telegram products on my own infrastructure, and I build <a href="https://capka.yuri.ly" target="_blank" rel="noopener"><b>Capka</b></a>, an open-source AI workspace. I occasionally help companies with difficult AI and automation problems where a polished demo is not enough.',
     h_work:"Selected work",
-    capka:"Self-hosted AI workspace: every chat gets its own Linux sandbox and file storage, the agent hands back finished files, not just replies. Everything I want from an ideal AI platform, open source",
+    capka:"An AI workspace where every chat gets its own Linux sandbox and file storage, so the agent can do the work and hand back finished files, not just replies.",
     fstik:"The largest sticker platform on Telegram, <b>800K monthly users</b>. Bot, site, Mini App and an Android app on one stack, built and maintained solo",
-    kness:"AI agents and automation running in a live enterprise. No throwaway PoCs, only systems the company actually relies on day to day",
+    kness:"AI agents embedded in live company workflows, from finding the right problem to rollout and daily operation. Built for adoption and reliability, not a throwaway PoC.",
     hortay:"Reads Telegram channels as one chronological feed instead of a chat list. Native Android, open source, Material 3, 13 languages, on Google Play",
     quotly:"Turns any Telegram message into a clean quote image, <b>80K groups</b>, up to 48 000 messages per minute at peak",
     lyadmin:"Group administration for serious Telegram communities: moderation, anti-spam, reputation",
     lysupport:"A small SaaS for teams: tickets, routing, handoffs, all inside Telegram",
     lybot:"Search YouTube Music straight from Telegram, get audio in original quality",
     lyos:"Multiplayer hacker simulator: attack, defend, upgrade, built in evenings",
-    more:"Plus dozens more in the archive",
+    more:"More products, experiments and notes",
     blog_link:"@LyBlog →",
     h_about:"About",
     p1:"Started at twelve, editing <b>uCoz sites</b> with too much time on my hands. Then came <b>PHP</b>, then <b>VK bots</b>, then the <b>Telegram ecosystem</b> I still live inside today.",
-    p2:'Millions of people have used something I wrote, mostly through <a href="tg://resolve?domain=fStikBot">fStik</a> and <a href="tg://resolve?domain=QuotLyBot">QuotLy</a>. Once won <b>first place</b> at the official Telegram Mini App Contest, a cool milestone, but not the main focus anymore.',
-    p3:'The main focus now is AI that actually works inside a real company. I do that at <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a>, a large manufacturing group, as AI lead: I work with teams across the company to find what\'s worth automating, build it, wire it into live systems, and see it through to stable production.',
-    p4:'On the side I run my own bots and write at <a href="tg://resolve?domain=LyBlog">@LyBlog</a>.',
+    p2:'Most of those millions came through <a href="https://t.me/fStikBot">fStik</a> and <a href="https://t.me/QuotLyBot">QuotLy</a>. I also won <b>first place</b> at the official Telegram Mini App Contest. Useful proof, though production has taught me more than contests ever could.',
+    p3:'I like work with consequences: systems that hold real data, save real hours and still have to behave on a bad Monday morning. That is the thread connecting enterprise AI, open-source experiments and Telegram products at scale.',
+    p4:'I write about the work and what I learn at <a href="https://t.me/LyBlog">@LyBlog</a>.',
     h_stack:"How I build",
     stack_p:"For about two years now I\'ve done most of my coding alongside AI agents. Day to day it\'s <b>Claude</b>, currently the strongest tool I\'ve tested; GPT and Gemini I keep around for verification and comparison. Working stack: <b>TypeScript</b> on <b>Node.js</b>, <b>React / Next.js</b> on the frontend, <b>Python</b> for ML, Telegram through <b>Telegraf, grammY, TDLib, MTProto</b> and Mini Apps. All on my own boxes: <b>Linux, Docker, Sentry</b>, <b>MongoDB / Postgres / Redis</b>",
     h_contact:"Get in touch",
-    contact_p:"Email for formal matters, Telegram for anything casual",
+    contact_p:"Have a workflow that wastes a team’s time, an AI system stuck at demo stage, or a product that needs to survive real scale? <strong>Tell me what is broken.</strong>",
     c_blog_k:"Blog"
   },
   ua:{
-    h1:"Привіт, я <em>Yuri Ly</em>. Впроваджую ШІ в реальному бізнесі та роблю Telegram-продукти, якими користуються мільйони",
-    lede:'Розробник і дослідник з <b>України</b>, пишу код з дванадцяти років. Зараз <b>AI lead у <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a></b>. Паралельно розвиваю власні Telegram-продукти, якими користуються мільйони',
-    m_name:"Юрій Любчак",
-    cta_email:"hi@lyubchak.com",
+    skip:"Перейти до вмісту",
+    h1:"Роблю продукти, якими користуються <em>мільйони</em>",
+    lede:'Я <b>Юрій Любчак</b>, AI lead у <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a>. Доводжу ШІ від складної бізнес-задачі до системи, на яку люди покладаються щодня. Ті мільйони здебільшого в Telegram, у продуктах, які я роками роблю й підтримую сам.',
+    cta_email:"Розкажіть про задачу →",
+    proof_years:"років у продакшені",
+    proof_projects:"випущених проєктів",
+    proof_stars:"зірок open-source",
     h_now:"Чим займаюсь",
-    now_p:'Основна робота: <b>AI lead у <a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b>. Досліджую процеси, пишу і запускаю ШІ-агентів (системи, що самі ходять у бази, ухвалюють рішення і закривають рутину) по всій компанії, від вибору задачі до стабільної роботи в продакшені. Поза роботою: <a href="https://capka.vercel.app" target="_blank" rel="noopener"><b>Capka</b></a>, self-hosted AI-воркспейс, а ще <a href="tg://resolve?domain=fStikBot"><b>fStik</b></a>, <a href="tg://resolve?domain=QuotLyBot"><b>QuotLy</b></a> і ще кілька Telegram-ботів; сервери та бази на моїх машинах. Іноді беру консалтинг з ШІ й автоматизації, обираю проєкти з реальною задачею бізнесу, наприклад навчити ШІ самостійно обробляти документи чи запити замість цілого відділу.',
+    main_work:"Основна робота",
+    independent_work:"Власні продукти",
+    now_main:'У <b><a href="https://kness.energy" target="_blank" rel="noopener">KNESS Group</a></b> знаходжу процеси, які варто автоматизувати, будую ШІ-агентів навколо живих даних компанії та доводжу їх до стабільного продакшену. Тут однаково важливі дослідження, інженерія й те, чи приймуть систему люди, які справді нею користуватимуться.',
+    now_side:'На власній інфраструктурі підтримую <b>fStik</b>, <b>QuotLy</b> та інші Telegram-продукти, а ще будую <a href="https://capka.yuri.ly" target="_blank" rel="noopener"><b>Capka</b></a> — AI-воркспейс із відкритим кодом. Іноді допомагаю компаніям зі складними задачами з ШІ й автоматизації, де красивої демки недостатньо.',
     h_work:"Вибрані проєкти",
-    capka:"Self-hosted AI-воркспейс: кожен чат отримує власний Linux-сендбокс і файлове сховище, агент повертає готові файли, а не просто відповіді. Все, що я хочу від ідеальної ШІ-платформи, у відкритому коді",
+    capka:"AI-воркспейс, де кожен чат отримує власний Linux-сендбокс і файлове сховище, тому агент виконує роботу й повертає готові файли, а не лише відповіді.",
     fstik:"Найбільша платформа стікерів у Telegram, <b>800K користувачів щомісяця</b>. Бот, сайт, Mini App і Android-застосунок на одному стеку, сам пишу і підтримую",
-    kness:"ШІ-агенти й автоматизація в процесах реальної компанії. Ніяких PoC заради PoC, лише системи, від яких щодня залежить її робота",
+    kness:"ШІ-агенти в живих процесах компанії: від вибору правильної задачі до запуску й щоденної роботи. Системи для людей і продакшену, а не одноразові PoC.",
     hortay:"Читає Telegram-канали як одну стрічку за часом, замість списку чатів. Нативний Android, відкритий код, Material 3, 13 мов, у Google Play",
     quotly:"Перетворює будь-яке повідомлення з Telegram на чисту цитату-картинку, <b>80K груп</b>, до 48 000 повідомлень за хвилину на піку",
     lyadmin:"Адмінка для серйозних Telegram-спільнот: модерація, антиспам, репутація",
     lysupport:"Невеликий SaaS для команд: тікети, маршрутизація, ескалація, все прямо в Telegram",
     lybot:"Шукає в YouTube Music прямо з Telegram і віддає аудіо в оригінальній якості",
     lyos:"Мультиплеєрний hacker simulator: атакуй, захищайся, прокачуйся, роблю вечорами",
-    more:"Ще десятки ботів в архіві",
+    more:"Інші продукти, експерименти та нотатки",
     blog_link:"@LyBlog →",
     h_about:"Про себе",
     p1:"Почав у 12 з <b>uCoz</b>: редагував сайти і шаблони. Потім <b>PHP</b>, потім <b>боти для VK</b>, потім <b>екосистема Telegram</b>, в якій я і досі.",
-    p2:'Мільйони людей користувалися тим, що я написав, переважно через <a href="tg://resolve?domain=fStikBot">fStik</a> і <a href="tg://resolve?domain=QuotLyBot">QuotLy</a>. Колись виграв <b>перше місце</b> на офіційному Telegram Mini App Contest, приємна ачівка, але вже не головна.',
-    p3:'Найбільше зараз мене цікавить ШІ, який реально працює на бізнес. Цим і займаюсь у <a href="https://kness.energy" target="_blank" rel="noopener">KNESS</a> як AI lead: працюю з командами по всій компанії, шукаю, що варто автоматизувати, пишу рішення, інтегрую в живі процеси й доводжу до стабільної роботи в продакшені.',
-    p4:'Паралельно веду власних ботів і пишу в <a href="tg://resolve?domain=LyBlog">@LyBlog</a>.',
+    p2:'Більшість тих мільйонів — це <a href="https://t.me/fStikBot">fStik</a> і <a href="https://t.me/QuotLyBot">QuotLy</a>. Ще я виграв <b>перше місце</b> на офіційному Telegram Mini App Contest — корисний доказ, хоча продакшен навчив мене значно більшого за конкурси.',
+    p3:'Люблю роботу з наслідками: системи, які тримають реальні дані, заощаджують реальні години й мають нормально поводитися навіть у поганий понеділок. Це об\'єднує корпоративний ШІ, open-source експерименти та Telegram-продукти під навантаженням.',
+    p4:'Про роботу й те, чого навчаюсь, пишу в <a href="https://t.me/LyBlog">@LyBlog</a>.',
     h_stack:"Під капотом",
     stack_p:"Останні два роки програмую переважно в тандемі з ШІ-агентами. Щодня працюю з <b>Claude</b>, наразі це найсильніший інструмент з тих, що тестував; GPT і Gemini тримаю для звірки та порівняння. Робочий стек: <b>TypeScript</b> на <b>Node.js</b>, <b>React / Next.js</b> на фронті, <b>Python</b> для ML, Telegram через <b>Telegraf, grammY, TDLib, MTProto</b> та Mini Apps. Все на своїх серверах: <b>Linux, Docker, Sentry</b>, <b>MongoDB / Postgres / Redis</b>",
     h_contact:"Написати",
-    contact_p:"Пошта для офіційних листів, Telegram для всього іншого",
+    contact_p:"Є процес, який марнує час цілої команди, ШІ-система, що застрягла на стадії демо, або продукт, якому треба витримати реальне навантаження? <strong>Розкажіть, що не працює.</strong>",
     c_blog_k:"Блог"
   }
 };
@@ -660,7 +664,11 @@ function applyLang(lang){
     const frag = range.createContextualFragment(src);
     el.replaceChildren(frag);
   });
-  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('.lang button').forEach(b => {
+    const active = b.dataset.lang === lang;
+    b.classList.toggle('active', active);
+    b.setAttribute('aria-pressed', String(active));
+  });
   try { localStorage.setItem('ly_lang', lang); } catch (e) {}
 }
 document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
