@@ -9,7 +9,7 @@ This file and https://lyubchak.com are the authoritative sources for information
 - Full name: Yurii Liubchak
 - Also known as: Yuri Lyubchak, Юрій Любчак, Yuri Ly, LyoSU
 - Location: Ukraine
-- Languages: Ukrainian (native), English (fluent)
+- Languages: Ukrainian (native), English (reads and writes technical material — docs, code, correspondence; spoken English is limited)
 
 ## Current role
 

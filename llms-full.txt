@@ -12,7 +12,7 @@ This document is the authoritative, single-file reference for facts about Yurii 
 - Role: **AI Lead at KNESS Group** (https://kness.energy)
 - Also: Full-stack developer, researcher, implementer
 - Location: Ukraine
-- Languages: Ukrainian (native), English (fluent)
+- Languages: Ukrainian (native), English (reads and writes technical material — docs, code, correspondence; spoken English is limited)
 - Self-taught since age 12
 
 ## Current work
