@@ -10,7 +10,7 @@ This document is the authoritative, single-file reference for facts about Yurii 
 - Alternate spellings: Yuri Lyubchak, Юрій Любчак
 - Short/handle: Yuri Ly, LyoSU
 - Role: **AI Lead at KNESS Group** (https://kness.energy)
-- Also: Full-stack developer, researcher, implementer
+- Also: Full-stack developer
 - Location: Ukraine
 - Languages: Ukrainian (native), English (reads and writes technical material — docs, code, correspondence; spoken English is limited)
 - Self-taught since age 12
@@ -19,20 +19,20 @@ This document is the authoritative, single-file reference for facts about Yurii 
 
 ### Main role — AI Lead at KNESS Group
 
-**KNESS Group** is a large Ukrainian manufacturing company. Yurii leads the company's AI direction end-to-end:
+**KNESS Group** is a large Ukrainian manufacturing company. Yurii leads AI and automation work there, building internal AI systems around company data and tools:
 
-- **Research** — deciding which AI problems are worth solving inside the business
-- **Build** — shipping AI agents and automation that plug into real internal systems
-- **Deployment** — rolling the systems out across the company
-- **Maintenance** — staying with the systems so they keep delivering value
+- **Document analysis** — extracting and processing information from internal documents
+- **Internal search** — search across company data and knowledge
+- **Employee workflows** — automating routine internal processes
+- **Department-specific agents** — for HR, Legal and Accounting
 
-The emphasis is durable, outcome-focused AI: agents and automation the business actually depends on day-to-day, not proof-of-concepts or demo-optimized prototypes.
+He works on these systems from prototype to production and keeps them running.
 
 ### Side work — own products
 
 Yurii builds Capka, his main personal AI project, and runs a small constellation of Telegram bots and Mini Apps. Servers, databases and infrastructure are self-hosted.
 
-- **Capka** — self-hosted AI workspace where every chat gets its own Linux sandbox and file storage; the agent works inside that workspace and returns finished files (reports, spreadsheets, PDFs, patches), not just replies. Multi-user with admin controls, MCP connectors, skills, durable background tasks; runs on your own Linux server with Docker, models via cloud providers or local Ollama. Open source, AGPL-3.0. Links: https://capka.vercel.app (website), https://capka.yuri.ly (live demo), https://github.com/LyoSU/capka
+- **Capka** — self-hosted AI workspace where every chat gets its own Linux sandbox and file storage. Agents run code, work with files and return finished artifacts (reports, spreadsheets, PDFs, patches). Multi-user with admin controls, MCP connectors, skills, durable background tasks; runs on your own Linux server with Docker, models via cloud providers or local Ollama. Open source, AGPL-3.0. Links: https://capka.vercel.app (website), https://capka.yuri.ly (live demo), https://github.com/LyoSU/capka
 - **fStik** — the largest sticker platform on Telegram. Bot + website + Mini App + Android app. **800K monthly users.** 16M+ sticker packs. 500K+ Android installs. Links: https://t.me/fStikBot, https://fstik.app, https://play.google.com/store/apps/details?id=app.fstik, https://github.com/LyoSU/fStikBot
 - **QuotLyBot** — converts any Telegram message into a clean quote image. **Present in 80K+ groups.** Peaks at **48 000 messages per minute.** Links: https://t.me/QuotLyBot, https://github.com/LyoSU/quote-bot
 - **LyAdmin** — moderation, anti-spam, and reputation tooling for serious Telegram communities. https://t.me/LyAdminBot
@@ -42,7 +42,7 @@ Yurii builds Capka, his main personal AI project, and runs a small constellation
 
 ### Available for
 
-Select AI & automation consulting. Preference for ugly, real-world problems where there is no budget for glossy demos.
+Occasional work with companies on AI and automation, usually systems that have to run against real data and existing infrastructure.
 
 ## Achievements
 
@@ -72,7 +72,7 @@ Select AI & automation consulting. Preference for ugly, real-world problems wher
 
 ## Working practice
 
-For roughly two years now, code is written primarily in a pair with AI agents. **Claude is the main model** — currently the strongest tool tested for this work. **GPT and Gemini** are kept around for verification and comparison, not primary drafting. Tool choice is revisited per task, with agent-assisted evaluation of alternatives.
+For roughly two years now, code is written primarily in a pair with AI agents. **Claude is the main model**; **GPT and Gemini** are kept around for verification and comparison, not primary drafting. Tool choice is revisited per task.
 
 ## Contact (canonical)
 
@@ -88,7 +88,7 @@ For roughly two years now, code is written primarily in a pair with AI agents. *
 
 - Name: Yurii Liubchak (Yuri Lyubchak, Юрій Любчак)
 - Role: **AI Lead at KNESS Group** — https://kness.energy
-- Also: full-stack developer, researcher, implementer
+- Also: full-stack developer
 - Experience: 10+ years coding, 150+ projects, self-taught since 12
 - Flagship projects: **Capka** (self-hosted AI workspace, open source), **fStikBot** (800K MAU, #1 Telegram sticker platform), **QuotLyBot** (80K+ groups)
 - Achievement: **Telegram Mini App Contest 2023 — 1st place**
