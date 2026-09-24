@@ -11,11 +11,12 @@ for (const w of [1280, 800, 375]) {
       const r = c.getBoundingClientRect(), t = c.querySelector('.txt');
       const out = [...c.querySelectorAll('.chaos i')].filter(i => { const b = i.getBoundingClientRect(); return b.left < r.left - 1 || b.right > r.right + 1 || b.top < r.top - 1 || b.bottom > r.bottom + 1; }).length;
       const tr = t.getBoundingClientRect();
-      return { out, fits: c.scrollHeight <= c.clientHeight + 1, overlap: [...c.querySelectorAll('.chaos i')].filter(i => { const b = i.getBoundingClientRect(); return b.left < tr.right && b.right > tr.left && b.top < tr.bottom && b.bottom > tr.top; }).length };
+      return { out, fits: c.scrollHeight <= c.clientHeight + 1, overlap: [...c.querySelectorAll('.chaos i')].filter(i => { const b = i.getBoundingClientRect(); return b.left < tr.right && b.right > tr.left && b.top < tr.bottom && b.bottom > tr.top; }).length,
+        dbg: JSON.stringify({ tr: [tr.left, tr.right, tr.top, tr.bottom].map(Math.round), f: (b => [b.left, b.right, b.top, b.bottom].map(Math.round))(c.querySelector('.chaos').getBoundingClientRect()), i0: (b => [b.left, b.top, b.width].map(Math.round))(c.querySelector('.chaos i').getBoundingClientRect()), hover: c.matches(':hover'), tf: getComputedStyle(c.querySelector('.chaos i')).transform }) };
     });
     expect(m.out).toBe(0);
     expect(m.fits).toBe(true);
-    expect(m.overlap).toBe(0);           // icons never sit on top of the text
+    expect(m.overlap, m.dbg).toBe(0);           // icons never sit on top of the text
   });
 }
 

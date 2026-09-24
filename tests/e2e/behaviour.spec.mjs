@@ -3,6 +3,8 @@ const STK = n => Array.from({ length: n }, (_, i) => `https://api.fstik.app/file
 
 test.beforeEach(async ({ page }) => {
   await page.route('**/api/stickers', r => r.fulfill({ json: { stickers: STK(8) } }));
+  // serve the fake sticker URLs locally: a real fStik 404 would trigger the (correct) local fallback and race the assertion
+  await page.route('https://api.fstik.app/file/**', r => r.fulfill({ path: new URL('../../images/stickers/1.webp', import.meta.url).pathname, contentType: 'image/webp' }));
 });
 
 test('sheet: opens from card, traps focus, Esc returns focus', async ({ page }) => {

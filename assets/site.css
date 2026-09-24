@@ -53,6 +53,7 @@ button.card{width:100%;height:100%}
 .hd>.lab{line-height:28px}
 .hd:has(.more),.hd:has(.ico){min-height:44px;align-items:center}
 .hd .id{display:flex;align-items:center;gap:12px;min-width:0}
+@media (max-width:520px){.card:not(.m-w2) .hd{align-items:flex-start}.card:not(.m-w2) .hd .id{flex-direction:column;align-items:flex-start;gap:8px}}   /* half-width tile: icon above the name, clear of the + */
 .card .more{flex:none;position:relative;width:30px;height:30px;border-radius:50%;background:var(--chip);color:var(--ink2);font-size:0;transition:transform .35s var(--spring-b,ease),background .2s ease}
 .card .more:before,.card .more:after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;border-radius:2px;background:currentColor}
 .card .more:after{transform:rotate(90deg)}
@@ -131,7 +132,8 @@ button.card{width:100%;height:100%}
 .q .qs img{display:block;width:100%;height:auto;filter:drop-shadow(0 6px 12px rgba(0,0,0,.14))}
 .q .qs img:nth-child(1){width:96%;transform:rotate(-2deg)}
 .q .qs img:nth-child(2){width:88%;transform:rotate(1.5deg);margin-left:8%}
-.q .stats{display:flex;gap:18px}
+.q .stats{display:flex;flex-wrap:wrap;gap:8px 18px}
+.q .stats .s{display:block;line-height:1.25}
 .q .stats b{display:block;font-size:26px;font-weight:700;letter-spacing:-.04em;line-height:1.05}
 
 /* capka — the real app, in a window that bleeds off the corner */
@@ -167,7 +169,26 @@ button.card{width:100%;height:100%}
 
 
 /* work: neutral tile, text carries it */
-.work p{font-size:17px;line-height:1.4;color:var(--ink);letter-spacing:-.01em}
+/* how I work: me at the hub, agents around; tasks go out, results come back */
+.work{flex-direction:row;align-items:stretch}
+.work .txt{flex:0 0 44%;display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-width:0}
+.work .hub{flex:1;position:relative;container-type:size}
+.work .hub svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.work .hub line{stroke:var(--line);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.work .node,.work .dot{position:absolute;left:0;top:0;transform:translate(calc(var(--x) * 1cqw - 50%),calc(var(--y) * 1cqh - 50%))}
+.work .node{width:38px;height:38px;border-radius:12px;background:var(--chip);display:grid;place-items:center;overflow:hidden;box-shadow:0 0 0 4px var(--card)}
+.work .node i{width:19px;height:19px;background-color:var(--ink);-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+.work .node img{width:100%;height:100%;object-fit:cover}
+.work .node.agent img{width:24px;height:24px}
+.work .node.me{width:48px;height:48px;border-radius:50%}
+.work .dot{width:8px;height:8px;border-radius:50%;background:var(--ink);opacity:0}
+.work.run .dot{animation:trip .75s cubic-bezier(.45,0,.25,1) var(--d) 2 alternate both}
+.work.run .agent{animation:ping .5s var(--spring-b,ease) calc(var(--d) + .7s) both}
+.work.run .node.me{animation:ping .5s var(--spring-b,ease) 1.9s both}
+@keyframes trip{0%{opacity:0;transform:translate(calc(50cqw - 50%),calc(50cqh - 50%))}20%{opacity:1}100%{opacity:1;transform:translate(calc(var(--x) * 1cqw - 50%),calc(var(--y) * 1cqh - 50%))}}
+@keyframes ping{50%{box-shadow:0 0 0 4px var(--card),0 0 0 7px color-mix(in srgb,var(--ink) 18%,transparent)}}
+@media (max-width:520px){.work{flex-direction:column}.work .txt{flex:none}.work .hub{flex:none;height:128px}}
+@media (prefers-reduced-motion:reduce){.work .dot,.work .node{animation:none!important}}
 
 /* bots */
 .bots .row{display:flex;justify-content:flex-start;gap:8px}
