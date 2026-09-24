@@ -51,3 +51,51 @@ for (const [w, lang] of [[1280, 'uk'], [1280, 'en'], [375, 'uk'], [800, 'uk']]) 
     expect(card).toBe(true);
   });
 }
+
+test.describe('sheet scrolling chrome', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.setViewportSize({ width: 800, height: 900 });
+    await page.goto('/');
+    await page.locator('[data-sheet="fstik"]').click();
+    await expect(page.locator('#sheet')).toHaveClass(/content-on/);
+  });
+  test('no native scrollbar strip: coloured hero spans the full sheet width', async ({ page }) => {
+    const m = await page.evaluate(() => {
+      const b = document.querySelector('#sheet-body'), s = document.querySelector('#sheet'), h = b.querySelector('.sh-hero');
+      return { gutter: b.offsetWidth - b.clientWidth, hero: h.offsetWidth, sheet: s.clientWidth, scrollable: b.scrollHeight > b.clientHeight };
+    });
+    expect(m.scrollable).toBe(true);
+    expect(m.gutter).toBe(0);
+    expect(Math.abs(m.hero - m.sheet)).toBeLessThanOrEqual(1);
+  });
+  test('no rubber-band gap above the hero', async ({ page }) => {
+    expect(await page.locator('#sheet-body').evaluate(b => getComputedStyle(b).overscrollBehaviorY)).toBe('none');
+  });
+  test('overlay scroll indicator shows while scrolling, tracks position, then fades', async ({ page }) => {
+    const t = page.locator('#sheet .sh-thumb');
+    await expect(t).toHaveCSS('opacity', '0');
+    await page.mouse.move(400, 600);
+    const rel = () => t.evaluate(el => el.getBoundingClientRect().top - el.parentElement.getBoundingClientRect().top);
+    await page.mouse.wheel(0, 120);
+    await expect(t).toHaveClass(/on/);
+    const top1 = await rel();
+    await page.mouse.wheel(0, 120);
+    await expect.poll(rel).toBeGreaterThan(top1 + 5);
+    await expect(t).not.toHaveClass(/on/, { timeout: 3000 });
+  });
+});
+
+for (const w of [1280, 375]) {
+  test(`sticky actions bar is clipped to the sheet's rounded corners @${w}`, async ({ page }) => {
+    await page.setViewportSize({ width: w, height: 800 });
+    await page.goto('/');
+    await page.locator('[data-sheet="fstik"]').click();
+    await expect(page.locator('#sheet')).toHaveClass(/content-on/);
+    const r = await page.evaluate(() => {
+      const s = getComputedStyle(document.querySelector('#sheet')), a = getComputedStyle(document.querySelector('#sheet .sh-actions'));
+      return [s.borderBottomLeftRadius, a.borderBottomLeftRadius, s.borderBottomRightRadius, a.borderBottomRightRadius];
+    });
+    expect(r[1]).toBe(r[0]);   // backdrop-filter ignores the parent's radius, so the bar carries its own
+    expect(r[3]).toBe(r[2]);
+  });
+}

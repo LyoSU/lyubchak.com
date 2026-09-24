@@ -277,6 +277,8 @@ body.swapping [data-i]{opacity:0}
 .sh-actions{position:sticky;bottom:0;display:flex;gap:8px;flex-wrap:wrap;padding:16px 32px calc(18px + env(safe-area-inset-bottom));margin-top:22px;
   background:color-mix(in srgb,var(--card) 78%,transparent);-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px);border-top:1px solid var(--line)}
 .sh-actions .btn{padding:11px 18px;font-size:15px}
+.sh-actions{border-radius:0 0 32px 32px}   /* backdrop-filter ignores the sheet's overflow radius */
+@media (max-width:640px){.sh-actions{border-radius:0}}
 .sheet .body>*:last-child:not(.sh-actions){margin-bottom:32px}
 @media (max-width:640px){
   .sheet .body>*:not(.sh-hero):not(.sh-actions){margin-left:22px;margin-right:22px}
@@ -286,14 +288,15 @@ body.swapping [data-i]{opacity:0}
 
 /* ---------- calm scrolling ---------- */
 html.sheet-open{overflow:hidden}
-.sheet .body{overscroll-behavior:contain}
+.sheet .body{overscroll-behavior-x:contain}
 .scrim{overscroll-behavior:contain}
 
-/* ---------- sheet scrolling: thin overlay scrollbar + compact title ---------- */
-.sheet .body{scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--ink) 22%,transparent) transparent}
-.sheet .body::-webkit-scrollbar{width:8px}
-.sheet .body::-webkit-scrollbar-track{background:transparent;margin:28px 0}
-.sheet .body::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--ink) 22%,transparent);border-radius:8px;border:2px solid transparent;background-clip:padding-box}
+/* ---------- sheet scrolling: no native gutter, iOS-style overlay indicator, no rubber band + compact title ---------- */
+.sheet .body{scrollbar-width:none;overscroll-behavior-y:none}
+.sheet .body::-webkit-scrollbar{display:none}
+.sh-thumb{position:absolute;right:4px;top:0;width:5px;border-radius:5px;z-index:4;pointer-events:none;opacity:0;transition:opacity .5s ease;
+  background:color-mix(in srgb,var(--ink) 40%,transparent);box-shadow:0 0 0 1px color-mix(in srgb,var(--card) 50%,transparent)}
+.sh-thumb.on{opacity:1;transition:opacity .12s ease}
 .sh-bar{position:absolute;top:0;left:0;right:0;z-index:2;height:56px;display:flex;align-items:center;justify-content:center;padding:0 64px;
   font-weight:600;font-size:16px;letter-spacing:-.01em;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
   background:color-mix(in srgb,var(--card) 80%,transparent);-webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);

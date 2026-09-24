@@ -58,10 +58,10 @@ test('fStik sheet stickers actually load', async ({ page }) => {
   expect(loaded).toBe(8);
 });
 
-test('sheet scrollbar is thin, not the default bar', async ({ page }) => {
+test('sheet has no native scrollbar (an overlay indicator replaces it)', async ({ page }) => {
   await page.goto('/');
   await page.locator('[data-sheet="fstik"]').click();
-  expect(await page.$eval('#sheet-body', b => getComputedStyle(b).scrollbarWidth)).toBe('thin');
+  expect(await page.$eval('#sheet-body', b => getComputedStyle(b).scrollbarWidth)).toBe('none');
 });
 
 test('compact title bar appears once the hero scrolls away', async ({ page }) => {

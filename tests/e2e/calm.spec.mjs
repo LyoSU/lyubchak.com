@@ -23,10 +23,10 @@ test('page behind an open sheet does not scroll', async ({ page }) => {
   await expect.poll(() => page.evaluate(() => scrollY)).not.toBe(y0); // unlocked after close
 });
 
-test('sheet body contains its own overscroll', async ({ page }) => {
+test('sheet body neither chains nor rubber-bands its overscroll', async ({ page }) => {
   await page.goto('/');
   await page.locator('[data-sheet="fstik"]').click();
-  expect(await page.$eval('#sheet-body', b => getComputedStyle(b).overscrollBehaviorY)).toBe('contain');
+  expect(await page.$eval('#sheet-body', b => getComputedStyle(b).overscrollBehaviorY)).toBe('none');
 });
 
 for (const scheme of ['light', 'dark']) {

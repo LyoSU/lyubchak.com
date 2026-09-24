@@ -182,6 +182,19 @@ function closeSheet() {
 $$('[data-sheet]').forEach(c => c.addEventListener('click', () => openSheet(c)));
 /* compact title once the hero has scrolled away (iOS large-title behaviour) */
 body.addEventListener('scroll', () => { sheet.classList.toggle('scrolled', body.scrollTop > 72); }, { passive: true });
+
+/* overlay scroll indicator: the native scrollbar would eat a strip next to the coloured hero */
+const thumb = document.createElement('i'); thumb.className = 'sh-thumb'; thumb.setAttribute('aria-hidden', 'true'); sheet.append(thumb);
+let thumbIdle;
+body.addEventListener('scroll', () => {
+  const ch = body.clientHeight, sh = body.scrollHeight;
+  if (sh <= ch) return;
+  const inset = 8, track = ch - inset * 2, h = Math.max(36, track * ch / sh);
+  thumb.style.height = h + 'px';
+  thumb.style.transform = `translateY(${body.offsetTop + inset + (track - h) * body.scrollTop / (sh - ch)}px)`;
+  thumb.classList.add('on'); clearTimeout(thumbIdle);
+  thumbIdle = setTimeout(() => thumb.classList.remove('on'), 900);
+}, { passive: true });
 $('#x').addEventListener('click', closeSheet); scrim.addEventListener('click', closeSheet);
 addEventListener('keydown', e => {
   if (!isOpen) return;
