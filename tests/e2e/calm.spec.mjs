@@ -19,7 +19,8 @@ test('page behind an open sheet does not scroll', async ({ page }) => {
   await page.waitForTimeout(300);
   expect(await page.evaluate(() => scrollY)).toBe(y0);
   await page.keyboard.press('Escape');
-  await page.mouse.wheel(0, 600);
+  expect(y0).toBeGreaterThan(100);           // room to scroll back up
+  await page.mouse.wheel(0, -600);           // up: the card may already sit at the very bottom
   await expect.poll(() => page.evaluate(() => scrollY)).not.toBe(y0); // unlocked after close
 });
 
@@ -30,14 +31,14 @@ test('sheet body neither chains nor rubber-bands its overscroll', async ({ page 
 });
 
 for (const scheme of ['light', 'dark']) {
-  test(`only product cards are colour-filled (${scheme})`, async ({ page }) => {
+  test(`no card is colour-filled (${scheme})`, async ({ page }) => {
     await page.emulateMedia({ colorScheme: scheme });
     await page.goto('/');
-    const res = await page.$$eval('#bento > .card', cs => {
+    const res = await page.$$eval('#bento .card', cs => {
       const base = getComputedStyle(document.querySelector('#me')).backgroundColor;
       return cs.filter(c => { const s = getComputedStyle(c); return s.backgroundImage !== 'none' || s.backgroundColor !== base; })
                .map(c => c.className.split(' ').find(k => ['fs', 'capka'].includes(k)) || c.className);
     });
-    expect(res.sort()).toEqual(['capka', 'fs']);
+    expect(res).toEqual([]);
   });
 }

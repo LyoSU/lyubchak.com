@@ -45,8 +45,7 @@ for (const [w, lang] of [[1280, 'uk'], [1280, 'en'], [375, 'uk'], [800, 'uk']]) 
     expect(m.text).toContain('https://lyubchak.com/llms-full.txt');
     const url = p.locator('.url');
     await expect(url).toHaveText('https://lyubchak.com/llms-full.txt');
-    const rects = await url.evaluate(el => el.getClientRects().length);
-    expect(rects).toBe(1);                                            // not split across lines
+    await expect.poll(() => url.evaluate(el => el.getClientRects().length)).toBe(1); // not split across lines (poll: the language swap re-renders it)
     const card = await page.locator('.card.ai').evaluate(el => el.scrollHeight <= el.clientHeight + 1);
     expect(card).toBe(true);
   });

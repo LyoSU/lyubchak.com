@@ -44,3 +44,15 @@ test('stack card: copy is localised and icons follow the ink colour in dark mode
   expect(bg).toBe(ink);
   expect(bg).not.toBe('rgb(0, 0, 0)');
 });
+
+test('stack icons do not fly in from the corner on load (no transition until the page settles)', async ({ page }) => {
+  await page.setViewportSize({ width: 800, height: 900 });
+  let release; const held = new Promise(r => { release = r; });
+  await page.route('**/images/avatar-256.webp', async r => { await held; await r.continue(); }); // hold the load event
+  await page.goto('/', { waitUntil: 'commit' });
+  await page.waitForSelector('.card.stack .chaos i');
+  const t = await page.$eval('.card.stack .chaos i', i => getComputedStyle(i).transitionDuration);
+  expect(t.split(',').every(d => parseFloat(d) === 0)).toBe(true);
+  release();
+  await expect.poll(() => page.$eval('.card.stack .chaos i', i => getComputedStyle(i).transitionDuration)).not.toMatch(/^0s(, 0s)*$/);
+});

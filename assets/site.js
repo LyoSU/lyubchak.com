@@ -24,22 +24,22 @@ document.documentElement.style.setProperty('--spring-b', S_BACK.ease);
 /* ---------- i18n ---------- */
 const T = {
  en:{hdr_cta:"Message me",me_cta:"Message me on Telegram",role:"<b>AI Platform Architect.</b> I build production AI systems and run Telegram products used by millions of people.",
-  fs_solo:"creator",fs_sub:"monthly users · the largest sticker platform on Telegram",fs_packs:"sticker packs",fs_inst:"Android installs",fs_surf:'<span><b>Bot</b> · create stickers</span><span><b>Catalog</b> · browse & search</span><span><b>Android app</b></span>',
+  cp_tag:"Give it the work. Get the finished files.",fs_solo:"creator",fs_sub:"monthly users · the largest sticker platform on Telegram",fs_packs:"sticker packs",fs_inst:"Android installs",fs_surf:'<span><b>Bot</b> · create stickers</span><span><b>Catalog</b> · browse & search</span><span><b>Android app</b></span>',
   cp_sub:"agent harness I wrote from scratch",cp_att:"📎 3 exports",cp_ask:"Merge June sales into one report",cp_done:"Done — three exports merged. Revenue ↑ 18% vs May.",cp_meta:"ready to open",cp_chips:'<span class="chip">Open source</span><span class="chip">Self-hosted</span><span class="chip">Your models</span>',q_groups:"groups",q_peak:"msg/min at peak",q_1:"Reply with /q to any message",q_2:"It becomes a sticker. Like this one.",path_lab:"Path",
   path_list:'<li><span>age 12</span>uCoz sites</li><li><span>then</span>PHP → VK bots → Telegram</li><li><span>2023</span>Mini App Contest, 1st</li><li><span>then</span>KNESS: bots → backend → AI lead</li><li class="now"><span>now</span>AI Platform Architect</li>',
   rl_now:"Now",rl_sub:"Designing a corporate AI platform, from pilot to production.",rl_prev:"Previously at KNESS · bot dev → backend → AI lead",kn_chips:'<span class="chip">Document analysis</span><span class="chip">Internal search</span><span class="chip">HR · Legal · Accounting agents</span>',
   aw_big:"1st",ho_sub:"Telegram channels as one feed",wk_lab:"How I work",wk_t:"I orchestrate AI agents",wk_s:"I set the tasks, bring the results together and decide what ships.",
   gh_sub:"open-source stars",bt_lab:"More bots",st_lab:"Stack",st_t:"The stack matters less now",st_s:"With AI, a new tool takes days to pick up. These are just the ones I reach for most.",op_lab:"Open for",op_t:"AI & automation for companies",op_s:"Systems that run on real data and existing infrastructure.",op_btn:"Write me →",
-  ai_lab:"Ask an AI about me",ct_lab:"Contact",ct_t:"Let's talk",ct_s:"Telegram is the fastest. Email for anything formal.",copied:"Copied ✓",bl_lab:"Blog",bl_btn:"Blog",
+  ai_lab:"Ask an AI about me",ct_lab:"Contact",ct_t:"Let's talk",ct_s:"Telegram is the fastest. Email for anything formal.",copied:"Copied ✓",ai_copy:"Copy prompt",ai_copied:"Copied — paste it into any AI",bl_lab:"Blog",bl_btn:"Blog",
   prompt:"Who is Yuri Lyubchak? Read https://lyubchak.com/llms-full.txt and check other public sources. What has he built, and what does he work on now?"},
  uk:{hdr_cta:"Написати",me_cta:"Написати в Telegram",role:"<b>AI Platform Architect.</b> Будую AI-системи для продакшну і розвиваю Telegram-продукти, якими користуються мільйони людей.",
-  fs_solo:"автор",fs_sub:"користувачів на місяць · найбільша платформа стікерів у Telegram",fs_packs:"стікерпаків",fs_inst:"встановлень Android",fs_surf:'<span><b>Бот</b> · створення паків</span><span><b>Каталог</b> · пошук</span><span><b>Android</b>-застосунок</span>',
+  cp_tag:"Дай йому роботу — отримай готові файли.",fs_solo:"автор",fs_sub:"користувачів на місяць · найбільша платформа стікерів у Telegram",fs_packs:"стікерпаків",fs_inst:"встановлень Android",fs_surf:'<span><b>Бот</b> · створення паків</span><span><b>Каталог</b> · пошук</span><span><b>Android</b>-застосунок</span>',
   cp_sub:"agent harness, написаний з нуля",cp_att:"📎 3 вивантаження",cp_ask:"Зведи червневі продажі в один звіт",cp_done:"Готово — три вивантаження зведено. Виторг ↑ 18% до травня.",cp_meta:"можна відкривати",cp_chips:'<span class="chip">Відкритий код</span><span class="chip">Self-hosted</span><span class="chip">Твої моделі</span>',q_groups:"груп",q_peak:"повідомл./хв у пік",q_1:"Відповідай /q на будь-яке повідомлення",q_2:"Воно стане стікером. Як цей.",path_lab:"Шлях",
   path_list:'<li><span>у 12</span>сайти на uCoz</li><li><span>далі</span>PHP → боти VK → Telegram</li><li><span>2023</span>Mini App Contest, 1 місце</li><li><span>далі</span>KNESS: боти → бекенд → AI lead</li><li class="now"><span>зараз</span>AI Platform Architect</li>',
   rl_now:"Зараз",rl_sub:"Проєктую корпоративну AI-платформу: від пілота до продакшну.",rl_prev:"Раніше в KNESS · боти → бекенд → AI lead",kn_chips:'<span class="chip">Аналіз документів</span><span class="chip">Внутрішній пошук</span><span class="chip">Агенти HR · юристи · бухгалтерія</span>',
   aw_big:"1 місце",ho_sub:"Telegram-канали однією стрічкою",wk_lab:"Як я працюю",wk_t:"Оркеструю AI-агентів",wk_s:"Ставлю задачі, збираю результати й вирішую, що йде в прод.",
   gh_sub:"зірок на відкритому коді",bt_lab:"Інші боти",st_lab:"Стек",st_t:"Стек тепер важить менше",st_s:"З AI новий інструмент освоюється за дні. Тут лише те, що під рукою найчастіше.",op_lab:"Відкритий до",op_t:"AI та автоматизація для компаній",op_s:"Системи, що працюють на реальних даних і наявній інфраструктурі.",op_btn:"Написати →",
-  ai_lab:"Спитай про мене в AI",ct_lab:"Контакти",ct_t:"Напиши мені",ct_s:"Найшвидше в Telegram. Для офіційного — email.",copied:"Скопійовано ✓",bl_lab:"Блог",bl_btn:"Блог",
+  ai_lab:"Спитай про мене в AI",ct_lab:"Контакти",ct_t:"Напиши мені",ct_s:"Найшвидше в Telegram. Для офіційного — email.",copied:"Скопійовано ✓",ai_copy:"Скопіювати промпт",ai_copied:"Скопійовано — встав у будь-який AI",bl_lab:"Блог",bl_btn:"Блог",
   prompt:"Хто такий Юрій Любчак? Прочитай https://lyubchak.com/llms-full.txt і перевір інші відкриті джерела. Що він створив і чим займається зараз?"}
 };
 const QUOTES = { en: ['/images/quotes/en-1.webp', '/images/quotes/en-2.webp'], uk: ['/images/quotes/uk-1.webp', '/images/quotes/uk-2.webp'] };
@@ -86,10 +86,12 @@ $('#theme').addEventListener('click', () => {
 /* ---------- intro: biggest cards first ---------- */
 (() => { const b = $('#bento');
   if (reduce) { b.classList.remove('intro'); return; }
-  [...b.children].map(c => { const r = c.getBoundingClientRect(); return { c, a: r.width * r.height, y: r.top }; })
+  [...b.querySelectorAll('.card')].map(c => { const r = c.getBoundingClientRect(); return { c, a: r.width * r.height, y: r.top }; })
     .sort((p, q) => q.a - p.a || p.y - q.y).forEach((o, i) => o.c.style.setProperty('--d', Math.min(i * 45, 540) + 'ms'));
   setTimeout(() => b.classList.remove('intro'), 1400);
 })();
+{ const settle = () => requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('settled')));
+  document.readyState === 'complete' ? settle() : addEventListener('load', settle); }
 
 /* ---------- glass header ---------- */
 new IntersectionObserver(([e]) => { const h = $('#hdr'); h.classList.toggle('show', !e.isIntersecting); h.setAttribute('aria-hidden', e.isIntersecting); h.inert = e.isIntersecting; },
@@ -101,6 +103,15 @@ $$('[data-copy]').forEach(b => b.addEventListener('click', async () => {
   catch { location.href = 'mailto:' + b.dataset.copy; return; }   // no clipboard: open the mail app instead of lying
   b.classList.add('done'); clearTimeout(b._t); b._t = setTimeout(() => b.classList.remove('done'), 1600);
 }));
+
+/* ---------- the Ask-AI prompt copies itself, for any agent the visitor uses ---------- */
+{ const b = $('#ai-copy'), hint = b.querySelector('.hint');
+  b.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(T[lang].prompt); }
+    catch { const r = document.createRange(); r.selectNodeContents($('#prompt')); getSelection().removeAllRanges(); getSelection().addRange(r); return; } // no clipboard: select it for Ctrl+C
+    hint.textContent = T[lang].ai_copied; b.classList.add('done');
+    clearTimeout(b._t); b._t = setTimeout(() => { hint.textContent = T[lang].ai_copy; b.classList.remove('done'); }, 2200);
+  }); }
 
 /* ---------- Capka demo plays only while visible ---------- */
 (() => { const v = $('.capka .win video'); if (!v || reduce) return;
