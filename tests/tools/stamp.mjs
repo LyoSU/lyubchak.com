@@ -1,11 +1,19 @@
-// Stamps content hashes onto /assets/site.css and /assets/site.js in index.html so the
-// immutable 30-day cache in _headers can never serve a stale file. Run after editing either.
+// Stamps content hashes onto long-cached URLs so a stale edge/browser copy can never be served:
+//   /assets/site.css, /assets/site.js (index.html)
+//   icons, og.png, avatar.jpg (index.html, site.webmanifest)
+// Run after editing any of those files.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 const root = new URL('../../', import.meta.url);
 const hash = f => createHash('sha256').update(readFileSync(new URL(f, root))).digest('hex').slice(0, 10);
-let html = readFileSync(new URL('index.html', root), 'utf8');
-for (const f of ['assets/site.css', 'assets/site.js'])
-  html = html.replace(new RegExp(`/${f.replace('.', '\\.')}(\\?v=[0-9a-f]+)?"`), `/${f}?v=${hash(f)}"`);
-writeFileSync(new URL('index.html', root), html);
+const esc = s => s.replace(/[.]/g, '\\.');
+const IMAGES = ['favicon.svg', 'favicon-32.png', 'favicon-64.png', 'favicon.ico', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'og.png', 'avatar.jpg'];
+
+function stamp(file, paths) {
+  let s = readFileSync(new URL(file, root), 'utf8');
+  for (const p of paths) s = s.replace(new RegExp(`(${esc(p)})(\\?v=[0-9a-f]+)?(?=["'\\s)])`, 'g'), `$1?v=${hash(p)}`);
+  writeFileSync(new URL(file, root), s);
+}
+stamp('index.html', ['assets/site.css', 'assets/site.js', ...IMAGES.map(i => 'images/' + i)]);
+stamp('site.webmanifest', IMAGES.map(i => 'images/' + i));
 console.log('stamped');

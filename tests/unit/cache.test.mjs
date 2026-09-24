@@ -16,3 +16,18 @@ test('images are not cached as immutable (they get replaced in place)', () => {
   const block = h.slice(h.indexOf('/images/*'), h.indexOf('\n\n', h.indexOf('/images/*')));
   assert.ok(!/immutable/.test(block), block);
 });
+
+// Cloudflare's edge may still hold old copies of these paths (they used to be served "immutable" for 30 days),
+// so every reference must carry the current content hash, which makes it a new URL.
+const VERSIONED = ['favicon.svg', 'favicon-32.png', 'favicon-64.png', 'favicon.ico', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'og.png', 'avatar.jpg'];
+for (const f of ['index.html', 'site.webmanifest']) {
+  test(`${f}: icon/og/avatar references carry their content hash`, () => {
+    const s = read(f).toString();
+    const refs = [...s.matchAll(/images\/([\w.-]+\.(?:svg|png|ico|jpg))(\?v=([0-9a-f]+))?/g)].filter(m => VERSIONED.includes(m[1]));
+    assert.ok(refs.length > 0);
+    for (const m of refs) assert.equal(m[3], short('images/' + m[1]), `images/${m[1]} needs ?v=${short('images/' + m[1])}`);
+  });
+}
+test('root /favicon.ico exists and is the new icon', () => {
+  assert.deepEqual(read('favicon.ico'), read('images/favicon.ico'));
+});

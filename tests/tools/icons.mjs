@@ -22,5 +22,7 @@ let offset = header.length;
 frames.forEach((buf, i) => { const s = [16, 32, 48][i], e = 6 + 16 * i;
   header.writeUInt8(s, e); header.writeUInt8(s, e + 1); header.writeUInt16LE(1, e + 4); header.writeUInt16LE(32, e + 6);
   header.writeUInt32LE(buf.length, e + 8); header.writeUInt32LE(offset, e + 12); offset += buf.length; });
-await writeFile(out('favicon.ico'), Buffer.concat([header, ...frames]));
+const ico = Buffer.concat([header, ...frames]);
+await writeFile(out('favicon.ico'), ico);
+await writeFile(new URL('../../favicon.ico', import.meta.url).pathname, ico);   // browsers ask for /favicon.ico by default
 console.log('icons written');
