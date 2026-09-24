@@ -1,0 +1,13 @@
+{
+  "name": "lyubchak-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test unit/",
+    "e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "sharp": "^0.34.0"
+  }
+}
