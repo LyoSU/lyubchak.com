@@ -39,7 +39,7 @@ test('stack card: copy is localised and icons follow the ink colour in dark mode
   await page.emulateMedia({ colorScheme: 'dark' });
   await page.goto('/');
   await page.locator('[data-lang="uk"]').first().click();
-  await expect(page.locator('.card.stack .t')).toHaveText('Стек тепер важить менше');
+  await expect(page.locator('.card.stack .t')).toHaveText('Стек уже не головне');
   const [bg, ink] = await page.locator('.card.stack .chaos i').first().evaluate(i => [getComputedStyle(i).backgroundColor, getComputedStyle(i).color]);
   expect(bg).toBe(ink);
   expect(bg).not.toBe('rgb(0, 0, 0)');
