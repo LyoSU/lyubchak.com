@@ -8,22 +8,22 @@
     "theme_color": "#f5f5f7",
     "icons": [
         {
-            "src": "images/favicon.svg?v=a33c7290c2",
+            "src": "images/favicon.svg?v=078d2286b3",
             "sizes": "any",
             "type": "image/svg+xml"
         },
         {
-            "src": "images/apple-touch-icon.png?v=e82cb046c3",
+            "src": "images/apple-touch-icon.png?v=9e4e9507bd",
             "sizes": "180x180",
             "type": "image/png"
         },
         {
-            "src": "images/icon-192.png?v=9d03aca83f",
+            "src": "images/icon-192.png?v=a0e4511d80",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "images/icon-512.png?v=3cff48c5d3",
+            "src": "images/icon-512.png?v=b1e8602e20",
             "sizes": "512x512",
             "type": "image/png"
         }

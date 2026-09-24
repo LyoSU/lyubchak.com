@@ -33,3 +33,21 @@ test('footer: working llms.txt link, no copyright line', async ({ page }) => {
   await expect(page.locator('footer a', { hasText: 'llms.txt' })).toHaveAttribute('href', '/llms.txt');
   await expect(page.locator('footer')).not.toContainText('©');
 });
+
+for (const [w, lang] of [[1280, 'uk'], [1280, 'en'], [375, 'uk'], [800, 'uk']]) {
+  test(`AI prompt is shown in full, URL unbroken @${w} ${lang}`, async ({ page }) => {
+    await page.setViewportSize({ width: w, height: 900 });
+    await page.goto('/');
+    await page.locator(`[data-lang="${lang}"]`).first().click();
+    const p = page.locator('#prompt');
+    const m = await p.evaluate(el => ({ sh: el.scrollHeight, ch: el.clientHeight, text: el.textContent }));
+    expect(m.sh).toBeLessThanOrEqual(m.ch + 1);                       // nothing clipped
+    expect(m.text).toContain('https://lyubchak.com/llms-full.txt');
+    const url = p.locator('.url');
+    await expect(url).toHaveText('https://lyubchak.com/llms-full.txt');
+    const rects = await url.evaluate(el => el.getClientRects().length);
+    expect(rects).toBe(1);                                            // not split across lines
+    const card = await page.locator('.card.ai').evaluate(el => el.scrollHeight <= el.clientHeight + 1);
+    expect(card).toBe(true);
+  });
+}

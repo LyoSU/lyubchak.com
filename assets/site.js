@@ -49,7 +49,9 @@ let lang = 'en';
 
 function applyAI() {
   const p = T[lang].prompt, q = encodeURIComponent(p);
-  $('#prompt').textContent = '“' + p + '”';
+  const U = 'https://lyubchak.com/llms-full.txt', [a, b] = p.split(U), el = $('#prompt'), url = document.createElement('span');
+  url.className = 'url'; url.textContent = U;
+  el.replaceChildren('“' + a, url, b + '”');   // keep the URL on one line
   $('#ai-chatgpt').href = 'https://chatgpt.com/?q=' + q;
   $('#ai-claude').href = 'https://claude.ai/new?q=' + q;
   $('#ai-perplexity').href = 'https://www.perplexity.ai/search?q=' + q;
