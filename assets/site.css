@@ -65,6 +65,18 @@ button.card{width:100%;height:100%}
 .s{font-size:14px;color:var(--ink2);line-height:1.42}
 .ico{width:44px;height:44px;border-radius:11px;display:block;flex:none}
 .big{font-size:44px;font-weight:700;letter-spacing:-.05em;line-height:1}
+/* stack: a chaos of tools that tidies itself on hover */
+.stack{flex-direction:row;align-items:stretch}
+.stack .txt{flex:0 0 44%;display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-width:0}
+.stack .chaos{flex:1;position:relative;container-type:size;margin:-8px -8px -8px 0}
+.stack .chaos i{position:absolute;left:0;top:0;width:24px;height:24px;margin:-12px 0 0 -12px;background-color:currentColor;color:var(--ink);
+  -webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;opacity:var(--o);
+  transform:translate(calc(var(--x) * 1cqw),calc(var(--y) * 1cqh)) rotate(var(--r)) scale(var(--s));
+  transition:transform .8s var(--spring,ease) var(--d),opacity .4s ease}
+.stack:hover .chaos i{transform:translate(calc(var(--gx) * 1cqw),calc(var(--gy) * 1cqh));opacity:.8}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media (max-width:520px){.stack{flex-direction:column}.stack .txt{flex:none}.stack .chaos{flex:none;height:112px;margin:0 -6px -6px}}
+@media (prefers-reduced-motion:reduce){.stack .chaos i{transition:none}}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{background:var(--chip);border-radius:99px;padding:5px 11px;font-size:12.5px;font-weight:500;color:var(--ink)}
 .btns{display:flex;flex-wrap:wrap;gap:6px}
