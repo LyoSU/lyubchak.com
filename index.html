@@ -260,8 +260,8 @@ Grew from bot developer to backend developer to AI lead at KNESS Group, a large 
 - [Capka](https://capka.app) ([live demo](https://demo.capka.app), [GitHub](https://github.com/LyoSU/capka)) — an agent harness written from scratch. Give Capka the work, get the finished files: reports, spreadsheets, documents, code. A separate Linux sandbox per task, one server for a whole team, schedules, Telegram. Open source (AGPL-3.0), self-hosted, bring your own models.
     </script>
 
-    <link rel="stylesheet" href="/assets/site.css?v=516dcd511e">
-    <script src="/assets/site.js?v=315970d49e" defer></script>
+    <link rel="stylesheet" href="/assets/site.css?v=424a3cc70d">
+    <script src="/assets/site.js?v=9f3ec32abc" defer></script>
 </head>
 <body>
 <a class="skip" href="#bento">Skip to content</a>
@@ -335,14 +335,18 @@ Grew from bot developer to backend developer to AI lead at KNESS Group, a large 
       <div class="surf" data-i="fs_surf"><span><b>Bot</b> · create stickers</span><span><b>Catalog</b> · browse & search</span><span><b>Android app</b></span></div>
     </button>
 
-    <div class="pair w2 m-w2">
-      <button class="card tap mini" data-sheet="hortay" aria-haspopup="dialog">
-        <div class="hd"><div class="id"><img class="ico" src="/images/hortay.jpg" alt=""><div><div class="t">Hortay</div><div class="s" data-i="ho_sub">Telegram channels as one feed</div></div></div><span class="more" aria-hidden="true"></span></div>
-      </button>
-      <button class="card tap mini bots" data-sheet="bots" aria-haspopup="dialog">
-        <div class="hd"><div class="id"><div class="t" data-i="bt_lab">More bots</div><div class="row"><span><img src="/images/LyAdminBot.jpg" alt=""></span><span><img src="/images/LySupportBot.jpg" alt=""></span><span><img src="/images/LyBot.jpg" alt=""></span><span><img src="/images/LyOSBot.jpg" alt=""></span></div></div><span class="more" aria-hidden="true"></span></div>
-      </button>
-    </div>
+    <button class="card tap news w2 m-w2" data-sheet="news" aria-haspopup="dialog">
+      <div class="hd"><div class="id"><img class="ico" src="https://news.yuri.ly/icon.png" alt=""><div><div class="t" data-i="nw_t">Live News</div><div class="s" data-i="nw_sub">Ukraine’s news from every source at once</div></div></div><span class="more" aria-hidden="true"></span></div>
+      <div><div class="stats"><div><b>354</b><span class="s" data-i="nw_ch">channels read</span></div><div><b>94.8%</b><span class="s" data-i="nw_acc">categories right · my own model</span></div></div><div class="s sub" data-i="nw_line">One event, one story, and you see where the sources disagree.</div></div>
+      <div class="surf" data-i="nw_surf"><span><b>news.yuri.ly</b></span><span><b>@UAliveNews</b> · all news</span><span><b>@ShortUA</b> · the short of it</span></div>
+    </button>
+
+    <button class="card tap mini w2 m-w2" data-sheet="hortay" aria-haspopup="dialog">
+      <div class="hd"><div class="id"><img class="ico" src="/images/hortay.jpg" alt=""><div><div class="t">Hortay</div><div class="s" data-i="ho_sub">Telegram channels as one feed</div></div></div><span class="more" aria-hidden="true"></span></div>
+    </button>
+    <button class="card tap mini bots w2 m-w2" data-sheet="bots" aria-haspopup="dialog">
+      <div class="hd"><div class="id"><div class="t" data-i="bt_lab">More bots</div><div class="row"><span><img src="/images/LyAdminBot.jpg" alt=""></span><span><img src="/images/LySupportBot.jpg" alt=""></span><span><img src="/images/LyBot.jpg" alt=""></span><span><img src="/images/LyOSBot.jpg" alt=""></span></div></div><span class="more" aria-hidden="true"></span></div>
+    </button>
 
   </div>
 </section>
@@ -459,6 +463,32 @@ Grew from bot developer to backend developer to AI lead at KNESS Group, a large 
     <a href="https://capka.app" target="_blank" rel="noopener">Сайт<span>capka.app <i class="ic ic-ext" aria-hidden="true"></i></span></a>
     <a href="https://github.com/LyoSU/capka" target="_blank" rel="noopener">Код<span>GitHub <i class="ic ic-ext" aria-hidden="true"></i></span></a></div>
   <div class="sh-actions"><a class="btn primary" href="https://demo.capka.app" target="_blank" rel="noopener">Відкрити демо</a></div>
+</article>
+<article data-sheet-src="news" lang="en">
+  <header class="sh-hero"><img class="hero-ico" src="https://news.yuri.ly/icon.png" alt=""><div><h2>Live News</h2><p class="sub">Ukraine’s news from every source at once. It reads 354 Telegram channels, merges reports of one event into one story and shows where the sources disagree.</p></div></header>
+  <div class="sh-media"><div class="kpis"><div class="kpi"><b>354</b><span>channels read</span></div><div class="kpi"><b>94.8%</b><span>categories right, my own model</span></div><div class="kpi"><b>~50 ms</b><span>per post, on a plain CPU</span></div></div></div>
+  <h3>One system, three ways in</h3><div class="list">
+    <a href="https://news.yuri.ly" target="_blank" rel="noopener">Website · feed, topics, pulse<span>news.yuri.ly <i class="ic ic-ext" aria-hidden="true"></i></span></a>
+    <a href="https://t.me/UAliveNews" target="_blank" rel="noopener">All news in Telegram<span>@UAliveNews <i class="ic ic-ext" aria-hidden="true"></i></span></a>
+    <a href="https://t.me/ShortUA" target="_blank" rel="noopener">“The short of it” digests<span>@ShortUA <i class="ic ic-ext" aria-hidden="true"></i></span></a></div>
+  <h3>My own model</h3>
+  <p>Each post’s category comes from a model I trained: <b>multilingual-e5-base</b> fine-tuned on 40K posts labelled by a large LLM, running in ONNX int8 at ~50 ms a post on a plain CPU. It gets the category right <b>94.8%</b> of the time, against 72% for the classifier it replaced. It also scores topic, region, significance and urgency.</p>
+  <p>Headlines and multi-source summaries are written by an LLM; the original of every message stays on the story page. Built on the open-source NYAN, reworked for Ukrainian and Ukrainian sources.</p>
+  <div class="list"><a href="https://github.com/LyoSU/nyan" target="_blank" rel="noopener">Source code<span>GitHub <i class="ic ic-ext" aria-hidden="true"></i></span></a></div>
+  <div class="sh-actions"><a class="btn primary" href="https://news.yuri.ly" target="_blank" rel="noopener">Open news.yuri.ly</a></div>
+</article>
+<article data-sheet-src="news" lang="uk">
+  <header class="sh-hero"><img class="hero-ico" src="https://news.yuri.ly/icon.png" alt=""><div><h2>Живі новини</h2><p class="sub">Новини України з усіх джерел одразу. Читає 354 телеграм-канали, зводить повідомлення про одну подію в одну новину й показує, де джерела не збігаються.</p></div></header>
+  <div class="sh-media"><div class="kpis"><div class="kpi"><b>354</b><span>каналів читає</span></div><div class="kpi"><b>94.8%</b><span>категорій влучно, моя модель</span></div><div class="kpi"><b>~50 мс</b><span>на пост, на звичайному CPU</span></div></div></div>
+  <h3>Одна система, три входи</h3><div class="list">
+    <a href="https://news.yuri.ly" target="_blank" rel="noopener">Сайт · стрічка, теми, пульс<span>news.yuri.ly <i class="ic ic-ext" aria-hidden="true"></i></span></a>
+    <a href="https://t.me/UAliveNews" target="_blank" rel="noopener">Усі новини в Telegram<span>@UAliveNews <i class="ic ic-ext" aria-hidden="true"></i></span></a>
+    <a href="https://t.me/ShortUA" target="_blank" rel="noopener">«Коротко про головне» — випуски<span>@ShortUA <i class="ic ic-ext" aria-hidden="true"></i></span></a></div>
+  <h3>Власна модель</h3>
+  <p>Категорію кожного поста визначає модель, яку я навчив: <b>multilingual-e5-base</b>, донавчена на 40 тис. постів, розмічених великою LLM. Працює в ONNX int8 за ~50 мс на пост на звичайному CPU і влучає в категорію в <b>94.8%</b> випадків — проти 72% у класифікатора, який вона замінила. Також оцінює тему, регіон, значущість і терміновість.</p>
+  <p>Заголовки й зведення з кількох джерел пише LLM, а оригінал кожного повідомлення лишається на сторінці новини. В основі — відкритий NYAN, перероблений під українську мову й українські джерела.</p>
+  <div class="list"><a href="https://github.com/LyoSU/nyan" target="_blank" rel="noopener">Код<span>GitHub <i class="ic ic-ext" aria-hidden="true"></i></span></a></div>
+  <div class="sh-actions"><a class="btn primary" href="https://news.yuri.ly" target="_blank" rel="noopener">Відкрити news.yuri.ly</a></div>
 </article>
 <article data-sheet-src="quotly" lang="en">
   <header class="sh-hero"><img class="hero-ico" src="/images/QuotLyBot.jpg" alt=""><div><h2>QuotLy</h2><p class="sub">Turns any Telegram message into a clean quote image.</p></div></header>

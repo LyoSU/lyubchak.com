@@ -14,7 +14,7 @@ test('cards are arranged in four untitled groups: intro, built, experience, cont
   })));
   expect(groups).toEqual([
     { cards: ['me', 'kness', 'ai'] },
-    { cards: ['quotly', 'capka', 'fstik', 'hortay', 'bots'] },
+    { cards: ['quotly', 'capka', 'fstik', 'news', 'hortay', 'bots'] },
     { cards: ['award', 'work', 'path', 'github', 'stack'] },
     { cards: ['talk', 'open'] },
   ]);
@@ -91,19 +91,19 @@ test('experience: the path runs down the right edge, the award opens the group',
 });
 
 for (const w of [1280, 800, 375]) {
-  test(`Hortay and More bots are two compact tiles stacked beside fStik, no empty band @${w}`, async ({ page }) => {
+  test(`Hortay and More bots are a compact row under the main products, no empty band @${w}`, async ({ page }) => {
     await page.setViewportSize({ width: w, height: 900 });
     await page.goto('/');
     await page.waitForTimeout(1600);
     const r = await page.evaluate(() => {
-      const rect = s => document.querySelector(s).getBoundingClientRect();
-      const tiles = ['[data-sheet="hortay"]', '[data-sheet="bots"]'].map(s => { const c = document.querySelector(s), h = c.querySelector('.hd'), p = getComputedStyle(c);
-        return Math.round(c.getBoundingClientRect().height - h.getBoundingClientRect().height - parseFloat(p.paddingTop) - parseFloat(p.paddingBottom)); });
-      const ho = rect('[data-sheet="hortay"]'), bo = rect('[data-sheet="bots"]'), fs = rect('[data-sheet="fstik"]');
-      return { stacked: bo.top > ho.bottom && Math.abs(bo.left - ho.left) < 1, sameWidth: Math.abs(ho.width - bo.width) < 1, slack: tiles, besideFs: innerWidth > 900 ? Math.abs(bo.bottom - fs.bottom) < 1 && Math.abs(ho.top - fs.top) < 1 : true };
+      const tiles = ['[data-sheet="hortay"]', '[data-sheet="bots"]'].map(s => { const c = document.querySelector(s), h = c.querySelector('.hd'), p = getComputedStyle(c), b = c.getBoundingClientRect();
+        return { h: Math.round(b.height), top: Math.round(b.top), slack: Math.round(b.height - h.getBoundingClientRect().height - parseFloat(p.paddingTop) - parseFloat(p.paddingBottom)) }; });
+      const below = Math.max(...['fstik', 'news'].map(k => document.querySelector(`[data-sheet="${k}"]`).getBoundingClientRect().bottom));
+      return { tiles, below: tiles.every(t => t.top > below) };
     });
-    expect(r.stacked).toBe(true); expect(r.sameWidth).toBe(true); expect(r.besideFs).toBe(true);
-    for (const s of r.slack) expect(s).toBeLessThanOrEqual(24);   // the header row is the whole tile (centred, so at most ~12px extra each side)
+    expect(r.below).toBe(true);
+    if (w > 900) expect(r.tiles[0].top).toBe(r.tiles[1].top);    // side by side on desktop
+    for (const t of r.tiles) { expect(t.h).toBeLessThan(120); expect(t.slack).toBeLessThanOrEqual(16); }
   });
 }
 

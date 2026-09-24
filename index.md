@@ -49,6 +49,15 @@ Reply with /q to any Telegram message and get a clean quote sticker. Up to 48 00
 - https://t.me/QuotLyBot
 - https://github.com/LyoSU/quote-bot
 
+### Live News (Живі новини) — Ukrainian news from every source
+
+Reads 354 Telegram channels, merges reports of one event into one story and shows where the sources disagree. The site, the @UAliveNews channel (all news) and @ShortUA ("Коротко про головне" digests) are one system. Post categories come from my own model: multilingual-e5-base fine-tuned on 40K LLM-labelled posts, 94.8% accurate. Built on the open-source NYAN.
+
+- https://news.yuri.ly
+- https://t.me/UAliveNews
+- https://t.me/ShortUA
+- https://github.com/LyoSU/nyan
+
 ### Hortay — Telegram channel reader
 
 Open-source native Android app that reads Telegram channels as one chronological feed instead of a chat list. Jetpack Compose, Material 3, TDLib, 13 languages.

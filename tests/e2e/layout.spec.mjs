@@ -7,7 +7,7 @@ for (const lang of ['en', 'uk']) for (const [w, h] of WIDTHS) {
     await page.addInitScript(l => { try { localStorage.setItem('lang', l); } catch {} }, lang);
     await page.goto('/');
     await page.waitForTimeout(1600); // intro finished
-    await expect(page.locator('#bento .card')).toHaveCount(15);
+    await expect(page.locator('#bento .card')).toHaveCount(16);
     const bad = await page.$$eval('#bento .card:not(.capka)', cs =>
       cs.filter(c => c.scrollHeight > c.clientHeight + 1 || c.scrollWidth > c.clientWidth + 1).map(c => c.className));
     expect(bad).toEqual([]);

@@ -8,21 +8,21 @@
       "type": "resource",
       "description": "Short profile of Yuri Lyubchak, written by Yuri himself: role, projects, contacts.",
       "url": "https://lyubchak.com/llms.txt",
-      "sha256": "5f935d5b3941ecfad4f56450ac776b84839af095c42c70e85f696e39fab70530"
+      "sha256": "c43e60ff6c0e94762dfdfa8fabc3c42c40d2a4e33208a5e8a3fe684beed404be"
     },
     {
       "name": "profile-full",
       "type": "resource",
       "description": "Expanded single-file reference with full bio, projects, stack and contact inlined. Pre-chunked for direct LLM ingestion.",
       "url": "https://lyubchak.com/llms-full.txt",
-      "sha256": "04734e0410bbdf17ebab6a9416e95be950ab7250e59091c27bd6c196e090569f"
+      "sha256": "e7dfd10a934348b160eef6dc563397faa422772a88906f664f8dcca87c9d912b"
     },
     {
       "name": "markdown-page",
       "type": "resource",
       "description": "Markdown rendering of the homepage — same content as lyubchak.com stripped of HTML chrome.",
       "url": "https://lyubchak.com/index.md",
-      "sha256": "50bbfbdcbe1903310a9fde76dc92f75583a6c85dd36f28e0e84b8a0ba8003f23"
+      "sha256": "525808be8432939b258c357ad6b10543e6aa15f3216e0db6f9f37667caa924a2"
     }
   ]
 }

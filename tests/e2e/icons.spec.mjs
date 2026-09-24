@@ -59,6 +59,6 @@ test('card corner button reads as "expand", not "add": an expand icon, no plus b
   await page.goto('/');
   const r = await page.$$eval('.card .more', ms => ms.map(m => { const b = getComputedStyle(m, '::before'), a = getComputedStyle(m, '::after');
     return { icon: (b.maskImage || b.webkitMaskImage).includes('data:image/svg'), after: a.content, text: m.textContent.trim() }; }));
-  expect(r.length).toBe(8);
+  expect(r.length).toBe(9);
   for (const m of r) expect(m).toEqual({ icon: true, after: 'none', text: '' });
 });

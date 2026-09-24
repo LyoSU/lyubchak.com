@@ -40,3 +40,12 @@ test('agent-skills sha256 values match the files they describe', () => {
     assert.equal(s.sha256, hash, file);
   }
 });
+
+test('plain-text versions tell AI assistants about Live News (site + both channels, own model)', () => {
+  for (const f of ['llms.txt', 'llms-full.txt', 'index.md']) {
+    const t = readFileSync(new URL('../../' + f, import.meta.url), 'utf8');
+    for (const s of ['news.yuri.ly', '@UAliveNews', '@ShortUA']) assert.ok(t.includes(s), `${f}: ${s}`);
+  }
+  const full = readFileSync(new URL('../../llms-full.txt', import.meta.url), 'utf8');
+  for (const s of ['multilingual-e5-base', '94.8%', 'NYAN']) assert.ok(full.includes(s), s);
+});

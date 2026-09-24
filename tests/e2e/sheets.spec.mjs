@@ -5,7 +5,7 @@ test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => { try { localStorage.setItem('lang', 'en'); } catch {} });
 });
 
-const IDS = ['fstik', 'capka', 'quotly', 'path', 'kness', 'hortay', 'github', 'bots'];
+const IDS = ['fstik', 'capka', 'quotly', 'news', 'path', 'kness', 'hortay', 'github', 'bots'];
 for (const id of IDS) {
   test(`sheet ${id}: product hero and a visual`, async ({ page }) => {
     await page.goto('/');
