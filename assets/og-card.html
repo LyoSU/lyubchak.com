@@ -1,116 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>OG Card — Yurii Liubchak</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<title>OG Card — Yuri Lyubchak</title>
 <style>
-  :root{
-    --paper:#f5efe6;
-    --paper-2:#ede5d6;
-    --ink:#1f1d1a;
-    --ink-2:#423d35;
-    --muted:#8a8374;
-    --rule:rgba(31,29,26,0.12);
-    --accent:#c86b3a;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html,body{width:1200px;height:630px;overflow:hidden;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
-  body{
-    position:relative;
-    padding:72px 80px;
-    display:flex;flex-direction:column;justify-content:space-between;
-  }
-  /* subtle paper grain via radial gradients */
-  body::before{
-    content:"";position:absolute;inset:0;pointer-events:none;
-    background:
-      radial-gradient(1200px 400px at 85% 10%, rgba(200,107,58,0.08), transparent 60%),
-      radial-gradient(800px 500px at 10% 95%, rgba(31,29,26,0.04), transparent 60%);
-  }
-  .top{
-    display:flex;align-items:center;justify-content:space-between;
-    font-size:18px;color:var(--muted);position:relative;z-index:1;
-  }
-  .top .brand{display:flex;align-items:center;gap:12px;color:var(--ink);font-weight:500}
-  .top .brand .dot{width:12px;height:12px;background:var(--accent);border-radius:50%}
-  .top .meta{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.08em;text-transform:uppercase}
-  .center{position:relative;z-index:1;display:grid;grid-template-columns:1fr 260px;gap:48px;align-items:center}
-  h1{
-    font-family:'Fraunces',serif;
-    font-weight:400;
-    font-size:84px;line-height:1.02;letter-spacing:-0.025em;
-    color:var(--ink);text-wrap:balance;
-    font-variation-settings:"opsz" 140;
-    max-width:720px;
-  }
-  h1 em{font-style:italic;color:var(--accent)}
-  .lede{
-    margin-top:20px;
-    font-family:'Fraunces',serif;font-variation-settings:"opsz" 36;
-    font-size:24px;line-height:1.4;color:var(--ink-2);
-    max-width:640px;
-    font-weight:400;
-  }
-  .lede b{color:var(--ink);font-weight:500}
-  .mark{
-    width:260px;height:260px;border-radius:24px;
-    background:url(../images/avatar.jpg) center/cover,var(--paper-2);
-    border:1px solid var(--rule);
-    filter:saturate(0.95);
-    box-shadow:0 20px 60px -30px rgba(31,29,26,0.3);
-    position:relative;
-  }
-  .mark::after{
-    content:"Ly";position:absolute;bottom:-14px;right:-14px;
-    width:72px;height:72px;border-radius:50%;
-    background:var(--paper);border:1px solid var(--rule);
-    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
-    font-size:42px;color:var(--accent);
-    font-variation-settings:"opsz" 60;letter-spacing:-0.02em;
-    display:flex;align-items:center;justify-content:center;
-    box-shadow:0 6px 14px -6px rgba(31,29,26,0.2);
-  }
-  .bottom{
-    display:flex;align-items:center;justify-content:space-between;
-    font-size:17px;position:relative;z-index:1;
-    padding-top:28px;border-top:1px solid var(--rule);
-  }
-  .bottom .stats{display:flex;gap:36px;align-items:baseline}
-  .bottom .stat{display:flex;flex-direction:column;gap:4px}
-  .bottom .stat .v{font-family:'Fraunces',serif;font-size:28px;font-weight:500;color:var(--ink);font-variation-settings:"opsz" 36;letter-spacing:-0.01em;line-height:1}
-  .bottom .stat .v em{color:var(--accent);font-style:italic}
-  .bottom .stat .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em}
-  .bottom .url{font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--muted);letter-spacing:0.02em}
-  .bottom .url b{color:var(--ink);font-weight:500}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1200px;height:630px;overflow:hidden;background:#f5f5f7;color:#1d1d1f;
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .grid{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:1fr 1fr;gap:20px;padding:40px;height:630px}
+  .card{border-radius:36px;padding:40px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative}
+  .me{grid-row:span 2;background:#fff;box-shadow:0 1px 1px rgba(0,0,0,.03),0 8px 24px rgba(0,0,0,.05)}
+  .me img{width:112px;height:112px;border-radius:50%;object-fit:cover}
+  .me h1{font-size:76px;font-weight:700;letter-spacing:-.05em;line-height:.95}
+  .me p{font-size:28px;color:#6e6e73;letter-spacing:-.015em;margin-top:18px;line-height:1.3}
+  .me p b{color:#1d1d1f;font-weight:600}
+  .me .url{font-size:22px;color:#86868b;font-weight:500}
+  .fs{background:linear-gradient(160deg,#3b8cf2,#2457c5);color:#fff}
+  .fs .n{font-size:104px;font-weight:700;letter-spacing:-.055em;line-height:.9}
+  .fs span,.cp span{font-size:22px;opacity:.8}
+  .fs .t,.cp .t{font-size:26px;font-weight:600}
+  .cp{background:radial-gradient(90% 80% at 100% 100%,rgba(255,122,61,.35),transparent 60%),#0e0e10;color:#f5f5f7}
+  .cp .n{font-size:44px;font-weight:700;letter-spacing:-.04em;line-height:1.05}
 </style>
 </head>
 <body>
-
-  <div class="top">
-    <div class="brand"><span class="dot"></span><span>lyubchak.com</span></div>
-    <div class="meta">AI · developer · ukraine</div>
-  </div>
-
-  <div class="center">
+<div class="grid">
+  <div class="card me">
+    <img src="../images/avatar.jpg" alt="">
     <div>
-      <h1>Hi, I'm <em>Yuri Ly</em> — AI lead, developer and Telegram bot author.</h1>
-      <p class="lede"><b>AI agents and automation</b> inside a large manufacturing group. Telegram products used by <b>millions</b>.</p>
+      <h1>Yuri Lyubchak</h1>
+      <p><b>AI Platform Architect.</b> Production AI systems and Telegram products used by millions.</p>
     </div>
-    <div class="mark" aria-hidden="true"></div>
+    <div class="url">lyubchak.com</div>
   </div>
-
-  <div class="bottom">
-    <div class="stats">
-      <div class="stat"><span class="v">800K<em>+</em></span><span class="k">fStik monthly</span></div>
-      <div class="stat"><span class="v">80K<em>+</em></span><span class="k">QuotLy groups</span></div>
-      <div class="stat"><span class="v"><em>#1</em></span><span class="k">Mini App Contest</span></div>
-      <div class="stat"><span class="v">150<em>+</em></span><span class="k">projects</span></div>
-    </div>
-    <div class="url"><b>lyubchak.com</b> · yuri.ly</div>
-  </div>
-
+  <div class="card fs"><div class="t">fStik</div><div><div class="n">800K</div><span>monthly users</span></div></div>
+  <div class="card cp"><div class="t">Capka</div><div><div class="n">Agent harness,<br>written from scratch</div></div></div>
+</div>
 </body>
 </html>
