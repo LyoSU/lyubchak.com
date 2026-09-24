@@ -64,7 +64,8 @@ function paint() {
 function setLang(l, animate = true) {
   if (!T[l] || (l === lang && animate)) return;
   store.set('lang', l);
-  const swap = () => { lang = l; paint(); };
+  lang = l;                      // state first, so a sheet opened mid-animation uses the new language
+  const swap = () => paint();
   if (!animate || reduce) { swap(); return; }
   document.body.classList.add('swapping');
   setTimeout(() => { swap(); requestAnimationFrame(() => document.body.classList.remove('swapping')); }, 170);
@@ -104,7 +105,18 @@ $$('[data-copy]').forEach(b => b.addEventListener('click', async () => {
 })();
 
 /* ---------- fStik stickers: curated list from /api/stickers, static fallback stays on failure ---------- */
-let STICKERS = $$('.fs .stk img').map(i => i.getAttribute('src'));
+/* static fallback: 8 hand-picked stickers from fStik's verified packs (card shows the first 3) */
+const FALLBACK = [
+  'AAMCAQADFQABarR6ySDmCs9U62zpyhZ2geK6GicAAo4BAAJ2N3Y_dfNKbA6bUAcBAAdtAAM9BA',
+  'AAMCAgADFQABarR57eHHfn6f2-kzJH40pvPGk_kAAgQWAAI_pMBKCgkHMdQCe6wBAAdtAAM9BA',
+  'AAMCAgADFQABarR5q0uBtAZDiq8oIUZvvh1nBBgAAnZhAALgo4IHCHfgBEhuQ9MBAAdtAAM9BA',
+  'AAMCAgADFQABarSKd57Pckl8ZwQ1XT-uQPVEEmIAAsASAAIJvylLCxINu70bdaUBAAdtAAM9BA',
+  'AAMCAQADFQABarR6yTfhBlr3RqOL_afsAnKWJWcAAhQCAAK63bBHFyfh8FHkbfsBAAdtAAM9BA',
+  'AAMCAgADFQABarR57etLVmIO6F8bOCfKoa7zZ78AAlETAAILesBKwx2530yCuQ4BAAdtAAM9BA',
+  'AAMCAgADFQABarR5q-AyxqHevPDqWFODjbvMf2cAAndhAALgo4IHekYrlyMmbtQBAAdtAAM9BA',
+  'AAMCAgADFQABarSBAlGy4td3UkO_cdTuM2WUmHIAApM1AAIZAfBItDRdhHd28rUBAAdtAAM9BA',
+].map(id => `https://api.fstik.app/file/${id}/sticker.webp`);
+let STICKERS = FALLBACK;
 fetch('/api/stickers').then(r => r.ok ? r.json() : null).then(d => {
   const list = d && Array.isArray(d.stickers) ? d.stickers.filter(u => /^https:\/\/api\.fstik\.app\/file\//.test(u)) : [];
   if (list.length < 3) return;
@@ -114,7 +126,7 @@ function fillStickers(root) {
   $$('[data-stickers]', root).forEach(box => {
     const n = +box.dataset.stickers;
     box.replaceChildren(...Array.from({ length: Math.min(n, STICKERS.length) }, (_, i) => {
-      const im = document.createElement('img'); im.src = STICKERS[i]; im.alt = ''; im.loading = 'lazy'; return im; }));
+      const im = document.createElement('img'); im.src = STICKERS[i]; im.alt = ''; im.decoding = 'async'; return im; }));  // no lazy: the sheet is already on screen
   });
 }
 
@@ -135,6 +147,7 @@ function fillSheet(id) {
   const src = $(`#sheet-src article[data-sheet-src="${id}"][lang="${lang}"]`) || $(`#sheet-src article[data-sheet-src="${id}"]`);
   const clone = src.cloneNode(true);
   const h2 = clone.querySelector('h2'); if (h2) h2.id = 'sheet-title';
+  sheet.dataset.kind = id;
   body.replaceChildren(...clone.childNodes); body.scrollTop = 0; fillStickers(body);
 }
 function openSheet(card) {
