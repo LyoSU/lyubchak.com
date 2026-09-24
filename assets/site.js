@@ -89,7 +89,7 @@ $('#theme').addEventListener('click', () => {
 })();
 
 /* ---------- glass header ---------- */
-new IntersectionObserver(([e]) => { const h = $('#hdr'); h.classList.toggle('show', !e.isIntersecting); h.setAttribute('aria-hidden', e.isIntersecting); },
+new IntersectionObserver(([e]) => { const h = $('#hdr'); h.classList.toggle('show', !e.isIntersecting); h.setAttribute('aria-hidden', e.isIntersecting); h.inert = e.isIntersecting; },
   { rootMargin: '-40px 0px 0px 0px' }).observe($('#me'));
 
 /* ---------- copy ---------- */
