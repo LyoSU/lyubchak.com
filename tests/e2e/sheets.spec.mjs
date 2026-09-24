@@ -37,7 +37,7 @@ test('API down: fStik sheet still shows 8 stickers', async ({ page }) => {
 test('GitHub sheet: star bars are proportional', async ({ page }) => {
   await page.goto('/');
   await page.locator('[data-sheet="github"]').click();
-  const w = await page.$$eval('#sheet-body .repo i', is => is.map(i => i.getBoundingClientRect().width));
+  const w = await page.$$eval('#sheet-body .repo > i', is => is.map(i => i.getBoundingClientRect().width));
   expect(w.length).toBe(6);
   expect(w[0]).toBeGreaterThan(w[5] * 5);
 });
