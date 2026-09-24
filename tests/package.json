@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test unit/",
+    "test": "node --test \"unit/*.test.mjs\"",
     "e2e": "playwright test"
   },
   "devDependencies": {
