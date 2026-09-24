@@ -101,14 +101,14 @@ button.card{width:100%;height:100%}
 .fs .ico{box-shadow:0 6px 20px rgba(0,0,0,.2)}
 .fs .surf{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
 .fs .surf b{font-weight:600}
-.fs .stk{position:absolute;right:62px;top:10px;width:160px;height:68px;pointer-events:none}
-.fs .stk img{position:absolute;width:54px;height:54px;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(0,20,60,.3));transition:transform .6s var(--spring-b,ease)}
+.fs .stk{position:absolute;right:62px;top:16px;width:140px;height:60px;pointer-events:none}
+.fs .stk img{position:absolute;width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(0,20,60,.3));transition:transform .6s var(--spring-b,ease)}
 .fs .stk img:nth-child(1){right:0;top:2px;transform:rotate(10deg)}
-.fs .stk img:nth-child(2){right:50px;top:12px;transform:rotate(-7deg)}
-.fs .stk img:nth-child(3){right:100px;top:0;transform:rotate(4deg)}
-.fs:hover .stk img:nth-child(1){transform:rotate(15deg) translateY(-5px)}
+.fs .stk img:nth-child(2){right:44px;top:10px;transform:rotate(-7deg)}
+.fs .stk img:nth-child(3){right:88px;top:0;transform:rotate(4deg)}
+.fs:hover .stk img:nth-child(1){transform:rotate(15deg) translateY(-3px)}
 .fs:hover .stk img:nth-child(2){transform:rotate(-12deg) translateY(-3px)}
-.fs:hover .stk img:nth-child(3){transform:rotate(-1deg) translateY(-6px)}
+.fs:hover .stk img:nth-child(3){transform:rotate(-1deg) translateY(-3px)}
 @media (max-width:520px){.fs .stk{transform:scale(.7);transform-origin:top right;right:58px}}
 .sheet .stickers{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:4px 0 18px}
 .sheet .stickers img{width:100%;aspect-ratio:1;object-fit:contain;background:var(--chip);border-radius:16px;padding:10px}
@@ -158,8 +158,9 @@ button.card{width:100%;height:100%}
 .work p{font-size:17px;line-height:1.4;color:var(--ink);letter-spacing:-.01em}
 
 /* bots */
-.bots .row{display:flex;justify-content:space-between;gap:6px}
-.bots .row img{flex:0 1 40px;min-width:0;width:40px;height:auto;aspect-ratio:1;border-radius:10px}
+.bots .row{display:flex;justify-content:flex-start;gap:8px}
+.bots .row span{flex:1 1 0;max-width:48px;aspect-ratio:1;border-radius:12px;background:var(--chip);overflow:hidden;display:block}
+.bots .row span img{display:block;width:100%;height:100%;object-fit:cover}
 
 /* open for: a live status dot instead of a green tile */
 .open .lab{display:inline-flex;align-items:center;gap:7px;color:#1f7a45}
@@ -221,6 +222,8 @@ body.swapping [data-i]{opacity:0}
 }
 @media (prefers-reduced-transparency:reduce){.hdr{background:var(--bg);backdrop-filter:none}}
 
+.foot a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line)}
+.foot a:hover{color:var(--ink)}
 .foot{max-width:1120px;margin:0 auto;padding:0 20px 60px;font-size:12px;color:var(--ink3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 /* ---------- additions over the prototype ---------- */
