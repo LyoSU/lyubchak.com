@@ -154,6 +154,7 @@ function openSheet(card) {
   clearTimeout(closeTimer);
   origin = card; fillSheet(card.dataset.sheet);
   sheet.classList.add('open'); isOpen = true; scrim.classList.add('on');
+  document.documentElement.classList.add('sheet-open');   // freeze the page behind
   $('#x').focus({ preventScroll: true });
   if (reduce) { sheet.style.opacity = 1; sheet.classList.add('content-on'); return; }
   const g = coverCard(card), d = S_OPEN.ms;
@@ -167,6 +168,7 @@ function closeSheet() {
   if (!isOpen) return; isOpen = false;
   scrim.classList.remove('on'); sheet.classList.remove('content-on');
   $$('video', body).forEach(v => v.pause());
+  document.documentElement.classList.remove('sheet-open');
   const done = () => { sheet.classList.remove('open'); sheet.style.cssText = ''; origin && origin.focus({ preventScroll: true }); };
   if (reduce) { done(); return; }
   const cs = getComputedStyle(sheet);

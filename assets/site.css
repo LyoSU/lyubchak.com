@@ -19,7 +19,7 @@
   --glass:rgba(22,22,23,.72);--scrim:rgba(0,0,0,.55);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
 body{background:var(--bg);color:var(--ink);font:17px/1.47 -apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;transition:background .4s ease,color .4s ease}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
@@ -134,10 +134,11 @@ button.card{width:100%;height:100%}
 @media (max-width:520px){.capka .win{left:18px;top:150px;width:520px}}
 .sheet video{width:100%;border-radius:16px;display:block;margin:4px 0 18px;background:#000}
 
-/* award */
-.award{background:linear-gradient(160deg,#ffe27a,#f6c945)}
-.award,.award .s,.award .lab{color:#3d3000}
-
+/* award: gold lives in the numeral, not the whole tile */
+.award .big{background:linear-gradient(135deg,#e2a90f,#b7791f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.award .lab{color:#9a6a00}
+:root[data-theme="dark"] .award .lab{color:#e8b64a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .award .lab{color:#e8b64a}}
 
 /* path — dots and line share one axis at x=6px */
 .path ol{list-style:none;display:flex;flex-direction:column;gap:9px}
@@ -153,33 +154,23 @@ button.card{width:100%;height:100%}
 /* github */
 
 
-/* work */
-.work{background:linear-gradient(160deg,#efeaff,#e4dcff)}
-.work p{font-size:17px;line-height:1.4;color:#2b2256;letter-spacing:-.01em}
-.work .lab{color:#6a5fb0}
-:root[data-theme="dark"] .work{background:linear-gradient(160deg,#211d33,#1a1729)}
-:root[data-theme="dark"] .work p{color:#dcd6ff}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .work{background:linear-gradient(160deg,#211d33,#1a1729)}:root:not([data-theme="light"]) .work p{color:#dcd6ff}}
+/* work: neutral tile, text carries it */
+.work p{font-size:17px;line-height:1.4;color:var(--ink);letter-spacing:-.01em}
 
 /* bots */
 .bots .row{display:flex;justify-content:space-between;gap:6px}
-.bots .row img{width:40px;height:40px;border-radius:10px}
+.bots .row img{flex:0 1 40px;min-width:0;width:40px;height:auto;aspect-ratio:1;border-radius:10px}
 
-/* open for */
-.open{background:linear-gradient(160deg,#dcf5e6,#cdeedb)}
-.open,.open .s{color:#12391f}.open .lab{color:#2e7a4a}
-.open .btn{background:#fff;color:#12391f}
-:root[data-theme="dark"] .open{background:linear-gradient(160deg,#10261a,#0c1f15)}
-:root[data-theme="dark"] .open,:root[data-theme="dark"] .open .s{color:#c8f0d6}
-:root[data-theme="dark"] .open .btn{background:#1b3a28;color:#c8f0d6}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .open{background:linear-gradient(160deg,#10261a,#0c1f15)}:root:not([data-theme="light"]) .open,:root:not([data-theme="light"]) .open .s{color:#c8f0d6}:root:not([data-theme="light"]) .open .btn{background:#1b3a28;color:#c8f0d6}}
+/* open for: a live status dot instead of a green tile */
+.open .lab{display:inline-flex;align-items:center;gap:7px;color:#1f7a45}
+.open .lab:before{content:"";width:8px;height:8px;border-radius:50%;background:#30d158;box-shadow:0 0 0 3px rgba(48,209,88,.2)}
+:root[data-theme="dark"] .open .lab{color:#5fe08a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .open .lab{color:#5fe08a}}
 
-/* ask ai (4) */
-.ai{background:#0b0b0c;color:#f5f5f7}
-.ai .lab{color:#8e8e93}
-.ai .btn{background:#222225;color:#f5f5f7}
-.ai .btn:hover{background:#2e2e32}
-.ai .prompt{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13px;color:#a1a1a6;line-height:1.4;border-left:2px solid #333;padding-left:10px;max-width:52ch}
+/* ask ai: neutral tile, dark buttons carry the action */
+.ai .btn{background:var(--ink);color:var(--bg)}
+.ai .btn:hover{background:color-mix(in srgb,var(--ink) 85%,var(--bg))}
+.ai .prompt{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13px;color:var(--ink2);line-height:1.4;border-left:2px solid var(--line);padding-left:10px;max-width:52ch}
 
 /* copy (3) */
 .copy{position:relative;overflow:hidden}
@@ -288,3 +279,8 @@ body.swapping [data-i]{opacity:0}
   .sh-hero{padding:30px 22px 22px}.sh-actions{padding-left:22px;padding-right:22px}
   .repo{grid-template-columns:110px 1fr 48px}
 }
+
+/* ---------- calm scrolling ---------- */
+html.sheet-open{overflow:hidden}
+.sheet .body{overscroll-behavior:contain}
+.scrim{overscroll-behavior:contain}
