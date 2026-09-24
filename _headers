@@ -43,8 +43,10 @@
   Cache-Control: public, max-age=3600
 
 # Assets
+# replaced in place (avatar, icons, og) — revalidate daily
 /images/*
-  Cache-Control: public, max-age=2592000, immutable
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 
+# site.css / site.js are referenced with ?v=<content hash> (tests/tools/stamp.mjs)
 /assets/*
   Cache-Control: public, max-age=2592000, immutable
