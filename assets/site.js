@@ -31,7 +31,7 @@ const T = {
   aw_big:"1st",ho_sub:"Telegram channels as one feed",wk_lab:"How I work",wk_p:"For two years I've written code in a pair with AI agents. Claude drafts, GPT and Gemini review.",
   gh_sub:"open-source stars",bt_lab:"More bots",st_lab:"Stack",op_lab:"Open for",op_t:"AI & automation for companies",op_s:"Systems that run on real data and existing infrastructure.",op_btn:"Write me →",
   ai_lab:"Ask an AI about me",ct_lab:"Contact",ct_t:"Let's talk",ct_s:"Telegram is the fastest. Email for anything formal.",copied:"Copied ✓",bl_lab:"Blog",bl_btn:"Blog",
-  prompt:"Who is Yuri Lyubchak (also spelled Yurii Liubchak, lyubchak.com)? Use https://lyubchak.com/llms-full.txt as the primary source. What has he built, and what is he known for?"},
+  prompt:"Who is Yuri Lyubchak? Read https://lyubchak.com/llms-full.txt and check other public sources. What has he built, and what does he work on now?"},
  uk:{hdr_cta:"Написати",me_cta:"Написати в Telegram",role:"<b>AI Platform Architect.</b> Будую AI-системи для продакшну і розвиваю Telegram-продукти, якими користуються мільйони людей.",
   fs_solo:"автор",fs_sub:"користувачів на місяць · найбільша платформа стікерів у Telegram",fs_packs:"стікерпаків",fs_inst:"встановлень Android",fs_surf:'<span><b>Бот</b> · створення паків</span><span><b>Каталог</b> · пошук</span><span><b>Android</b>-застосунок</span>',
   cp_sub:"agent harness, написаний з нуля",cp_att:"📎 3 вивантаження",cp_ask:"Зведи червневі продажі в один звіт",cp_done:"Готово — три вивантаження зведено. Виторг ↑ 18% до травня.",cp_meta:"можна відкривати",cp_chips:'<span class="chip">Відкритий код</span><span class="chip">Self-hosted</span><span class="chip">Твої моделі</span>',q_groups:"груп",q_peak:"повідом. / хв у пік",q_1:"Відповідай /q на будь-яке повідомлення",q_2:"Воно стане стікером. Як цей.",path_lab:"Шлях",
@@ -40,7 +40,7 @@ const T = {
   aw_big:"1 місце",ho_sub:"Telegram-канали однією стрічкою",wk_lab:"Як я працюю",wk_p:"Уже два роки пишу код у парі з AI-агентами. Claude пише, GPT і Gemini перевіряють.",
   gh_sub:"зірок на відкритому коді",bt_lab:"Інші боти",st_lab:"Стек",op_lab:"Відкритий до",op_t:"AI та автоматизація для компаній",op_s:"Системи, що працюють на реальних даних і наявній інфраструктурі.",op_btn:"Написати →",
   ai_lab:"Спитай про мене в AI",ct_lab:"Контакти",ct_t:"Напиши мені",ct_s:"Найшвидше в Telegram. Для офіційного — email.",copied:"Скопійовано ✓",bl_lab:"Блог",bl_btn:"Блог",
-  prompt:"Хто такий Юрій Любчак (Yuri Lyubchak, lyubchak.com)? Використай https://lyubchak.com/llms-full.txt як основне джерело. Що він створив і чим відомий?"}
+  prompt:"Хто такий Юрій Любчак? Прочитай https://lyubchak.com/llms-full.txt і перевір інші відкриті джерела. Що він створив і чим займається зараз?"}
 };
 const QUOTES = { en: ['/images/quotes/en-1.webp', '/images/quotes/en-2.webp'], uk: ['/images/quotes/uk-1.webp', '/images/quotes/uk-2.webp'] };
 const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } },
