@@ -86,7 +86,7 @@ test('stickers: API failure keeps the static fallback', async ({ page }) => {
   await page.goto('/');
   const srcs = await page.$$eval('.fs .stk img', is => is.map(i => i.getAttribute('src')));
   expect(srcs).toHaveLength(3);
-  for (const s of srcs) expect(s).toMatch(/^https:\/\/api\.fstik\.app\/file\//);
+  for (const s of srcs) expect(s).toMatch(/^\/images\/stickers\/\d\.webp$/);   // local fallback (survives fStik outages)
 });
 
 test('reduced motion: Capka video never autoplays; sheets still work', async ({ page }) => {

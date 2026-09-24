@@ -95,7 +95,8 @@ new IntersectionObserver(([e]) => { const h = $('#hdr'); h.classList.toggle('sho
 
 /* ---------- copy ---------- */
 $$('[data-copy]').forEach(b => b.addEventListener('click', async () => {
-  try { await navigator.clipboard.writeText(b.dataset.copy); } catch {}
+  try { await navigator.clipboard.writeText(b.dataset.copy); }
+  catch { location.href = 'mailto:' + b.dataset.copy; return; }   // no clipboard: open the mail app instead of lying
   b.classList.add('done'); clearTimeout(b._t); b._t = setTimeout(() => b.classList.remove('done'), 1600);
 }));
 
@@ -105,28 +106,24 @@ $$('[data-copy]').forEach(b => b.addEventListener('click', async () => {
 })();
 
 /* ---------- fStik stickers: curated list from /api/stickers, static fallback stays on failure ---------- */
-/* static fallback: 8 hand-picked stickers from fStik's verified packs (card shows the first 3) */
-const FALLBACK = [
-  'AAMCAQADFQABarR6ySDmCs9U62zpyhZ2geK6GicAAo4BAAJ2N3Y_dfNKbA6bUAcBAAdtAAM9BA',
-  'AAMCAgADFQABarR57eHHfn6f2-kzJH40pvPGk_kAAgQWAAI_pMBKCgkHMdQCe6wBAAdtAAM9BA',
-  'AAMCAgADFQABarR5q0uBtAZDiq8oIUZvvh1nBBgAAnZhAALgo4IHCHfgBEhuQ9MBAAdtAAM9BA',
-  'AAMCAgADFQABarSKd57Pckl8ZwQ1XT-uQPVEEmIAAsASAAIJvylLCxINu70bdaUBAAdtAAM9BA',
-  'AAMCAQADFQABarR6yTfhBlr3RqOL_afsAnKWJWcAAhQCAAK63bBHFyfh8FHkbfsBAAdtAAM9BA',
-  'AAMCAgADFQABarR57etLVmIO6F8bOCfKoa7zZ78AAlETAAILesBKwx2530yCuQ4BAAdtAAM9BA',
-  'AAMCAgADFQABarR5q-AyxqHevPDqWFODjbvMf2cAAndhAALgo4IHekYrlyMmbtQBAAdtAAM9BA',
-  'AAMCAgADFQABarSBAlGy4td3UkO_cdTuM2WUmHIAApM1AAIZAfBItDRdhHd28rUBAAdtAAM9BA',
-].map(id => `https://api.fstik.app/file/${id}/sticker.webp`);
+/* static fallback: 8 hand-picked stickers from fStik's verified packs, stored locally so they
+   survive even when fStik itself is down (the card shows the first 3) */
+const FALLBACK = [1, 2, 3, 4, 5, 6, 7, 8].map(n => `/images/stickers/${n}.webp`);
+const setSticker = (im, src, i) => {       // any broken remote image quietly falls back to its local twin
+  im.onerror = () => { im.onerror = null; im.src = FALLBACK[i % FALLBACK.length]; };
+  im.src = src;
+};
 let STICKERS = FALLBACK;
 fetch('/api/stickers').then(r => r.ok ? r.json() : null).then(d => {
   const list = d && Array.isArray(d.stickers) ? d.stickers.filter(u => /^https:\/\/api\.fstik\.app\/file\//.test(u)) : [];
   if (list.length < 3) return;
-  STICKERS = list; $$('.fs .stk img').forEach((im, i) => { im.src = list[i]; });
+  STICKERS = list; $$('.fs .stk img').forEach((im, i) => setSticker(im, list[i], i));
 }).catch(() => {});
 function fillStickers(root) {
   $$('[data-stickers]', root).forEach(box => {
     const n = +box.dataset.stickers;
     box.replaceChildren(...Array.from({ length: Math.min(n, STICKERS.length) }, (_, i) => {
-      const im = document.createElement('img'); im.src = STICKERS[i]; im.alt = ''; im.decoding = 'async'; return im; }));  // no lazy: the sheet is already on screen
+      const im = document.createElement('img'); im.alt = ''; im.decoding = 'async'; setSticker(im, STICKERS[i], i); return im; }));  // no lazy: the sheet is already on screen
   });
 }
 
@@ -197,17 +194,24 @@ addEventListener('keydown', e => {
 });
 (() => { let y0 = 0, dy = 0, hist = [], drag = false;
   const rubber = (o, d = 500, c = .55) => (o * d * c) / (d + c * Math.abs(o));
+  let armed = false, pid = 0;
   sheet.addEventListener('pointerdown', e => {
     if (!isOpen || e.target.closest('a,button,video')) return;
+    // mouse: drag only by the handle/hero/title bar so text selection keeps working
+    if (e.pointerType === 'mouse' && !e.target.closest('.grab,.sh-hero,.sh-bar')) return;
     if (e.target.closest('.body') && body.scrollTop > 0) return;
-    drag = true; y0 = e.clientY; dy = 0; hist = [{ y: e.clientY, t: e.timeStamp }];
-    sheet.setPointerCapture(e.pointerId); sheet.style.transition = 'none';
+    armed = true; drag = false; pid = e.pointerId; y0 = e.clientY; dy = 0; hist = [{ y: e.clientY, t: e.timeStamp }];
   });
-  sheet.addEventListener('pointermove', e => { if (!drag) return;
+  sheet.addEventListener('pointermove', e => {
+    if (armed && !drag) {                  // hysteresis: a tap or a tiny jitter never interrupts the opening spring
+      if (Math.abs(e.clientY - y0) < 6) return;
+      drag = true; sheet.setPointerCapture(pid); sheet.style.transition = 'none';
+    }
+    if (!drag) return;
     dy = e.clientY - y0; hist.push({ y: e.clientY, t: e.timeStamp }); if (hist.length > 6) hist.shift();
     sheet.style.transform = `translateY(${dy < 0 ? rubber(dy) : dy}px)`; scrim.style.opacity = Math.max(0, 1 - dy / 500);
   });
-  const end = () => { if (!drag) return; drag = false; scrim.style.opacity = '';
+  const end = () => { armed = false; if (!drag) return; drag = false; scrim.style.opacity = '';
     const a = hist[0], b = hist[hist.length - 1], v = (b.y - a.y) / Math.max(1, b.t - a.t) * 1000;
     if (dy > 140 || v > 700) closeSheet();
     else { sheet.style.transition = `transform ${S_BACK.ms}ms ${S_BACK.ease}`; sheet.style.transform = 'none'; }

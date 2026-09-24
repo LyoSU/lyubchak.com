@@ -18,8 +18,9 @@ async function load() {
     if (!res.ok) return [];
     const data = await res.json();
     return (data?.result?.stickerSets ?? [])
-      .map(s => s?.stickers?.[0]).filter(Boolean)
-      .map(st => FILE(st.thumb?.file_id || st.file_id))
+      .map(s => s?.stickers?.[0]?.thumb?.file_id || s?.stickers?.[0]?.file_id)
+      .filter(id => typeof id === 'string' && /^[\w-]+$/.test(id))   // never cache "undefined" or odd ids
+      .map(FILE)
       .slice(0, 8);
   } catch { return []; } finally { clearTimeout(timer); }
 }
@@ -29,7 +30,8 @@ export async function onRequestGet({ request }) {
   const key = new Request(new URL('/api/stickers', request.url).toString());
   if (cache) { const hit = await cache.match(key); if (hit) return hit; }
   const stickers = await load();
-  const res = json({ stickers }, stickers.length ? 86400 : 300);
-  if (cache && stickers.length) await cache.put(key, res.clone());
+  const good = stickers.length >= 3;          // a thin list is served but not pinned for a day
+  const res = json({ stickers }, good ? 86400 : 300);
+  if (cache && good) await cache.put(key, res.clone());
   return res;
 }
