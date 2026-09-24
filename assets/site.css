@@ -39,7 +39,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .page{max-width:1120px;margin:0 auto;padding:40px 20px 80px}
 .bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(168px,auto);gap:14px;grid-auto-flow:dense}
 .w2{grid-column:span 2}.h2{grid-row:span 2}
-@media (max-width:900px){.bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(168px,auto);gap:12px}}
+@media (max-width:900px){.bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(168px,auto);gap:12px}.card.path{order:-1}}  /* two columns: the tall path pairs with award + GitHub */
 @media (max-width:520px){.card{padding:18px}.bento{grid-auto-rows:minmax(142px,auto)}.m-w2{grid-column:span 2}.m-h1{grid-row:span 1}}
 
 /* ---------- groups ---------- */
@@ -111,10 +111,8 @@ button.card{width:100%;height:100%}
 
 /* fstik: a normal card; the stickers and one violet number carry it */
 .fs .n{font-size:clamp(40px,4.4vw,50px);font-weight:700;letter-spacing:-.05em;line-height:.95}
-.fs .fx{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
-.fs .fx>div:first-child{flex:1 1 0;min-width:0}
-.fs .fx .s{max-width:32ch}
-.fs .fx .s{margin-top:6px}
+.fs .fx{display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.fs .sub{margin-top:6px}
 .fs .stats{display:flex;gap:20px;flex:none}
 .fs .stats b{display:block;font-size:20px;font-weight:600;letter-spacing:-.03em;line-height:1.1}
 .fs .surf{display:flex;gap:6px;flex-wrap:wrap}
@@ -219,8 +217,8 @@ button.card{width:100%;height:100%}
 
 /* copy (3) */
 .copy{position:relative;overflow:hidden}
-.copy .ok{position:absolute;inset:0;display:grid;place-items:center;background:var(--ink);color:var(--bg);border-radius:inherit;transform:translateY(100%);transition:transform .35s var(--spring,ease)}
-.copy.done .ok{transform:none}
+.copy .ok{position:absolute;inset:0;display:grid;place-items:center;background:var(--ink);color:var(--bg);border-radius:inherit;transform:translateY(100%);visibility:hidden;transition:transform .35s var(--spring,ease),visibility 0s .35s}  /* hidden, or its antialiased edge shows under the pill */
+.copy.done .ok{transform:none;visibility:visible;transition:transform .35s var(--spring,ease),visibility 0s}
 
 /* ---------- lang crossfade (5) ---------- */
 [data-i]{transition:opacity .16s ease}
@@ -351,7 +349,6 @@ html.sheet-open{overflow:hidden}
 
 /* phone: product cards stack their two halves */
 @media (max-width:640px){
-  .fs .fx,.q .fx{flex-direction:column;align-items:flex-start;gap:12px}
-  .fs .fx .s{max-width:none}
+  .q .fx{flex-direction:column;align-items:flex-start;gap:12px}
   .q .qs{flex:none;width:100%;max-width:320px}
 }

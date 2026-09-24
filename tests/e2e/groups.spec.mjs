@@ -14,9 +14,9 @@ test('cards are arranged in four untitled groups: intro, built, experience, cont
   })));
   expect(groups).toEqual([
     { cards: ['me', 'kness', 'ai'] },
-    { cards: ['fstik', 'capka', 'quotly', 'hortay', 'bots'] },
-    { cards: ['path', 'stack', 'award', 'work', 'github'] },
-    { cards: ['open', 'talk'] },
+    { cards: ['quotly', 'capka', 'fstik', 'hortay', 'bots'] },
+    { cards: ['award', 'work', 'path', 'github', 'stack'] },
+    { cards: ['talk', 'open'] },
   ]);
 });
 
@@ -58,7 +58,8 @@ test('fStik and Capka no longer dominate: one row tall, same surface as every ca
   const r = await page.$$eval('[data-sheet="fstik"],[data-sheet="capka"]', cs => cs.map(c => ({
     h: c.getBoundingClientRect().height, bg: getComputedStyle(c).backgroundColor, img: getComputedStyle(c).backgroundImage })));
   const base = await page.$eval('#me', m => getComputedStyle(m).backgroundColor);
-  for (const c of r) { expect(c.h).toBeLessThan(260); expect(c.bg).toBe(base); expect(c.img).toBe('none'); }
+  // short enough that the Hortay and More-bots tiles sharing its row are not half empty
+  for (const c of r) { expect(c.h).toBeLessThan(232); expect(c.bg).toBe(base); expect(c.img).toBe('none'); }
 });
 
 for (const scheme of ['light', 'dark']) {
@@ -79,3 +80,12 @@ for (const scheme of ['light', 'dark']) {
     expect(c.award).toContain('linear-gradient');
   });
 }
+
+test('experience: the path runs down the right edge, the award opens the group', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/');
+  await page.waitForTimeout(1600);
+  const r = await page.evaluate(() => { const b = s => document.querySelector(s).getBoundingClientRect(), g = document.querySelector('.card.path').closest('.bento').getBoundingClientRect();
+    return { pathRight: Math.round(g.right - b('.card.path').right), awardLeft: Math.round(b('.card.award').left - g.left), workAboveStack: b('.card.work').top < b('.card.stack').top }; });
+  expect(r).toEqual({ pathRight: 0, awardLeft: 0, workAboveStack: true });
+});

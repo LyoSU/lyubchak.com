@@ -56,3 +56,17 @@ test('stack icons do not fly in from the corner on load (no transition until the
   release();
   await expect.poll(() => page.$eval('.card.stack .chaos i', i => getComputedStyle(i).transitionDuration)).not.toMatch(/^0s(, 0s)*$/);
 });
+
+for (const w of [1280, 800, 375]) {
+  test(`stack chaos: icons never pile on top of each other @${w}`, async ({ page }) => {
+    await page.setViewportSize({ width: w, height: 900 });
+    await page.goto('/');
+    await page.waitForTimeout(1600);
+    const close = await page.$$eval('.card.stack .chaos i', is => {
+      const c = is.map(i => { const b = i.getBoundingClientRect(); return [b.left + b.width / 2, b.top + b.height / 2, i.style.getPropertyValue('--m').match(/tech\/(\w+)/)[1]]; }), out = [];
+      for (let a = 0; a < c.length; a++) for (let b = a + 1; b < c.length; b++) { const d = Math.hypot(c[a][0] - c[b][0], c[a][1] - c[b][1]); if (d < 22) out.push(`${c[a][2]}~${c[b][2]}:${Math.round(d)}`); }
+      return out;
+    });
+    expect(close).toEqual([]);
+  });
+}

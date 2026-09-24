@@ -98,3 +98,10 @@ for (const w of [1280, 375]) {
     expect(r[3]).toBe(r[2]);
   });
 }
+
+test('copy buttons: the hidden "Copied" layer leaves no sliver under the pill', async ({ page }) => {
+  await page.goto('/');
+  const v = await page.$$eval('.btn.copy .ok', os => os.map(o => getComputedStyle(o).visibility));
+  expect(v.length).toBeGreaterThan(0);
+  expect(new Set(v)).toEqual(new Set(['hidden']));
+});
