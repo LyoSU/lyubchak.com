@@ -190,7 +190,8 @@ function closeSheet() {
   sheet.style.transform = g.t; sheet.style.clipPath = g.c; sheet.style.opacity = 0;
   closeTimer = setTimeout(done, d + 20);
 }
-$$('[data-sheet]').forEach(c => c.addEventListener('click', () => openSheet(c)));
+$$('[data-sheet]').forEach(c => c.addEventListener('click', e => { sheet.dataset.input = e.detail ? 'pointer' : 'keyboard'; openSheet(c); }));   // detail 0 = Enter/Space
+addEventListener('keydown', () => { if (isOpen) sheet.dataset.input = 'keyboard'; });
 /* how I work: tasks travel out to each agent and results come back — once on screen, again on hover */
 { const w = $('.work');
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {

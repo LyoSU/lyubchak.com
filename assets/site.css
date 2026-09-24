@@ -77,10 +77,8 @@ button.card{width:100%;height:100%}
 .hd .id{display:flex;align-items:center;gap:12px;min-width:0}
 @media (max-width:520px){.card:not(.m-w2):not(.mini) .hd{align-items:flex-start}.card:not(.m-w2):not(.mini) .hd .id{flex-direction:column;align-items:flex-start;gap:8px}}   /* half-width tile: icon above the name, clear of the + */
 .card .more{flex:none;position:relative;width:30px;height:30px;border-radius:50%;background:var(--chip);color:var(--ink2);font-size:0;transition:transform .35s var(--spring-b,ease),background .2s ease}
-.card .more:before,.card .more:after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;border-radius:2px;background:currentColor}
-.card .more:after{transform:rotate(90deg)}
-.card .more.ext:before{width:9px;height:9px;margin:-5px 0 0 -4px;background:none;border:2px solid currentColor;border-left:0;border-bottom:0;border-radius:1px}
-.card .more.ext:after{width:12px;margin:-1px 0 0 -6px;transform:rotate(-45deg)}
+.card .more:before{content:"";position:absolute;inset:0;margin:auto;width:14px;height:14px;background-color:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath d=%22M14 4.5h5.5V10M19.5 4.5L13.5 10.5M10 19.5H4.5V14M4.5 19.5l6-6%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath d=%22M14 4.5h5.5V10M19.5 4.5L13.5 10.5M10 19.5H4.5V14M4.5 19.5l6-6%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E") center/contain no-repeat}   /* expand, not "add": the card opens into a sheet */
+.card .more:after{content:none}
 .card.tap:hover .more{transform:scale(1.12);background:color-mix(in srgb,var(--chip) 70%,var(--ink) 12%)}
 .card.tap:active .more{transform:scale(.94)}
 .lab{font-size:12px;font-weight:600;color:var(--ink3);letter-spacing:.01em}
@@ -89,7 +87,7 @@ button.card{width:100%;height:100%}
 .ico{width:44px;height:44px;border-radius:11px;display:block;flex:none}
 .big{font-size:44px;font-weight:700;letter-spacing:-.05em;line-height:1}
 /* stack: a chaos of tools that tidies itself on hover */
-.stack{flex-direction:row;align-items:stretch}
+.card.stack{flex-direction:row;align-items:stretch}
 .stack .txt{flex:0 0 44%;display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-width:0}
 .stack .chaos{flex:1;position:relative;container-type:size;margin:-8px -8px -8px 0}
 .stack .chaos i{position:absolute;left:0;top:0;width:24px;height:24px;margin:-12px 0 0 -12px;background-color:currentColor;color:var(--ink);
@@ -99,7 +97,7 @@ button.card{width:100%;height:100%}
 .settled .stack .chaos i{transition:transform .8s var(--spring,ease) var(--d),opacity .4s ease}  /* only once layout is final, or icons fly in from the corner on load */
 .stack:hover .chaos i{transform:translate(calc(var(--gx) * 1cqw),calc(var(--gy) * 1cqh));opacity:.8}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-@media (max-width:520px){.stack{flex-direction:column}.stack .txt{flex:none}.stack .chaos{flex:none;height:112px;margin:0 -6px -6px}}
+@media (max-width:520px){.card.stack{flex-direction:column}.stack .txt{flex:none}.stack .chaos{flex:none;height:112px;margin:0 -6px -6px}}
 @media (prefers-reduced-motion:reduce){.settled .stack .chaos i{transition:none}}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{background:var(--chip);border-radius:99px;padding:5px 11px;font-size:12.5px;font-weight:500;color:var(--ink)}
@@ -279,7 +277,7 @@ body.swapping [data-i]{opacity:0}
 .sheet .btn.primary{background:var(--accent);color:#fff}
 .sheet .hero-ico{width:64px;height:64px;border-radius:16px}
 @media (max-width:640px){
-  .sheet{left:0;top:auto;bottom:0;translate:none;width:100%;max-height:92vh;border-radius:30px 30px 0 0}
+  .sheet{left:0;top:auto;bottom:0;translate:none;width:100%;max-height:92vh;max-height:calc(100svh - 12px - env(safe-area-inset-top));border-radius:30px 30px 0 0}
   .sheet .body{padding:4px 22px calc(28px + env(safe-area-inset-bottom))}
   .sheet h2{font-size:28px}
 }
@@ -372,6 +370,7 @@ html.sheet-open{overflow:hidden}
   border-bottom:1px solid var(--line);opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .25s ease,transform .35s var(--spring,ease)}
 .sheet.scrolled .sh-bar{opacity:1;transform:none}
 .sheet .x{z-index:3}
+.sheet[data-input="pointer"] .x:focus{outline:none}   /* Safari rings a scripted focus even after a tap */
 .sheet.scrolled .x{background:var(--chip);color:var(--ink2)}
 @media (prefers-reduced-transparency:reduce){.sh-bar,.sh-actions{background:var(--card);backdrop-filter:none}}
 
@@ -380,3 +379,6 @@ html.sheet-open{overflow:hidden}
   .q .fx{flex-direction:column;align-items:flex-start;gap:12px}
   .q .qs{flex:none;width:100%;max-width:320px}
 }
+
+/* phone sheet lists: detail under the name, so long values never wrap against the right edge */
+@media (max-width:640px){.sheet .list>div{flex-direction:column;gap:2px}.sheet .list>div span{text-align:left;font-size:14px}}

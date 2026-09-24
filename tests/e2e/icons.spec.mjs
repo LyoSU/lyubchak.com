@@ -54,3 +54,11 @@ test('icons sit on the same line as their text and take its colour (repo stars, 
   expect(star).toEqual({ sameLine: true, colour: true, w: expect.any(Number) });
   expect(star.w).toBeGreaterThan(8);
 });
+
+test('card corner button reads as "expand", not "add": an expand icon, no plus bars', async ({ page }) => {
+  await page.goto('/');
+  const r = await page.$$eval('.card .more', ms => ms.map(m => { const b = getComputedStyle(m, '::before'), a = getComputedStyle(m, '::after');
+    return { icon: (b.maskImage || b.webkitMaskImage).includes('data:image/svg'), after: a.content, text: m.textContent.trim() }; }));
+  expect(r.length).toBe(8);
+  for (const m of r) expect(m).toEqual({ icon: true, after: 'none', text: '' });
+});
