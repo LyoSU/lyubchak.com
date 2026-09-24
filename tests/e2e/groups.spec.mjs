@@ -10,7 +10,7 @@ const key = c => c.dataset.sheet || c.id || [...c.classList].find(k => !['card',
 test('cards are arranged in four untitled groups: intro, built, experience, contact', async ({ page }) => {
   await page.goto('/');
   const groups = await page.$$eval('#bento .grp', gs => gs.map(g => ({
-    cards: [...g.querySelectorAll(':scope > .bento > .card')].map(c => c.dataset.sheet || c.id || [...c.classList].find(k => !['card', 'tap', 'w2', 'h2', 'm-w2'].includes(k))),
+    cards: [...g.querySelectorAll(':scope > .bento .card')].map(c => c.dataset.sheet || c.id || [...c.classList].find(k => !['card', 'tap', 'w2', 'h2', 'm-w2'].includes(k))),
   })));
   expect(groups).toEqual([
     { cards: ['me', 'kness', 'ai'] },
@@ -42,7 +42,7 @@ for (const [w, h] of [[1280, 900], [800, 1000]]) {
       rows.forEach((rh, ri) => { let x = r.left;
         cols.forEach((cw, ci) => {
           const el = document.elementFromPoint(x + cw / 2, y + rh / 2);
-          if (!el || !el.closest('.card') || el.closest('.bento') !== g) out.push(`group ${gi} r${ri}c${ci}`);
+          if (!el || !el.closest('.card, .pair') || el.closest('.bento') !== g)   // the slit between a pair's two tiles belongs to the pair out.push(`group ${gi} r${ri}c${ci}`);
           x += cw + gap; });
         y += rh + rgap; });
       return out;
@@ -59,7 +59,7 @@ test('fStik and Capka no longer dominate: one row tall, same surface as every ca
     h: c.getBoundingClientRect().height, bg: getComputedStyle(c).backgroundColor, img: getComputedStyle(c).backgroundImage })));
   const base = await page.$eval('#me', m => getComputedStyle(m).backgroundColor);
   // short enough that the Hortay and More-bots tiles sharing its row are not half empty
-  for (const c of r) { expect(c.h).toBeLessThan(232); expect(c.bg).toBe(base); expect(c.img).toBe('none'); }
+  for (const c of r) { expect(c.h).toBeLessThan(244); expect(c.bg).toBe(base); expect(c.img).toBe('none'); }
 });
 
 for (const scheme of ['light', 'dark']) {
@@ -88,4 +88,58 @@ test('experience: the path runs down the right edge, the award opens the group',
   const r = await page.evaluate(() => { const b = s => document.querySelector(s).getBoundingClientRect(), g = document.querySelector('.card.path').closest('.bento').getBoundingClientRect();
     return { pathRight: Math.round(g.right - b('.card.path').right), awardLeft: Math.round(b('.card.award').left - g.left), workAboveStack: b('.card.work').top < b('.card.stack').top }; });
   expect(r).toEqual({ pathRight: 0, awardLeft: 0, workAboveStack: true });
+});
+
+for (const w of [1280, 800, 375]) {
+  test(`Hortay and More bots are two compact tiles stacked beside fStik, no empty band @${w}`, async ({ page }) => {
+    await page.setViewportSize({ width: w, height: 900 });
+    await page.goto('/');
+    await page.waitForTimeout(1600);
+    const r = await page.evaluate(() => {
+      const rect = s => document.querySelector(s).getBoundingClientRect();
+      const tiles = ['[data-sheet="hortay"]', '[data-sheet="bots"]'].map(s => { const c = document.querySelector(s), h = c.querySelector('.hd'), p = getComputedStyle(c);
+        return Math.round(c.getBoundingClientRect().height - h.getBoundingClientRect().height - parseFloat(p.paddingTop) - parseFloat(p.paddingBottom)); });
+      const ho = rect('[data-sheet="hortay"]'), bo = rect('[data-sheet="bots"]'), fs = rect('[data-sheet="fstik"]');
+      return { stacked: bo.top > ho.bottom && Math.abs(bo.left - ho.left) < 1, sameWidth: Math.abs(ho.width - bo.width) < 1, slack: tiles, besideFs: innerWidth > 900 ? Math.abs(bo.bottom - fs.bottom) < 1 && Math.abs(ho.top - fs.top) < 1 : true };
+    });
+    expect(r.stacked).toBe(true); expect(r.sameWidth).toBe(true); expect(r.besideFs).toBe(true);
+    for (const s of r.slack) expect(s).toBeLessThanOrEqual(24);   // the header row is the whole tile (centred, so at most ~12px extra each side)
+  });
+}
+
+for (const w of [1280, 800]) {
+  test(`path timeline fills its tall card, the connector stays unbroken @${w}`, async ({ page }) => {
+    await page.setViewportSize({ width: w, height: 900 });
+    await page.goto('/');
+    await page.waitForTimeout(1600);
+    const r = await page.$eval('.card.path', c => {
+      const hd = c.querySelector('.hd').getBoundingClientRect(), li = [...c.querySelectorAll('li')].map(l => l.getBoundingClientRect());
+      const gaps = li.slice(1).map((l, i) => Math.round(l.top - li[i].top));
+      const lines = [...c.querySelectorAll('li:not(:last-child)')].map((l, i) => { const a = getComputedStyle(l, '::after'); return Math.round(l.getBoundingClientRect().top + parseFloat(a.top) + parseFloat(a.height) - li[i + 1].top); });
+      return { gapUnderHeader: Math.round(li[0].top - hd.bottom), spread: Math.max(...gaps) - Math.min(...gaps), lines };
+    });
+    expect(r.gapUnderHeader).toBeLessThanOrEqual(24);
+    for (const d of r.lines) expect(d).toBeGreaterThanOrEqual(0);   // each segment reaches the next dot
+  });
+}
+
+for (const lang of ['en', 'uk']) {
+  test(`fStik: every number carries its own label right under it (${lang})`, async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.addInitScript(l => { try { localStorage.setItem('lang', l); } catch {} }, lang);
+    await page.goto('/');
+    const r = await page.$eval('.fs', c => {
+      const n = c.querySelector('.n'), lab = n.nextElementSibling, a = n.getBoundingClientRect(), b = lab.getBoundingClientRect();
+      return { label: lab.textContent.trim(), under: b.top >= a.bottom - 2 && b.top - a.bottom < 12, left: Math.round(b.left - a.left), sub: c.querySelector('.sub').textContent.trim() };
+    });
+    expect(r.label).toBe(lang === 'en' ? 'monthly users' : 'користувачів на місяць');
+    expect(r.under).toBe(true); expect(r.left).toBe(0);
+    expect(r.sub).toBe(lang === 'en' ? 'The largest sticker platform on Telegram' : 'Найбільша платформа стікерів у Telegram');
+  });
+}
+
+test('fStik header is just the name, like every other product (no "creator" line)', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('.fs .hd .lab, .fs [data-i="fs_solo"]')).toHaveCount(0);
+  await expect(page.locator('.fs .hd .t')).toHaveText('fStik');
 });

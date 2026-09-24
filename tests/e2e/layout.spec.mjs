@@ -19,7 +19,7 @@ test('every "+" sits at the same spot', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 860 });
   await page.goto('/');
   await page.waitForTimeout(1600); // intro scales cards; measure after it settles
-  const pos = await page.$$eval('#bento .card .hd .more', ms => ms.map(m => {
+  const pos = await page.$$eval('#bento .card:not(.mini) .hd .more', ms => ms.map(m => {
     const c = m.closest('.card').getBoundingClientRect(), r = m.getBoundingClientRect();
     return `${Math.round(r.top - c.top)}/${Math.round(c.right - r.right)}`; }));
   expect(pos.length).toBeGreaterThan(0);

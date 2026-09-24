@@ -57,7 +57,7 @@ button.card{width:100%;height:100%}
 .hd>.lab{line-height:28px}
 .hd:has(.more),.hd:has(.ico){min-height:44px;align-items:center}
 .hd .id{display:flex;align-items:center;gap:12px;min-width:0}
-@media (max-width:520px){.card:not(.m-w2) .hd{align-items:flex-start}.card:not(.m-w2) .hd .id{flex-direction:column;align-items:flex-start;gap:8px}}   /* half-width tile: icon above the name, clear of the + */
+@media (max-width:520px){.card:not(.m-w2):not(.mini) .hd{align-items:flex-start}.card:not(.m-w2):not(.mini) .hd .id{flex-direction:column;align-items:flex-start;gap:8px}}   /* half-width tile: icon above the name, clear of the + */
 .card .more{flex:none;position:relative;width:30px;height:30px;border-radius:50%;background:var(--chip);color:var(--ink2);font-size:0;transition:transform .35s var(--spring-b,ease),background .2s ease}
 .card .more:before,.card .more:after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;border-radius:2px;background:currentColor}
 .card .more:after{transform:rotate(90deg)}
@@ -110,9 +110,10 @@ button.card{width:100%;height:100%}
 .theme{width:30px;height:30px;border-radius:50%;background:var(--chip);display:grid;place-items:center;font-size:14px}
 
 /* fstik: a normal card; the stickers and one violet number carry it */
-.fs .n{font-size:clamp(40px,4.4vw,50px);font-weight:700;letter-spacing:-.05em;line-height:.95}
+.fs .n{font-size:clamp(38px,3.9vw,44px);font-weight:700;letter-spacing:-.05em;line-height:.95}
 .fs .fx{display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap}
-.fs .sub{margin-top:6px}
+.fs .main .s,.fs .stats .s{display:block;margin-top:3px}
+.fs .sub{margin-top:8px;color:var(--ink2)}
 .fs .stats{display:flex;gap:20px;flex:none}
 .fs .stats b{display:block;font-size:20px;font-weight:600;letter-spacing:-.03em;line-height:1.1}
 .fs .surf{display:flex;gap:6px;flex-wrap:wrap}
@@ -158,7 +159,8 @@ button.card{width:100%;height:100%}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .award .lab{color:#e8b64a}}
 
 /* path — dots and line share one axis at x=6px */
-.path ol{list-style:none;display:flex;flex-direction:column;gap:9px}
+.path ol{list-style:none;display:flex;flex-direction:column;gap:9px;flex:1}
+.path li{flex:1 0 auto}.path li:last-child{flex:none}   /* spread the steps down the tall card; each connector grows with its step */
 .path li{position:relative;padding-left:22px;font-size:14px;line-height:1.3}
 .path li span{display:block;font-size:11.5px;line-height:15px;color:var(--ink3);font-weight:500}
 .path li:before{content:"";position:absolute;left:2px;top:3.5px;width:8px;height:8px;border-radius:50%;box-sizing:border-box;background:var(--card);border:2px solid var(--ink3);z-index:1}
@@ -194,7 +196,15 @@ button.card{width:100%;height:100%}
 @media (prefers-reduced-motion:reduce){.work .dot,.work .node{animation:none!important}}
 
 /* bots */
+.pair{display:flex;flex-direction:column;gap:14px;min-width:0}
+@media (max-width:900px){.pair{gap:12px}}
+.pair>.card{flex:1;height:auto;justify-content:center}   /* two short wide tiles share one row, no empty band */
+.mini .hd .id{flex:1}
+.bots.mini .hd .id{justify-content:space-between;gap:16px}
 .bots .row{display:flex;justify-content:flex-start;gap:8px}
+.bots.mini .row span{flex:none;width:36px;max-width:none;border-radius:10px}
+.bots.mini .t{white-space:nowrap}
+@media (max-width:520px){.bots.mini .row{gap:6px}.bots.mini .row span{width:30px;border-radius:8px}}
 .bots .row span{flex:1 1 0;max-width:48px;aspect-ratio:1;border-radius:12px;background:var(--chip);overflow:hidden;display:block}
 .bots .row span img{display:block;width:100%;height:100%;object-fit:cover}
 
