@@ -148,7 +148,8 @@ function fillSheet(id) {
   const clone = src.cloneNode(true);
   const h2 = clone.querySelector('h2'); if (h2) h2.id = 'sheet-title';
   sheet.dataset.kind = id;
-  body.replaceChildren(...clone.childNodes); body.scrollTop = 0; fillStickers(body);
+  $('#sh-bar').textContent = h2 ? h2.textContent : '';
+  body.replaceChildren(...clone.childNodes); body.scrollTop = 0; sheet.classList.remove('scrolled'); fillStickers(body);
 }
 function openSheet(card) {
   clearTimeout(closeTimer);
@@ -180,6 +181,8 @@ function closeSheet() {
   closeTimer = setTimeout(done, d + 20);
 }
 $$('[data-sheet]').forEach(c => c.addEventListener('click', () => openSheet(c)));
+/* compact title once the hero has scrolled away (iOS large-title behaviour) */
+body.addEventListener('scroll', () => { sheet.classList.toggle('scrolled', body.scrollTop > 72); }, { passive: true });
 $('#x').addEventListener('click', closeSheet); scrim.addEventListener('click', closeSheet);
 addEventListener('keydown', e => {
   if (!isOpen) return;

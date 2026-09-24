@@ -57,3 +57,22 @@ test('fStik sheet stickers actually load', async ({ page }) => {
   const loaded = await page.$$eval('#sheet-body .stickers img', is => is.filter(i => i.complete && i.naturalWidth > 0).length);
   expect(loaded).toBe(8);
 });
+
+test('sheet scrollbar is thin, not the default bar', async ({ page }) => {
+  await page.goto('/');
+  await page.locator('[data-sheet="fstik"]').click();
+  expect(await page.$eval('#sheet-body', b => getComputedStyle(b).scrollbarWidth)).toBe('thin');
+});
+
+test('compact title bar appears once the hero scrolls away', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 700 });
+  await page.goto('/');
+  await page.locator('[data-sheet="fstik"]').click();
+  const bar = page.locator('#sh-bar');
+  await expect(bar).toHaveText('fStik');
+  await expect(bar).toHaveCSS('opacity', '0');
+  await page.locator('#sheet-body').evaluate(b => { b.scrollTop = 200; b.dispatchEvent(new Event('scroll')); });
+  await expect(bar).toHaveCSS('opacity', '1');
+  await page.locator('#sheet-body').evaluate(b => { b.scrollTop = 0; b.dispatchEvent(new Event('scroll')); });
+  await expect(bar).toHaveCSS('opacity', '0');
+});
