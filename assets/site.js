@@ -93,6 +93,7 @@ $('#theme').addEventListener('click', () => {
 (() => { const b = $('#bento');
   if (reduce) { b.classList.remove('intro'); return; }
   [...b.querySelectorAll('.card')].map(c => { const r = c.getBoundingClientRect(); return { c, a: r.width * r.height, y: r.top }; })
+    .filter(o => o.y < innerHeight || (o.c.style.animation = 'none', false))   // below the fold: already in place when scrolled to, and the stagger goes to what is on screen
     .sort((p, q) => q.a - p.a || p.y - q.y).forEach((o, i) => o.c.style.setProperty('--d', Math.min(i * 45, 540) + 'ms'));
   setTimeout(() => b.classList.remove('intro'), 1400);
 })();

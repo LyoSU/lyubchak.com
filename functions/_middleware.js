@@ -42,8 +42,14 @@ function prefersMarkdown(acceptHeader) {
   return mdQ > 0 && mdQ >= htmlQ;
 }
 
+/** Old/mirror hostnames of this same project: one canonical copy instead of several (preview deploys keep working). */
+const MIRRORS = new Set(['yuri.ly', 'lyo-su.pages.dev']);
+
 export async function onRequest({ request, next }) {
   const url = new URL(request.url);
+  if (MIRRORS.has(url.hostname)) {
+    return Response.redirect(`https://lyubchak.com${url.pathname}${url.search}`, 301);
+  }
   const mdPath = MARKDOWN_ALTERNATES[url.pathname];
 
   if (mdPath && request.method === 'GET' && prefersMarkdown(request.headers.get('Accept'))) {
