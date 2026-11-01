@@ -123,10 +123,7 @@
             "https://github.com/LyoSU",
             "https://www.linkedin.com/in/lyubchak/",
             "https://t.me/LyDev",
-            "https://t.me/LyBlog",
-            "https://yuri.ly",
-            "https://fstik.app",
-            "https://capka.app"
+            "https://t.me/LyBlog"
         ],
         "hasOccupation": [
             {
@@ -137,12 +134,7 @@
         ],
         "award": "Telegram Mini App Contest — 1st Place (2023)",
         "email": "hi@lyubchak.com",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://lyubchak.com/",
-            "name": "Yuri Lyubchak — Official Personal Website",
-            "description": "Personal website of Yuri Lyubchak: work, projects and contacts. Written by Yuri himself."
-        }
+        "mainEntityOfPage": { "@id": "https://lyubchak.com/#webpage" }
     }
     </script>
 
@@ -150,8 +142,10 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebPage",
+        "@type": "ProfilePage",
         "@id": "https://lyubchak.com/#webpage",
+        "dateCreated": "2023-03-19",
+        "dateModified": "2026-11-01",
         "url": "https://lyubchak.com/",
         "name": "Yuri Lyubchak — AI Platform Architect",
         "description": "Official personal site of Yuri Lyubchak, AI Platform Architect, creator of fStik, QuotLy and Capka.",
@@ -227,6 +221,13 @@
     </script>
 
     <!-- AI Agent Canonical Summary (inline, appears in agent context when parsing HTML) -->
+    <script type="application/ld+json">
+    [
+        { "@context": "https://schema.org", "@type": "SoftwareApplication", "name": "fStik", "url": "https://fstik.app", "applicationCategory": "SocialNetworkingApplication", "operatingSystem": "Telegram, Web, Android", "author": { "@id": "https://lyubchak.com/#person" } },
+        { "@context": "https://schema.org", "@type": "SoftwareApplication", "name": "QuotLy", "url": "https://t.me/QuotLyBot", "applicationCategory": "SocialNetworkingApplication", "operatingSystem": "Telegram", "author": { "@id": "https://lyubchak.com/#person" } },
+        { "@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Capka", "url": "https://capka.app", "applicationCategory": "DeveloperApplication", "operatingSystem": "Linux", "author": { "@id": "https://lyubchak.com/#person" } }
+    ]
+    </script>
     <script type="text/llms.txt">
 # Yuri Lyubchak
 
