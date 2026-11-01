@@ -43,7 +43,7 @@ function prefersMarkdown(acceptHeader) {
 }
 
 /** Old/mirror hostnames of this same project: one canonical copy instead of several (preview deploys keep working). */
-const MIRRORS = new Set(['yuri.ly', 'lyo-su.pages.dev']);
+const MIRRORS = new Set(['www.lyubchak.com', 'yuri.ly', 'www.yuri.ly', 'lyo-su.pages.dev']);
 
 export async function onRequest({ request, next }) {
   const url = new URL(request.url);
