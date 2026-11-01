@@ -61,6 +61,7 @@ function paint() {
   $$('[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
   $$('[data-i]').forEach(el => { const v = T[lang][el.dataset.i]; if (v != null) setHTML(el, v); });
   $$('img[data-q]').forEach(im => { im.src = QUOTES[lang][im.dataset.q - 1]; });
+  $('.me .av').alt = T[lang].nm;
   const alt = lang === 'uk' ? 'en' : 'uk', a = $('#alt-lang');   // a real link to the other language's own URL
   a.href = alt === 'uk' ? '/uk/' : '/'; a.hreflang = a.lang = alt; a.textContent = alt === 'uk' ? 'Українською' : 'In English';
   applyAI();

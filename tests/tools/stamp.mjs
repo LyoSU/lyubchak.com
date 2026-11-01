@@ -7,7 +7,7 @@ import { createHash } from 'node:crypto';
 const root = new URL('../../', import.meta.url);
 const hash = f => createHash('sha256').update(readFileSync(new URL(f, root))).digest('hex').slice(0, 10);
 const esc = s => s.replace(/[.]/g, '\\.');
-const IMAGES = ['favicon.svg', 'favicon-32.png', 'favicon-64.png', 'favicon.ico', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'og.png', 'avatar.jpg'];
+const IMAGES = ['favicon.svg', 'favicon-32.png', 'favicon-64.png', 'favicon.ico', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'og.png', 'og-uk.png', 'avatar.jpg'];
 
 function stamp(file, paths) {
   let s = readFileSync(new URL(file, root), 'utf8');

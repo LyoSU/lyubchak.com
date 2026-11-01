@@ -28,13 +28,15 @@
   <div class="card me">
     <img src="../images/avatar.jpg" alt="">
     <div>
-      <h1>Yuri Lyubchak</h1>
-      <p><b>AI Platform Architect.</b> Production AI systems and Telegram products used by millions.</p>
+      <h1 data-uk="Юрій Любчак">Yuri Lyubchak</h1>
+      <p data-uk="&lt;b&gt;AI Platform Architect.&lt;/b&gt; AI-системи для продакшну й Telegram-продукти для мільйонів людей."><b>AI Platform Architect.</b> Production AI systems and Telegram products used by millions.</p>
     </div>
     <div class="url">lyubchak.com</div>
   </div>
-  <div class="card fs"><div class="t">fStik</div><div><div class="n">800K</div><span>monthly users</span></div></div>
-  <div class="card cp"><div class="t">Capka</div><div><div class="n">Agent harness,<br>written from scratch</div></div></div>
+  <div class="card fs"><div class="t">fStik</div><div><div class="n">800K</div><span data-uk="користувачів на місяць">monthly users</span></div></div>
+  <div class="card cp"><div class="t">Capka</div><div><div class="n" data-uk="Agent harness,&lt;br&gt;написаний з нуля">Agent harness,<br>written from scratch</div></div></div>
 </div>
+<script>/* ?lang=uk: the Ukrainian card for /uk/ (tests/tools/og.mjs) */
+if (new URLSearchParams(location.search).get('lang') === 'uk') { document.documentElement.lang = 'uk'; document.querySelectorAll('[data-uk]').forEach(e => { e.innerHTML = e.dataset.uk; }); }</script>
 </body>
 </html>

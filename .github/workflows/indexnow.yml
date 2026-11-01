@@ -1,0 +1,19 @@
+# Tells Bing (and through it ChatGPT search), Yandex, Seznam and Naver that the pages changed,
+# instead of waiting for the next crawl. Runs on every production push, after Cloudflare Pages has deployed.
+name: IndexNow
+on:
+  push:
+    branches: [gh-pages]
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for the Cloudflare Pages deploy
+        run: sleep 150
+      - name: Submit URLs
+        run: |
+          curl -sS -o /dev/null -w '%{http_code}\n' -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d '{"host":"lyubchak.com","key":"5d3a693548ad616217029d27a1cfb5cb","keyLocation":"https://lyubchak.com/5d3a693548ad616217029d27a1cfb5cb.txt",
+                 "urlList":["https://lyubchak.com/","https://lyubchak.com/uk/","https://lyubchak.com/llms.txt",
+                            "https://lyubchak.com/llms-full.txt","https://lyubchak.com/index.md"]}'

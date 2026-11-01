@@ -3,6 +3,7 @@
 // stamp.mjs runs this after stamping; tests/unit/uk.test.mjs fails if uk/index.html is out of date.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 
 const root = new URL('../../', import.meta.url);
 const read = p => readFileSync(new URL(p, root), 'utf8');
@@ -51,6 +52,9 @@ export function build(html = read('index.html'), js = read('assets/site.js')) {
     if (html === before) throw new Error(`uk.mjs: pattern not found: ${String(a).slice(0, 80)}`);
   }
   html = fillI18n(html, uk);
+  const og = createHash('sha256').update(readFileSync(new URL('images/og-uk.png', root))).digest('hex').slice(0, 10);
+  html = html.replaceAll(/\/images\/og\.png\?v=[0-9a-f]+/g, `/images/og-uk.png?v=${og}`)
+    .replace('<img class="av" src="/images/avatar-256.webp" alt="Yuri Lyubchak">', '<img class="av" src="/images/avatar-256.webp" alt="Юрій Любчак">');
   html = html.replace(/<img data-q="(\d)" src="[^"]*" width="\d+" height="\d+"/g, (_, n) => { const [src, w, h] = QUOTES[n - 1]; return `<img data-q="${n}" src="${src}" width="${w}" height="${h}"`; });
   const U = 'https://lyubchak.com/llms-full.txt', [a, b] = uk.prompt.split(U), q = encodeURIComponent(uk.prompt);
   html = html.replace(/(<span class="prompt" id="prompt">)[\s\S]*?(<\/span><span class="hint")/, `$1“${a}<span class="url">${U}</span>${b}”$2`)
