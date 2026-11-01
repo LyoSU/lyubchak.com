@@ -17,3 +17,9 @@ function stamp(file, paths) {
 stamp('index.html', ['assets/site.css', 'assets/site.js', ...IMAGES.map(i => 'images/' + i)]);
 stamp('site.webmanifest', IMAGES.map(i => 'images/' + i));
 console.log('stamped');
+// /uk/index.html is generated from the freshly stamped index.html
+const { build } = await import('./uk.mjs');
+const { mkdirSync } = await import('node:fs');
+mkdirSync(new URL('uk/', root), { recursive: true });
+writeFileSync(new URL('uk/index.html', root), build());
+console.log('uk built');

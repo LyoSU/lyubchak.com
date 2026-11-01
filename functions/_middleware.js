@@ -18,6 +18,7 @@
 const MARKDOWN_ALTERNATES = {
   '/':           '/index.md',
   '/index.html': '/index.md',
+  '/uk/':       '/index.md',
 };
 
 function prefersMarkdown(acceptHeader) {

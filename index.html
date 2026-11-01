@@ -12,7 +12,7 @@
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://lyubchak.com/">
     <link rel="alternate" hreflang="en" href="https://lyubchak.com/">
-    <link rel="alternate" hreflang="uk" href="https://lyubchak.com/">
+    <link rel="alternate" hreflang="uk" href="https://lyubchak.com/uk/">
     <link rel="alternate" hreflang="x-default" href="https://lyubchak.com/">
 
     <!-- Agent discovery (RFC 8288 link relations; served as HTML <link> in lieu of HTTP Link headers on GitHub Pages) -->
@@ -27,14 +27,14 @@
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
     <meta name="color-scheme" content="light dark">
     <meta name="msapplication-TileColor" content="#f5f5f7">
-    <meta name="msapplication-TileImage" content="images/icon-192.png?v=a0e4511d80">
-    <link rel="icon" href="images/favicon.svg?v=078d2286b3" type="image/svg+xml">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=7e5f930874">
-    <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64.png?v=f4a14df62b">
-    <link rel="shortcut icon" href="images/favicon.ico?v=445da8e1c4" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=9e4e9507bd">
-    <link rel="mask-icon" href="images/favicon.svg?v=078d2286b3" color="#6d4ee6">
-    <link rel="manifest" href="site.webmanifest">
+    <meta name="msapplication-TileImage" content="/images/icon-192.png?v=a0e4511d80">
+    <link rel="icon" href="/images/favicon.svg?v=078d2286b3" type="image/svg+xml">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=7e5f930874">
+    <link rel="icon" type="image/png" sizes="64x64" href="/images/favicon-64.png?v=f4a14df62b">
+    <link rel="shortcut icon" href="/images/favicon.ico?v=445da8e1c4" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=9e4e9507bd">
+    <link rel="mask-icon" href="/images/favicon.svg?v=078d2286b3" color="#6d4ee6">
+    <link rel="manifest" href="/site.webmanifest">
 
     <!-- Open Graph (Facebook, LinkedIn, Telegram, Discord, Slack, iMessage) -->
     <meta property="og:type" content="profile">
@@ -149,10 +149,7 @@
         "url": "https://lyubchak.com/",
         "name": "Yuri Lyubchak — AI Platform Architect",
         "description": "Official personal site of Yuri Lyubchak, AI Platform Architect, creator of fStik, QuotLy and Capka.",
-        "inLanguage": [
-            "en",
-            "uk"
-        ],
+        "inLanguage": "en",
         "primaryImageOfPage": "https://lyubchak.com/images/og.png?v=737ad32a30",
         "speakable": {
             "@type": "SpeakableSpecification",
@@ -261,15 +258,16 @@ Grew from bot developer to backend developer to AI lead at KNESS Group, a large 
 - [Capka](https://capka.app) ([live demo](https://demo.capka.app), [GitHub](https://github.com/LyoSU/capka)) — an agent harness written from scratch. Give Capka the work, get the finished files: reports, spreadsheets, documents, code. A separate Linux sandbox per task, one server for a whole team, schedules, Telegram. Open source (AGPL-3.0), self-hosted, bring your own models.
     </script>
 
+    <script data-root-only>try{var l=null;try{l=localStorage.getItem('lang')}catch(e){}if(l==='uk'||(!l&&/^uk/i.test(navigator.language||'')))location.replace('/uk/'+location.search+location.hash)}catch(e){}</script>
     <script>try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
-    <link rel="stylesheet" href="/assets/site.css?v=a65c8c25e7">
-    <script src="/assets/site.js?v=00f2e38d0c" defer></script>
+    <link rel="stylesheet" href="/assets/site.css?v=3626fbc764">
+    <script src="/assets/site.js?v=52dff5db4c" defer></script>
 </head>
 <body>
 <!--email_off--><!-- Cloudflare Email Obfuscation would turn the address into "[email protected]" for every reader without JS (agents, crawlers) -->
-<a class="skip" href="#bento">Skip to content</a>
+<a class="skip" href="#bento" data-i="skip">Skip to content</a>
 <header class="hdr" id="hdr" aria-hidden="true" inert>
-  <div class="who"><img src="/images/avatar-256.webp" alt="">Yuri Lyubchak</div>
+  <div class="who"><img src="/images/avatar-256.webp" alt=""><span data-i="nm">Yuri Lyubchak</span></div>
   <a class="cta" href="https://t.me/LyDev" target="_blank" rel="noopener" data-i="hdr_cta">Message me</a>
 </header>
 
@@ -288,7 +286,7 @@ Grew from bot developer to backend developer to AI lead at KNESS Group, a large 
         </div>
       </div>
       <div>
-        <h1 class="display">Yuri Lyubchak</h1>
+        <h1 class="display" data-i="nm">Yuri Lyubchak</h1>
         <p class="role" data-i="role"><b>AI Platform Architect.</b> I build production AI systems and run Telegram products used by millions of people.</p>
       </div>
       <div class="btns">
@@ -416,7 +414,7 @@ Grew from bot developer to backend developer to AI lead at KNESS Group, a large 
 
 </div>
 </main>
-<footer class="foot"><span>Yuri Lyubchak · Ukraine</span><span><a href="/llms.txt">llms.txt</a> · <a href="/index.md">index.md</a></span></footer>
+<footer class="foot"><span>Yuri Lyubchak · Ukraine</span><span><a id="alt-lang" href="/uk/" hreflang="uk" lang="uk">Українською</a> · <a href="/llms.txt">llms.txt</a> · <a href="/index.md">index.md</a></span></footer>
 
 <div id="sheet-src" hidden>
 <article data-sheet-src="fstik" lang="en">

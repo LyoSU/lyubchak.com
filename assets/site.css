@@ -269,8 +269,10 @@ body.swapping [data-i]{opacity:0}
 .sheet .grab{height:22px;display:grid;place-items:center;cursor:grab;flex:none}
 .sheet .grab i{width:38px;height:5px;border-radius:9px;background:var(--line);background:color-mix(in srgb,var(--ink) 18%,transparent)}
 .sheet .x{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--chip);display:grid;place-items:center;font-size:16px;color:var(--ink2);z-index:2}
-.sheet .body{overflow:auto;padding:8px 32px 32px;opacity:0;transform:translateY(8px);transition:opacity .15s ease,transform .15s ease;touch-action:pan-y}
-.sheet.content-on .body{opacity:1;transform:none;transition:opacity .35s ease,transform .55s var(--spring,ease)}
+.sheet .body{overflow:auto;padding:8px 32px 32px;touch-action:pan-y}
+/* the coloured hero grows with the sheet; only what is under it fades in, so no white flash before the colour */
+.sheet .body>:not(.sh-hero){opacity:0;transform:translateY(8px);transition:opacity .12s ease,transform .12s ease}
+.sheet.content-on .body>:not(.sh-hero){opacity:1;transform:none;transition:opacity .25s ease,transform .4s var(--spring,ease)}
 .sheet h2{font-size:34px;font-weight:700;letter-spacing:-.04em;line-height:1.05;margin:10px 0 6px}
 .sheet .sub{font-size:19px;color:var(--ink2);letter-spacing:-.015em;line-height:1.35;margin-bottom:22px}
 .sheet p{font-size:16px;line-height:1.55;color:var(--ink2);margin-bottom:14px}
