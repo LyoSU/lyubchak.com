@@ -77,10 +77,16 @@ const initial = store.get('lang') || ((navigator.language || '').toLowerCase().s
 lang = initial === 'uk' ? 'uk' : 'en'; paint();
 
 /* ---------- theme ---------- */
+/* the choice is stored (applied before first paint by the inline script in <head>) and the
+   browser chrome follows it; the switch itself is one crossfade of the whole page */
+const syncChrome = () => { const t = document.documentElement.dataset.theme; if (!t) return;
+  $$('meta[name="theme-color"]').forEach(m => { m.removeAttribute('media'); m.content = t === 'dark' ? '#000000' : '#f5f5f7'; }); };
+syncChrome();
 $('#theme').addEventListener('click', () => {
   const r = document.documentElement;
   const dark = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-  r.dataset.theme = dark ? 'light' : 'dark';
+  const flip = () => { r.dataset.theme = dark ? 'light' : 'dark'; store.set('theme', r.dataset.theme); syncChrome(); };
+  !reduce && document.startViewTransition ? document.startViewTransition(flip) : flip();
 });
 
 /* ---------- intro: biggest cards first ---------- */
@@ -114,7 +120,7 @@ $$('[data-copy]').forEach(b => b.addEventListener('click', async () => {
   }); }
 
 /* ---------- Capka demo plays only while visible ---------- */
-(() => { const v = $('.capka .win video'); if (!v || reduce) return;
+(() => { const v = $('.capka .win video'); if (!v || reduce || navigator.connection?.saveData) return;   // Data Saver: the poster is enough
   new IntersectionObserver(([e]) => { e.isIntersecting ? v.play().catch(() => {}) : v.pause(); }, { threshold: .35 }).observe(v);
 })();
 
